@@ -162,7 +162,7 @@
 		1D756F921A80A54F000B8F7C /* AlbumsTests */ = {
 			isa = PBXGroup;
 			children = (
-				1D756FD21A80A5F7000B8F7C /* Certiciate */,
+				1D756FD21A80A5F7000B8F7C /* Certificate */,
 				1D756FD61A80A5F7000B8F7C /* Controller */,
 				1D756FDA1A80A5F7000B8F7C /* Model */,
 				1D756FDD1A80A5F7000B8F7C /* Network */,
@@ -186,7 +186,7 @@
 		1D756F9D1A80A5C4000B8F7C /* Albums */ = {
 			isa = PBXGroup;
 			children = (
-				1D756F9E1A80A5C4000B8F7C /* Certiciate */,
+				1D756F9E1A80A5C4000B8F7C /* Certificate */,
 				1D756FA31A80A5C4000B8F7C /* Controller */,
 				1D756FA61A80A5C4000B8F7C /* Model */,
 				1D756FAB1A80A5C4000B8F7C /* Network */,
@@ -196,7 +196,7 @@
 			path = Albums;
 			sourceTree = "<group>";
 		};
-		1D756F9E1A80A5C4000B8F7C /* Certiciate */ = {
+		1D756F9E1A80A5C4000B8F7C /* Certificate */ = {
 			isa = PBXGroup;
 			children = (
 				1D756F9F1A80A5C4000B8F7C /* INV_CertificateOperation.h */,
@@ -204,7 +204,7 @@
 				1D756FA11A80A5C4000B8F7C /* INV_CertificateSerialization.h */,
 				1D756FA21A80A5C4000B8F7C /* INV_CertificateSerialization.m */,
 			);
-			path = Certiciate;
+			path = Certificate;
 			sourceTree = "<group>";
 		};
 		1D756FA31A80A5C4000B8F7C /* Controller */ = {
@@ -269,14 +269,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		1D756FD21A80A5F7000B8F7C /* Certiciate */ = {
+		1D756FD21A80A5F7000B8F7C /* Certificate */ = {
 			isa = PBXGroup;
 			children = (
 				1D756FD31A80A5F7000B8F7C /* CertificateOperationTestCase.swift */,
 				1D756FD41A80A5F7000B8F7C /* INV_CertificateSerializationTestCase.h */,
 				1D756FD51A80A5F7000B8F7C /* INV_CertificateSerializationTestCase.m */,
 			);
-			path = Certiciate;
+			path = Certificate;
 			sourceTree = "<group>";
 		};
 		1D756FD61A80A5F7000B8F7C /* Controller */ = {
@@ -622,6 +622,7 @@
 				1D756F991A80A54F000B8F7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D756F9A1A80A54F000B8F7C /* Build configuration list for PBXNativeTarget "AlbumsTests" */ = {
 			isa = XCConfigurationList;
@@ -630,6 +631,7 @@
 				1D756F9C1A80A54F000B8F7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
