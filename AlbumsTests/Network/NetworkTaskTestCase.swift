@@ -88,7 +88,7 @@ final class NetworkTaskTestCase: XCTestCase {
     
     var taskSession: NetworkTask_SessionTestDouble {
         
-        return (self.task.session as NetworkTask_SessionTestDouble)
+        return (self.task.session as! NetworkTask_SessionTestDouble)
         
     }
     

@@ -138,19 +138,19 @@ final class TableViewControllerTestCase: XCTestCase {
     
     var controllerAlertView: INV_TableViewController_AlertViewTestDouble {
         
-        return (self.controller.alertView as INV_TableViewController_AlertViewTestDouble)
+        return (self.controller.alertView as! INV_TableViewController_AlertViewTestDouble)
         
     }
     
     var controllerModel: TableViewController_ModelTestDouble {
         
-        return (self.controller.model as TableViewController_ModelTestDouble)
+        return (self.controller.model as! TableViewController_ModelTestDouble)
         
     }
     
     var controllerView: TableViewController_ViewTestDouble {
         
-        return (self.controller.view as TableViewController_ViewTestDouble)
+        return (self.controller.view as! TableViewController_ViewTestDouble)
         
     }
     
@@ -212,7 +212,7 @@ extension TableViewControllerTestCase {
         
         self.controllerView.cell = TableViewController_CellTestDouble()
         
-        let cell = (self.controller.tableView(self.controllerView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as TableViewController_CellTestDouble)
+        let cell = (self.controller.tableView(self.controllerView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! TableViewController_CellTestDouble)
         
         XCTAssertTrue(cell === self.controllerView.cell)
         
@@ -224,7 +224,7 @@ extension TableViewControllerTestCase {
     
     func testTableViewCellForRowAtIndexPathReturnsNil() {
         
-        let cell = (self.controller.tableView(self.controllerView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as TableViewController_CellTestDouble)
+        let cell = (self.controller.tableView(self.controllerView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! TableViewController_CellTestDouble)
         
         XCTAssertTrue(cell.style == UITableViewCellStyle.Subtitle)
         
@@ -282,7 +282,7 @@ extension TableViewControllerTestCase {
         
         self.controller.alertView(nil, clickedButtonAtIndex: 1)
         
-        let album = (self.controllerModel.albums[0] as INV_Album)
+        let album = (self.controllerModel.albums[0] as! INV_Album)
         
         XCTAssertTrue(TableViewController_ApplicationTestDouble_SharedApplication.url!.absoluteString == album.link)
         

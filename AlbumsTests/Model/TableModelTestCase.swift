@@ -66,7 +66,7 @@ final class TableModelTestCase: XCTestCase {
         
         let data = NSData(contentsOfURL: url, options: nil, error: nil)!
         
-        return (NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)! as NSDictionary)
+        return (NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)! as! NSDictionary)
         
         }()
     
@@ -74,7 +74,7 @@ final class TableModelTestCase: XCTestCase {
     
     var modelOperation: TableModel_OperationTestDouble {
         
-        return (self.model.operation as TableModel_OperationTestDouble)
+        return (self.model.operation as! TableModel_OperationTestDouble)
         
     }
     
@@ -110,7 +110,7 @@ extension TableModelTestCase {
             
         }
         
-        XCTAssertTrue(self.modelOperation.request!.URL.absoluteString == "https://itunes.apple.com/us/rss/topalbums/limit=100/json")
+        XCTAssertTrue(self.modelOperation.request!.URL!.absoluteString == "https://itunes.apple.com/us/rss/topalbums/limit=100/json")
         
         XCTAssertTrue(self.modelOperation.request!.cachePolicy == NSURLRequestCachePolicy.UseProtocolCachePolicy)
         
@@ -134,19 +134,19 @@ extension TableModelTestCase {
             
             XCTAssertTrue(error == nil)
             
-            let feed = (self.json["feed"] as NSDictionary)
+            let feed = (self.json["feed"] as! NSDictionary)
             
-            let entry = (feed["entry"] as NSArray)
+            let entry = (feed["entry"] as! NSArray)
             
             XCTAssertTrue(self.model.albums.count == entry.count)
             
-            let dictionary = (entry[0] as NSDictionary)
+            let dictionary = (entry[0] as! NSDictionary)
             
             XCTAssertTrue(self.model.albums[0].dictionary == dictionary)
             
         }
         
-        XCTAssertTrue(self.modelOperation.request!.URL.absoluteString == "https://itunes.apple.com/us/rss/topalbums/limit=100/json")
+        XCTAssertTrue(self.modelOperation.request!.URL!.absoluteString == "https://itunes.apple.com/us/rss/topalbums/limit=100/json")
         
         XCTAssertTrue(self.modelOperation.request!.cachePolicy == NSURLRequestCachePolicy.UseProtocolCachePolicy)
         

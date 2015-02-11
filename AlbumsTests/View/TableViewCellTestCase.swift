@@ -84,7 +84,7 @@ final class TableViewCellTestCase: XCTestCase {
     
     var cellOperation: TableViewCell_OperationTestDouble {
         
-        return (self.cell.operation as TableViewCell_OperationTestDouble)
+        return (self.cell.operation as! TableViewCell_OperationTestDouble)
         
     }
     
@@ -118,7 +118,7 @@ extension TableViewCellTestCase {
         
         XCTAssertTrue(self.cellOperation.didCancel)
         
-        XCTAssertTrue(self.cellOperation.request!.URL.absoluteString == album.image)
+        XCTAssertTrue(self.cellOperation.request!.URL!.absoluteString == album.image)
         
         XCTAssertTrue(self.cellOperation.request!.cachePolicy == NSURLRequestCachePolicy.UseProtocolCachePolicy)
         

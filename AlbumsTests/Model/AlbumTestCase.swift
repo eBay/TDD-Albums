@@ -34,7 +34,7 @@ final class AlbumTestCase: XCTestCase {
         
         let data = NSData(contentsOfURL: url, options: nil, error: nil)!
         
-        return (NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)! as NSDictionary)
+        return (NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)! as! NSDictionary)
         
         }()
     
@@ -44,21 +44,21 @@ extension AlbumTestCase {
     
     func testObject() {
         
-        let feed = (self.json["feed"] as NSDictionary)
+        let feed = (self.json["feed"] as! [NSObject:AnyObject])
         
-        let entry = (feed["entry"] as NSArray)
+        let entry = (feed["entry"] as! [AnyObject])
         
-        let dictionary = (entry[0] as NSDictionary)
+        let dictionary = (entry[0] as! [NSObject:AnyObject])
         
         let album = INV_Album(dictionary: dictionary)
         
-        XCTAssertTrue(album.artist == ((dictionary["im:artist"] as NSDictionary)["label"] as String))
+        XCTAssertTrue(album.artist == ((dictionary["im:artist"] as! NSDictionary)["label"] as! String))
         
-        XCTAssertTrue(album.image == (((dictionary["im:image"] as NSArray)[2] as NSDictionary)["label"] as String))
+        XCTAssertTrue(album.image == (((dictionary["im:image"] as! NSArray)[2] as! NSDictionary)["label"] as! String))
         
-        XCTAssertTrue(album.link == (((dictionary["link"] as NSDictionary)["attributes"] as NSDictionary)["href"] as String))
+        XCTAssertTrue(album.link == (((dictionary["link"] as! NSDictionary)["attributes"] as! NSDictionary)["href"] as! String))
         
-        XCTAssertTrue(album.name == ((dictionary["im:name"] as NSDictionary)["label"] as String))
+        XCTAssertTrue(album.name == ((dictionary["im:name"] as! NSDictionary)["label"] as! String))
         
     }
     

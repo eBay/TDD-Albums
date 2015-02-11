@@ -138,7 +138,7 @@ extension NetworkImageHandlerTestCase {
         
         NetworkImageHandler_DataHandlerTestDouble_Error = ErrorTestDouble()
         
-        let image = (NetworkImageHandlerTestDouble.imageWithResponse(self.response, error: &self.error) as NetworkImageHandler_ImageTestDouble)
+        let image = (NetworkImageHandlerTestDouble.imageWithResponse(self.response, error: &self.error) as! NetworkImageHandler_ImageTestDouble)
         
         XCTAssertTrue(image.data! === NetworkImageHandler_DataHandlerTestDouble_Data)
         

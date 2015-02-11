@@ -84,7 +84,7 @@ final class NetworkImageOperationTestCase: XCTestCase {
     
     var operationTask: NetworkImageOperation_TaskTestDouble {
         
-        return (self.operation.task as NetworkImageOperation_TaskTestDouble)
+        return (self.operation.task as! NetworkImageOperation_TaskTestDouble)
         
     }
     

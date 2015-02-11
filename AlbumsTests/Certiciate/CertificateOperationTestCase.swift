@@ -52,9 +52,9 @@ final class CertificateOperation_SerializationTestDouble: NSObject, INV_Certific
     
     class func createCertificateWithData(data: INV_CertificateOperation_DataType) -> SecCertificate {
         
-        CertificateOperation_SerializationTestDouble_Data = (data as CertificateOperation_DataTestDouble)
+        CertificateOperation_SerializationTestDouble_Data = (data as! CertificateOperation_DataTestDouble)
         
-        return ((CertificateOperation_SerializationTestDouble_Certificate as AnyObject) as SecCertificate)
+        return ((CertificateOperation_SerializationTestDouble_Certificate as AnyObject) as! SecCertificate)
         
     }
     

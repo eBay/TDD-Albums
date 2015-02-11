@@ -84,7 +84,7 @@ final class NetworkJSONOperationTestCase: XCTestCase {
     
     var operationTask: NetworkJSONOperation_TaskTestDouble {
         
-        return (self.operation.task as NetworkJSONOperation_TaskTestDouble)
+        return (self.operation.task as! NetworkJSONOperation_TaskTestDouble)
         
     }
     
