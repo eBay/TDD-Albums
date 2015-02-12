@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1D756F8F1A80A54F000B8F7C /* libAlbums.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D756F831A80A54F000B8F7C /* libAlbums.a */; };
 		1DD1D33B1A8C885B00C4A775 /* TDD_NetworkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD1D33A1A8C885B00C4A775 /* TDD_NetworkResponse.m */; };
+		1DD1D3481A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD1D3471A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift */; };
+		1DD1D34B1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD1D34A1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,10 @@
 		1D756F941A80A54F000B8F7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DD1D3391A8C885B00C4A775 /* TDD_NetworkResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_NetworkResponse.h; sourceTree = "<group>"; };
 		1DD1D33A1A8C885B00C4A775 /* TDD_NetworkResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDD_NetworkResponse.m; sourceTree = "<group>"; };
+		1DD1D3431A8C8DDC00C4A775 /* AlbumsTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlbumsTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		1DD1D3471A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataHandlerTestCase.swift; sourceTree = "<group>"; };
+		1DD1D3491A8C8E1300C4A775 /* TDD_NetworkDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_NetworkDataHandler.h; sourceTree = "<group>"; };
+		1DD1D34A1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDD_NetworkDataHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,7 @@
 		1D756F921A80A54F000B8F7C /* AlbumsTests */ = {
 			isa = PBXGroup;
 			children = (
+				1DD1D3461A8C8DF400C4A775 /* Network */,
 				1D756F931A80A54F000B8F7C /* Supporting Files */,
 			);
 			path = AlbumsTests;
@@ -97,6 +104,7 @@
 		1D756F931A80A54F000B8F7C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1DD1D3431A8C8DDC00C4A775 /* AlbumsTests-Bridging-Header.h */,
 				1D756F941A80A54F000B8F7C /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -105,8 +113,18 @@
 		1DD1D3381A8C884D00C4A775 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				1DD1D3491A8C8E1300C4A775 /* TDD_NetworkDataHandler.h */,
+				1DD1D34A1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m */,
 				1DD1D3391A8C885B00C4A775 /* TDD_NetworkResponse.h */,
 				1DD1D33A1A8C885B00C4A775 /* TDD_NetworkResponse.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1DD1D3461A8C8DF400C4A775 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1DD1D3471A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -199,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DD1D34B1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m in Sources */,
 				1DD1D33B1A8C885B00C4A775 /* TDD_NetworkResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DD1D3481A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +336,7 @@
 		1D756F9B1A80A54F000B8F7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -327,12 +348,15 @@
 				INFOPLIST_FILE = AlbumsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AlbumsTests/AlbumsTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		1D756F9C1A80A54F000B8F7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -340,6 +364,7 @@
 				INFOPLIST_FILE = AlbumsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AlbumsTests/AlbumsTests-Bridging-Header.h";
 			};
 			name = Release;
 		};
