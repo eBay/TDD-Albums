@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D756F8F1A80A54F000B8F7C /* libAlbums.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D756F831A80A54F000B8F7C /* libAlbums.a */; };
+		1DD1D33B1A8C885B00C4A775 /* TDD_NetworkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD1D33A1A8C885B00C4A775 /* TDD_NetworkResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,8 @@
 		1D756F831A80A54F000B8F7C /* libAlbums.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAlbums.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D756F8E1A80A54F000B8F7C /* AlbumsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbumsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D756F941A80A54F000B8F7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DD1D3391A8C885B00C4A775 /* TDD_NetworkResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_NetworkResponse.h; sourceTree = "<group>"; };
+		1DD1D33A1A8C885B00C4A775 /* TDD_NetworkResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDD_NetworkResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,7 @@
 		1D756F851A80A54F000B8F7C /* Albums */ = {
 			isa = PBXGroup;
 			children = (
+				1DD1D3381A8C884D00C4A775 /* Network */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -96,6 +100,15 @@
 				1D756F941A80A54F000B8F7C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1DD1D3381A8C884D00C4A775 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1DD1D3391A8C885B00C4A775 /* TDD_NetworkResponse.h */,
+				1DD1D33A1A8C885B00C4A775 /* TDD_NetworkResponse.m */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DD1D33B1A8C885B00C4A775 /* TDD_NetworkResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
