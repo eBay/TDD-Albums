@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D756F871A80A54F000B8F7C /* Albums.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1D756F861A80A54F000B8F7C /* Albums.h */; };
-		1D756F891A80A54F000B8F7C /* Albums.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756F881A80A54F000B8F7C /* Albums.m */; };
 		1D756F8F1A80A54F000B8F7C /* libAlbums.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D756F831A80A54F000B8F7C /* libAlbums.a */; };
 /* End PBXBuildFile section */
 
@@ -29,7 +27,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				1D756F871A80A54F000B8F7C /* Albums.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,8 +34,6 @@
 
 /* Begin PBXFileReference section */
 		1D756F831A80A54F000B8F7C /* libAlbums.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAlbums.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D756F861A80A54F000B8F7C /* Albums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Albums.h; sourceTree = "<group>"; };
-		1D756F881A80A54F000B8F7C /* Albums.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Albums.m; sourceTree = "<group>"; };
 		1D756F8E1A80A54F000B8F7C /* AlbumsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbumsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D756F941A80A54F000B8F7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,8 +78,6 @@
 		1D756F851A80A54F000B8F7C /* Albums */ = {
 			isa = PBXGroup;
 			children = (
-				1D756F861A80A54F000B8F7C /* Albums.h */,
-				1D756F881A80A54F000B8F7C /* Albums.m */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -193,7 +186,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D756F891A80A54F000B8F7C /* Albums.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +348,7 @@
 				1D756F991A80A54F000B8F7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D756F9A1A80A54F000B8F7C /* Build configuration list for PBXNativeTarget "AlbumsTests" */ = {
 			isa = XCConfigurationList;
@@ -364,6 +357,7 @@
 				1D756F9C1A80A54F000B8F7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
