@@ -40,7 +40,7 @@ const NSInteger TDD_NetworkDataHandler_ResponseError = 2;
     
     if (error) {
         
-        NSDictionary *userInfo = @{NSUnderlyingErrorKey:[response error]};
+        NSDictionary *userInfo = ([response error] ? @{NSUnderlyingErrorKey:[response error]} : 0);
         
         *error = [[NSError alloc] initWithDomain: TDD_NetworkDataHandler_ErrorDomain code: TDD_NetworkDataHandler_ResponseError userInfo: userInfo];
         

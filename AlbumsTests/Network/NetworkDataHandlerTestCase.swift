@@ -39,6 +39,18 @@ extension NetworkDataHandlerTestCase {
     
     func testResponseError() {
         
+        XCTAssertTrue(TDD_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
+        
+        XCTAssertTrue(self.error!.domain == TDD_NetworkDataHandler_ErrorDomain)
+        
+        XCTAssertTrue(self.error!.code == TDD_NetworkDataHandler_ResponseError)
+        
+        XCTAssertTrue(self.error!.userInfo![NSUnderlyingErrorKey] == nil)
+        
+    }
+    
+    func testResponseErrorWithUnderlyingError() {
+        
         self.response.error = ErrorTestDouble()
         
         XCTAssertTrue(TDD_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
