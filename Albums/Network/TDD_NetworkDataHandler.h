@@ -24,8 +24,14 @@
 //  THE SOFTWARE.
 //
 
-@import Foundation;
+#import "TDD_NetworkResponse.h"
 
 @interface TDD_NetworkDataHandler: NSObject
+
+@end
+
+@interface TDD_NetworkDataHandler (Data)
+
++ (NSData *)dataWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error;
 
 @end

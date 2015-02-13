@@ -1,3 +1,4 @@
+
 //
 //  NetworkDataHandlerTestCase.swift
 //  Albums
@@ -28,5 +29,15 @@ import XCTest
 
 final class NetworkDataHandlerTestCase: XCTestCase {
     
+    
+}
+
+extension NetworkDataHandlerTestCase {
+    
+    func test() {
+        
+        XCTAssertTrue(TDD_NetworkDataHandler.dataWithResponse(nil, error: nil) == nil)
+        
+    }
     
 }

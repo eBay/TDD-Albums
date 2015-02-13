@@ -29,3 +29,13 @@
 @implementation TDD_NetworkDataHandler
 
 @end
+
+@implementation TDD_NetworkDataHandler (Data)
+
++ (NSData *)dataWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error {
+    
+    return 0;
+    
+}
+
+@end
