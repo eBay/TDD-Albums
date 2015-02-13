@@ -26,6 +26,10 @@
 
 #import "TDD_NetworkDataHandler.h"
 
+NSString *const TDD_NetworkDataHandler_ErrorDomain = @"TDD_NetworkDataHandler_ErrorDomain";
+
+const NSInteger TDD_NetworkDataHandler_ResponseError = 2;
+
 @implementation TDD_NetworkDataHandler
 
 @end
@@ -33,6 +37,14 @@
 @implementation TDD_NetworkDataHandler (Data)
 
 + (NSData *)dataWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error {
+    
+    if (error) {
+        
+        NSDictionary *userInfo = @{NSUnderlyingErrorKey:[response error]};
+        
+        *error = [[NSError alloc] initWithDomain: TDD_NetworkDataHandler_ErrorDomain code: TDD_NetworkDataHandler_ResponseError userInfo: userInfo];
+        
+    }
     
     return 0;
     

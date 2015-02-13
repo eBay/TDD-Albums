@@ -29,14 +29,25 @@ import XCTest
 
 final class NetworkDataHandlerTestCase: XCTestCase {
     
+    var error: NSError?
+    
+    lazy var response = TDD_NetworkResponse()
     
 }
 
 extension NetworkDataHandlerTestCase {
     
-    func test() {
+    func testResponseError() {
         
-        XCTAssertTrue(TDD_NetworkDataHandler.dataWithResponse(nil, error: nil) == nil)
+        self.response.error = ErrorTestDouble()
+        
+        XCTAssertTrue(TDD_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
+        
+        XCTAssertTrue(self.error!.domain == TDD_NetworkDataHandler_ErrorDomain)
+        
+        XCTAssertTrue(self.error!.code == TDD_NetworkDataHandler_ResponseError)
+        
+        XCTAssertTrue(self.error!.userInfo![NSUnderlyingErrorKey]! === self.response.error)
         
     }
     

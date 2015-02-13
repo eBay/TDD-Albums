@@ -1,9 +1,9 @@
 //
-//  TDD_NetworkDataHandler.h
+//  Shared.swift
 //  Albums
 //
-//  Created by Rick van Voorden on 2/11/15.
-//  Copyright (c) 2015 eBay Software Foundation. All rights reserved.
+//  Created by Rick van Voorden on 2/12/15.
+//  Copyright (c) 2015 eBay Software Foundation.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,18 +24,36 @@
 //  THE SOFTWARE.
 //
 
-#import "TDD_NetworkResponse.h"
+import Foundation
 
-FOUNDATION_EXTERN NSString *const TDD_NetworkDataHandler_ErrorDomain;
+func DataTestDouble() -> NSData {
+    
+    var bytes = ([0] as [UInt8])
+    
+    return NSData(bytes: &bytes, length: 1)
+    
+}
 
-FOUNDATION_EXTERN const NSInteger TDD_NetworkDataHandler_ResponseError;
+func ErrorTestDouble() -> NSError {
+    
+    return NSError(domain: "domain", code: 0, userInfo: nil)
+    
+}
 
-@interface TDD_NetworkDataHandler: NSObject
+func RequestTestDouble() -> NSURLRequest {
+    
+    return NSURLRequest(URL: URLTestDouble())
+    
+}
 
-@end
+func ResponseTestDouble() -> NSURLResponse {
+    
+    return NSHTTPURLResponse(URL: URLTestDouble(), statusCode: 200, HTTPVersion: nil, headerFields: nil)!
+    
+}
 
-@interface TDD_NetworkDataHandler (Data)
-
-+ (NSData *)dataWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error;
-
-@end
+func URLTestDouble() -> NSURL {
+    
+    return NSURL(string: "http://localhost/")!
+    
+}
