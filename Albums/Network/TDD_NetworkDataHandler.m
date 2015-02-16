@@ -64,9 +64,15 @@ const NSInteger TDD_NetworkDataHandler_ResponseError = 2;
             
         case 200:
         {
+            if ([response data]) {
+                
+                return [response data];
+                
+            }
+            
             if (error) {
                 
-                NSDictionary *userInfo = @{NSUnderlyingErrorKey:[response error]};
+                NSDictionary *userInfo = ([response error] ? @{NSUnderlyingErrorKey:[response error]} : 0);
                 
                 *error = [[NSError alloc] initWithDomain: TDD_NetworkDataHandler_ErrorDomain code: TDD_NetworkDataHandler_DataError userInfo: userInfo];
                 
