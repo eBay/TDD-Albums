@@ -12,6 +12,8 @@
 		1DD1D33B1A8C885B00C4A775 /* TDD_NetworkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD1D33A1A8C885B00C4A775 /* TDD_NetworkResponse.m */; };
 		1DD1D3481A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD1D3471A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift */; };
 		1DD1D34B1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD1D34A1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m */; };
+		1DDB5F831A91D654005C979F /* TDD_NetworkJSONHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB5F821A91D654005C979F /* TDD_NetworkJSONHandler.m */; };
+		1DDB5F851A91D6A3005C979F /* NetworkJSONHandlerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB5F841A91D6A3005C979F /* NetworkJSONHandlerTestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,9 @@
 		1DD1D3471A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataHandlerTestCase.swift; sourceTree = "<group>"; };
 		1DD1D3491A8C8E1300C4A775 /* TDD_NetworkDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_NetworkDataHandler.h; sourceTree = "<group>"; };
 		1DD1D34A1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDD_NetworkDataHandler.m; sourceTree = "<group>"; };
+		1DDB5F811A91D654005C979F /* TDD_NetworkJSONHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_NetworkJSONHandler.h; sourceTree = "<group>"; };
+		1DDB5F821A91D654005C979F /* TDD_NetworkJSONHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDD_NetworkJSONHandler.m; sourceTree = "<group>"; };
+		1DDB5F841A91D6A3005C979F /* NetworkJSONHandlerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkJSONHandlerTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +131,8 @@
 			children = (
 				1DD1D3491A8C8E1300C4A775 /* TDD_NetworkDataHandler.h */,
 				1DD1D34A1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m */,
+				1DDB5F811A91D654005C979F /* TDD_NetworkJSONHandler.h */,
+				1DDB5F821A91D654005C979F /* TDD_NetworkJSONHandler.m */,
 				1DD1D3391A8C885B00C4A775 /* TDD_NetworkResponse.h */,
 				1DD1D33A1A8C885B00C4A775 /* TDD_NetworkResponse.m */,
 			);
@@ -136,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				1DD1D3471A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift */,
+				1DDB5F841A91D6A3005C979F /* NetworkJSONHandlerTestCase.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -228,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DDB5F831A91D654005C979F /* TDD_NetworkJSONHandler.m in Sources */,
 				1DD1D34B1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m in Sources */,
 				1DD1D33B1A8C885B00C4A775 /* TDD_NetworkResponse.m in Sources */,
 			);
@@ -238,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DCA29741A8DD8C8008050A6 /* Shared.swift in Sources */,
+				1DDB5F851A91D6A3005C979F /* NetworkJSONHandlerTestCase.swift in Sources */,
 				1DD1D3481A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
