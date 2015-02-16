@@ -28,7 +28,29 @@
 
 NSString *const TDD_NetworkDataHandler_ErrorDomain = @"TDD_NetworkDataHandler_ErrorDomain";
 
+const NSInteger TDD_NetworkDataHandler_DataError = 1;
+
 const NSInteger TDD_NetworkDataHandler_ResponseError = 2;
+
+@implementation NSHTTPURLResponse (TDD_NetworkDataHandler)
+
+- (NSInteger)tdd_statusCode {
+    
+    return [self statusCode];
+    
+}
+
+@end
+
+@implementation NSURLResponse (TDD_NetworkDataHandler)
+
+- (NSInteger)tdd_statusCode {
+    
+    return 0;
+    
+}
+
+@end
 
 @implementation TDD_NetworkDataHandler
 
@@ -38,12 +60,33 @@ const NSInteger TDD_NetworkDataHandler_ResponseError = 2;
 
 + (NSData *)dataWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error {
     
-    if (error) {
-        
-        NSDictionary *userInfo = ([response error] ? @{NSUnderlyingErrorKey:[response error]} : 0);
-        
-        *error = [[NSError alloc] initWithDomain: TDD_NetworkDataHandler_ErrorDomain code: TDD_NetworkDataHandler_ResponseError userInfo: userInfo];
-        
+    switch ([[response response] tdd_statusCode]) {
+            
+        case 200:
+        {
+            if (error) {
+                
+                NSDictionary *userInfo = @{NSUnderlyingErrorKey:[response error]};
+                
+                *error = [[NSError alloc] initWithDomain: TDD_NetworkDataHandler_ErrorDomain code: TDD_NetworkDataHandler_DataError userInfo: userInfo];
+                
+            }
+            
+            break;
+        }
+        default:
+        {
+            if (error) {
+                
+                NSDictionary *userInfo = ([response error] ? @{NSUnderlyingErrorKey:[response error]} : 0);
+                
+                *error = [[NSError alloc] initWithDomain: TDD_NetworkDataHandler_ErrorDomain code: TDD_NetworkDataHandler_ResponseError userInfo: userInfo];
+                
+            }
+            
+            break;
+        }
+            
     }
     
     return 0;

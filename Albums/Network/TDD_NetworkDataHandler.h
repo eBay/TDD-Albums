@@ -28,6 +28,8 @@
 
 FOUNDATION_EXTERN NSString *const TDD_NetworkDataHandler_ErrorDomain;
 
+FOUNDATION_EXTERN const NSInteger TDD_NetworkDataHandler_DataError;
+
 FOUNDATION_EXTERN const NSInteger TDD_NetworkDataHandler_ResponseError;
 
 @interface TDD_NetworkDataHandler: NSObject
