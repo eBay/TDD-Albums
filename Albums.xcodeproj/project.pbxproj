@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D09A9DC1A91DB2500AF91B3 /* TDD_NetworkDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD1D34A1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m */; };
+		1D09A9DD1A91DB2800AF91B3 /* TDD_NetworkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD1D33A1A8C885B00C4A775 /* TDD_NetworkResponse.m */; };
 		1D756F8F1A80A54F000B8F7C /* libAlbums.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D756F831A80A54F000B8F7C /* libAlbums.a */; };
 		1DCA29741A8DD8C8008050A6 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCA29731A8DD8C8008050A6 /* Shared.swift */; };
 		1DD1D33B1A8C885B00C4A775 /* TDD_NetworkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD1D33A1A8C885B00C4A775 /* TDD_NetworkResponse.m */; };
@@ -237,7 +239,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D09A9DD1A91DB2800AF91B3 /* TDD_NetworkResponse.m in Sources */,
 				1DCA29741A8DD8C8008050A6 /* Shared.swift in Sources */,
+				1D09A9DC1A91DB2500AF91B3 /* TDD_NetworkDataHandler.m in Sources */,
 				1DD1D3481A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
