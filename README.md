@@ -7,3 +7,5 @@ The library contains code to query the iTunes Music server for the top 100 album
 TDD-Albums is built from the Swift 1.2 syntax. This means that you should download the latest version of the developer tools. TDD-Albums builds correctly from Xcode Version 6.3 (6D520o).
 
 To get started, go ahead and checkout the chapter-0 branch and open Chapter 0 in the wiki.
+
+TDD-Albums is appropriate for iPhone developers that have never attempted TDD. That being said, TDD-Albums is not appropriate for learning iPhone development. You must have strong competency in Objective-C and Cocoa before attempting this tutorial. You should also have a working knowledge of Swift.
