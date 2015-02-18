@@ -40,6 +40,21 @@
 		1D756FFB1A80A5F7000B8F7C /* Albums.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D756FE81A80A5F7000B8F7C /* Albums.json */; };
 		1D756FFC1A80A5F7000B8F7C /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FEA1A80A5F7000B8F7C /* Shared.swift */; };
 		1D756FFD1A80A5F7000B8F7C /* TableViewCellTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FEC1A80A5F7000B8F7C /* TableViewCellTestCase.swift */; };
+		1DC94F881A9554FE00F58DBF /* INV_NetworkTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FBB1A80A5C4000B8F7C /* INV_NetworkTask.m */; };
+		1DC94F891A95552E00F58DBF /* INV_CertificateOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FA01A80A5C4000B8F7C /* INV_CertificateOperation.m */; };
+		1DC94F8A1A95552E00F58DBF /* INV_CertificateSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FA21A80A5C4000B8F7C /* INV_CertificateSerialization.m */; };
+		1DC94F8B1A95552E00F58DBF /* INV_TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FA51A80A5C4000B8F7C /* INV_TableViewController.m */; };
+		1DC94F8C1A95552E00F58DBF /* INV_Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FA81A80A5C4000B8F7C /* INV_Album.m */; };
+		1DC94F8D1A95552E00F58DBF /* INV_TableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FAA1A80A5C4000B8F7C /* INV_TableModel.m */; };
+		1DC94F8E1A95552E00F58DBF /* INV_NetworkDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FAD1A80A5C4000B8F7C /* INV_NetworkDataHandler.m */; };
+		1DC94F8F1A95552E00F58DBF /* INV_NetworkImageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FAF1A80A5C4000B8F7C /* INV_NetworkImageHandler.m */; };
+		1DC94F901A95552E00F58DBF /* INV_NetworkImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FB11A80A5C4000B8F7C /* INV_NetworkImageOperation.m */; };
+		1DC94F911A95552E00F58DBF /* INV_NetworkJSONHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FB31A80A5C4000B8F7C /* INV_NetworkJSONHandler.m */; };
+		1DC94F921A95552E00F58DBF /* INV_NetworkJSONOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FB51A80A5C4000B8F7C /* INV_NetworkJSONOperation.m */; };
+		1DC94F931A95552E00F58DBF /* INV_NetworkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FB71A80A5C4000B8F7C /* INV_NetworkResponse.m */; };
+		1DC94F941A95552E00F58DBF /* INV_NetworkSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FB91A80A5C4000B8F7C /* INV_NetworkSession.m */; };
+		1DC94F951A95552E00F58DBF /* INV_NetworkTrust.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FBD1A80A5C4000B8F7C /* INV_NetworkTrust.m */; };
+		1DC94F961A95555300F58DBF /* INV_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D756FC21A80A5C4000B8F7C /* INV_TableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -449,6 +464,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DC94F891A95552E00F58DBF /* INV_CertificateOperation.m in Sources */,
+				1DC94F8A1A95552E00F58DBF /* INV_CertificateSerialization.m in Sources */,
+				1DC94F8B1A95552E00F58DBF /* INV_TableViewController.m in Sources */,
+				1DC94F8C1A95552E00F58DBF /* INV_Album.m in Sources */,
+				1DC94F8D1A95552E00F58DBF /* INV_TableModel.m in Sources */,
+				1DC94F8E1A95552E00F58DBF /* INV_NetworkDataHandler.m in Sources */,
+				1DC94F8F1A95552E00F58DBF /* INV_NetworkImageHandler.m in Sources */,
+				1DC94F901A95552E00F58DBF /* INV_NetworkImageOperation.m in Sources */,
+				1DC94F911A95552E00F58DBF /* INV_NetworkJSONHandler.m in Sources */,
+				1DC94F921A95552E00F58DBF /* INV_NetworkJSONOperation.m in Sources */,
+				1DC94F931A95552E00F58DBF /* INV_NetworkResponse.m in Sources */,
+				1DC94F941A95552E00F58DBF /* INV_NetworkSession.m in Sources */,
+				1DC94F951A95552E00F58DBF /* INV_NetworkTrust.m in Sources */,
 				1D756FFC1A80A5F7000B8F7C /* Shared.swift in Sources */,
 				1D756FF31A80A5F7000B8F7C /* INV_NetworkTrustTestCase.m in Sources */,
 				1D756FFA1A80A5F7000B8F7C /* NetworkTaskTestCase.swift in Sources */,
@@ -457,9 +485,11 @@
 				1D756FFD1A80A5F7000B8F7C /* TableViewCellTestCase.swift in Sources */,
 				1D756FF61A80A5F7000B8F7C /* NetworkImageOperationTestCase.swift in Sources */,
 				1D756FF21A80A5F7000B8F7C /* TableModelTestCase.swift in Sources */,
+				1DC94F961A95555300F58DBF /* INV_TableViewCell.m in Sources */,
 				1D756FF41A80A5F7000B8F7C /* NetworkDataHandlerTestCase.swift in Sources */,
 				1D756FF11A80A5F7000B8F7C /* AlbumTestCase.swift in Sources */,
 				1D756FF91A80A5F7000B8F7C /* NetworkSessionTestCase.swift in Sources */,
+				1DC94F881A9554FE00F58DBF /* INV_NetworkTask.m in Sources */,
 				1D756FEF1A80A5F7000B8F7C /* INV_TableViewController_AlertViewTestDouble.m in Sources */,
 				1D756FF01A80A5F7000B8F7C /* TableViewControllerTestCase.swift in Sources */,
 				1D756FEE1A80A5F7000B8F7C /* INV_CertificateSerializationTestCase.m in Sources */,
