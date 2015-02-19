@@ -32,7 +32,7 @@
 
 @implementation TDD_NetworkJSONHandler (Class)
 
-+ (Class)dataHandlerClass {
++ (Class <TDD_NetworkJSONHandler_DataHandlerType>)dataHandlerClass {
     
     return [TDD_NetworkDataHandler class];
     
@@ -43,6 +43,8 @@
 @implementation TDD_NetworkJSONHandler (JSON)
 
 + (id)jsonWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error {
+    
+    [[self dataHandlerClass] dataWithResponse: response error: error];
     
     return 0;
     

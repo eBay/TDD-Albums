@@ -26,13 +26,19 @@
 
 #import "TDD_NetworkDataHandler.h"
 
+@protocol TDD_NetworkJSONHandler_DataHandlerType <NSObject>
+
++ (NSData *)dataWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error;
+
+@end
+
 @interface TDD_NetworkJSONHandler: NSObject
 
 @end
 
 @interface TDD_NetworkJSONHandler (Class)
 
-+ (Class)dataHandlerClass;
++ (Class <TDD_NetworkJSONHandler_DataHandlerType>)dataHandlerClass;
 
 @end
 
