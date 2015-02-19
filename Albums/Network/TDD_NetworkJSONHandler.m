@@ -30,6 +30,16 @@
 
 @end
 
+@implementation TDD_NetworkJSONHandler (Class)
+
++ (Class)dataHandlerClass {
+    
+    return [TDD_NetworkDataHandler class];
+    
+}
+
+@end
+
 @implementation TDD_NetworkJSONHandler (JSON)
 
 + (id)jsonWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error {

@@ -24,9 +24,15 @@
 //  THE SOFTWARE.
 //
 
-#import "TDD_NetworkResponse.h"
+#import "TDD_NetworkDataHandler.h"
 
 @interface TDD_NetworkJSONHandler: NSObject
+
+@end
+
+@interface TDD_NetworkJSONHandler (Class)
+
++ (Class)dataHandlerClass;
 
 @end
 
