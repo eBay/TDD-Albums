@@ -38,6 +38,12 @@
     
 }
 
++ (Class <TDD_NetworkJSONHandler_JSONSerializationType>)jsonSerializationClass {
+    
+    return [NSJSONSerialization class];
+    
+}
+
 @end
 
 @implementation TDD_NetworkJSONHandler (JSON)

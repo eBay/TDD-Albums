@@ -80,6 +80,8 @@ extension NetworkJSONHandlerTestCase {
         
         XCTAssertTrue(TDD_NetworkJSONHandler.dataHandlerClass()! === TDD_NetworkDataHandler.self)
         
+        XCTAssertTrue(TDD_NetworkJSONHandler.jsonSerializationClass()! === NSJSONSerialization.self)
+        
     }
     
 }

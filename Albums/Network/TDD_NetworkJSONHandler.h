@@ -32,6 +32,12 @@
 
 @end
 
+@protocol TDD_NetworkJSONHandler_JSONSerializationType <NSObject>
+
++ (id)JSONObjectWithData:(NSData *)data options:(NSJSONReadingOptions)options error:(NSError *__autoreleasing*)error;
+
+@end
+
 @interface TDD_NetworkJSONHandler: NSObject
 
 @end
@@ -39,6 +45,7 @@
 @interface TDD_NetworkJSONHandler (Class)
 
 + (Class <TDD_NetworkJSONHandler_DataHandlerType>)dataHandlerClass;
++ (Class <TDD_NetworkJSONHandler_JSONSerializationType>)jsonSerializationClass;
 
 @end
 
