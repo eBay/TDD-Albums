@@ -56,6 +56,40 @@ final class NetworkJSONHandler_DataHandlerTestDouble: NSObject, TDD_NetworkJSONH
     
 }
 
+extension NSJSONSerialization: TDD_NetworkJSONHandler_JSONSerializationType {
+    
+    
+    
+}
+
+var NetworkJSONHandler_JSONSerializationTestDouble_Data: NSData?
+
+var NetworkJSONHandler_JSONSerializationTestDouble_Error: NSError?
+
+var NetworkJSONHandler_JSONSerializationTestDouble_JSON: NSObject?
+
+var NetworkJSONHandler_JSONSerializationTestDouble_Options: NSJSONReadingOptions?
+
+final class NetworkJSONHandler_JSONSerializationTestDouble: NSObject, TDD_NetworkJSONHandler_JSONSerializationType {
+    
+    class func JSONObjectWithData(data: NSData, options: NSJSONReadingOptions, error: NSErrorPointer) -> AnyObject? {
+        
+        NetworkJSONHandler_JSONSerializationTestDouble_Data = data
+        
+        NetworkJSONHandler_JSONSerializationTestDouble_Options = options
+        
+        if error != nil {
+            
+            error.memory = NetworkJSONHandler_JSONSerializationTestDouble_Error
+            
+        }
+        
+        return NetworkJSONHandler_JSONSerializationTestDouble_JSON
+        
+    }
+    
+}
+
 final class NetworkJSONHandlerTestCase: XCTestCase {
     
     var error: NSError?
@@ -69,6 +103,14 @@ final class NetworkJSONHandlerTestCase: XCTestCase {
         NetworkJSONHandler_DataHandlerTestDouble_Error = nil
         
         NetworkJSONHandler_DataHandlerTestDouble_Response = nil
+        
+        NetworkJSONHandler_JSONSerializationTestDouble_Data = nil
+        
+        NetworkJSONHandler_JSONSerializationTestDouble_Error = nil
+        
+        NetworkJSONHandler_JSONSerializationTestDouble_JSON = nil
+        
+        NetworkJSONHandler_JSONSerializationTestDouble_Options = nil
         
     }
     
@@ -100,6 +142,26 @@ extension NetworkJSONHandlerTestCase {
         
     }
     
+    func testSuccess() {
+        
+        NetworkJSONHandler_DataHandlerTestDouble_Data = DataTestDouble()
+        
+        NetworkJSONHandler_JSONSerializationTestDouble_JSON = NSObject()
+        
+        NetworkJSONHandler_JSONSerializationTestDouble_Error = ErrorTestDouble()
+        
+        XCTAssertTrue(NetworkJSONHandlerTestDouble.jsonWithResponse(self.response, error: &self.error)! === NetworkJSONHandler_JSONSerializationTestDouble_JSON)
+        
+        XCTAssertTrue(NetworkJSONHandler_JSONSerializationTestDouble_Data! === NetworkJSONHandler_DataHandlerTestDouble_Data)
+        
+        XCTAssertTrue(NetworkJSONHandler_JSONSerializationTestDouble_Options!.rawValue == 0)
+        
+        XCTAssertTrue(NetworkJSONHandler_DataHandlerTestDouble_Response! === self.response)
+        
+        XCTAssertTrue(self.error! === NetworkJSONHandler_JSONSerializationTestDouble_Error)
+        
+    }
+    
 }
 
 final class NetworkJSONHandlerTestDouble: TDD_NetworkJSONHandler {
@@ -107,6 +169,12 @@ final class NetworkJSONHandlerTestDouble: TDD_NetworkJSONHandler {
     override class func dataHandlerClass() -> AnyClass {
         
         return NetworkJSONHandler_DataHandlerTestDouble.self
+        
+    }
+    
+    override class func jsonSerializationClass() -> AnyClass {
+        
+        return NetworkJSONHandler_JSONSerializationTestDouble.self
         
     }
     
