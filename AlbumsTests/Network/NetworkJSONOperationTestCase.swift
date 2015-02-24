@@ -170,6 +170,12 @@ extension NetworkJSONOperationTestCase {
 
 final class NetworkJSONOperationTestDouble: INV_NetworkJSONOperation {
     
+    required init() {
+        
+        super.init()
+        
+    }
+    
     override class func jsonHandlerClass() -> AnyClass {
         
         return NetworkJSONOperation_JSONHandlerTestDouble.self

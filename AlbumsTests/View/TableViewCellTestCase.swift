@@ -156,6 +156,18 @@ extension TableViewCellTestCase {
 
 final class TableViewCellTestDouble: INV_TableViewCell {
     
+    required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+    }
+    
+    required init(coder: NSCoder) {
+        
+        super.init(coder: coder)
+        
+    }
+    
     var didSetNeedsLayout = false
     
     override class func operationClass() -> AnyClass {

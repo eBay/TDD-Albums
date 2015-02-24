@@ -170,6 +170,12 @@ extension NetworkImageOperationTestCase {
 
 final class NetworkImageOperationTestDouble: INV_NetworkImageOperation {
     
+    required init() {
+        
+        super.init()
+        
+    }
+    
     override class func imageHandlerClass() -> AnyClass {
         
         return NetworkImageOperation_ImageHandlerTestDouble.self

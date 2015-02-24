@@ -198,6 +198,12 @@ extension NetworkTaskTestCase {
 
 final class NetworkTaskTestDouble: INV_NetworkTask {
     
+    required init() {
+        
+        super.init()
+        
+    }
+    
     override class func sessionClass() -> AnyClass {
         
         return NetworkTask_SessionTestDouble.self

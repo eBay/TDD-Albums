@@ -162,6 +162,12 @@ extension TableModelTestCase {
 
 final class TableModelTestDouble: INV_TableModel {
     
+    required init() {
+        
+        super.init()
+        
+    }
+    
     override class func albumClass() -> AnyClass {
         
         return TableModel_AlbumTestDouble.self

@@ -312,6 +312,12 @@ extension NetworkSessionTestCase {
 
 final class NetworkSessionTestDouble: INV_NetworkSession {
     
+    required init() {
+        
+        super.init()
+        
+    }
+    
     override class func configurationClass() -> AnyClass {
         
         return NetworkSession_ConfigurationTestDouble.self
