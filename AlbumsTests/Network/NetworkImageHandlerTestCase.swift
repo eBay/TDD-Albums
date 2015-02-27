@@ -106,6 +106,8 @@ extension NetworkImageHandlerTestCase {
         
         XCTAssertTrue(TDD_NetworkImageHandler.imageClass()! === UIImage.self)
         
+        XCTAssertTrue(TDD_NetworkImageHandler.screenClass()! === UIScreen.self)
+        
     }
     
 }

@@ -42,6 +42,14 @@
 
 @end
 
+@protocol TDD_NetworkImageHandler_ScreenType <NSObject>
+
++ (id <TDD_NetworkImageHandler_ScreenType>)mainScreen;
+
+@property (nonatomic, readonly) CGFloat scale;
+
+@end
+
 @interface TDD_NetworkImageHandler: NSObject
 
 @end
@@ -50,6 +58,7 @@
 
 + (Class <TDD_NetworkImageHandler_DataHandlerType>)dataHandlerClass;
 + (Class <TDD_NetworkImageHandler_ImageType>)imageClass;
++ (Class <TDD_NetworkImageHandler_ScreenType>)screenClass;
 
 @end
 

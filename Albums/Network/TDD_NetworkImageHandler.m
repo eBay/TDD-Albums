@@ -44,6 +44,12 @@
     
 }
 
++ (Class <TDD_NetworkImageHandler_ScreenType>)screenClass {
+    
+    return [UIScreen class];
+    
+}
+
 @end
 
 @implementation TDD_NetworkImageHandler (Image)
