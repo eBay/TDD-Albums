@@ -26,12 +26,6 @@
 
 import XCTest
 
-extension TDD_NetworkDataHandler: TDD_NetworkJSONHandler_DataHandlerType {
-    
-    
-    
-}
-
 var NetworkJSONHandler_DataHandlerTestDouble_Data: NSData?
 
 var NetworkJSONHandler_DataHandlerTestDouble_Error: NSError?
@@ -53,12 +47,6 @@ final class NetworkJSONHandler_DataHandlerTestDouble: NSObject, TDD_NetworkJSONH
         return NetworkJSONHandler_DataHandlerTestDouble_Data
         
     }
-    
-}
-
-extension NSJSONSerialization: TDD_NetworkJSONHandler_JSONSerializationType {
-    
-    
     
 }
 

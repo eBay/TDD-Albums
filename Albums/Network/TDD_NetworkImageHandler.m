@@ -60,7 +60,9 @@
     
     if (data) {
         
-        return [[[self imageClass] alloc] initWithData: data scale: 0];
+        CGFloat scale = [[[self screenClass] mainScreen] scale];
+        
+        return [[[self imageClass] alloc] initWithData: data scale: scale];
         
     }
     

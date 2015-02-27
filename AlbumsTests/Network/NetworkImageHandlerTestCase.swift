@@ -26,12 +26,6 @@
 
 import XCTest
 
-extension TDD_NetworkDataHandler: TDD_NetworkImageHandler_DataHandlerType {
-    
-    
-    
-}
-
 var NetworkImageHandler_DataHandlerTestDouble_Data: NSData?
 
 var NetworkImageHandler_DataHandlerTestDouble_Error: NSError?
@@ -56,12 +50,6 @@ final class NetworkImageHandler_DataHandlerTestDouble: NSObject, TDD_NetworkImag
     
 }
 
-extension UIImage: TDD_NetworkImageHandler_ImageType {
-    
-    
-    
-}
-
 final class NetworkImageHandler_ImageTestDouble: NSObject, TDD_NetworkImageHandler_ImageType {
     
     var data: NSData?
@@ -75,6 +63,20 @@ final class NetworkImageHandler_ImageTestDouble: NSObject, TDD_NetworkImageHandl
         self.data = data
         
         self.scale = scale
+        
+    }
+    
+}
+
+let NetworkImageHandler_ScreenTestDouble_MainScreen = NetworkImageHandler_ScreenTestDouble()
+
+final class NetworkImageHandler_ScreenTestDouble: NSObject, TDD_NetworkImageHandler_ScreenType {
+    
+    let scale = (3.14 as CGFloat)
+    
+    class func mainScreen() -> TDD_NetworkImageHandler_ScreenType {
+        
+        return NetworkImageHandler_ScreenTestDouble_MainScreen
         
     }
     
@@ -136,7 +138,7 @@ extension NetworkImageHandlerTestCase {
         
         XCTAssertTrue(image.data! === NetworkImageHandler_DataHandlerTestDouble_Data)
         
-        XCTAssertTrue(image.scale == 0)
+        XCTAssertTrue(image.scale == 3.14)
         
         XCTAssertTrue(NetworkImageHandler_DataHandlerTestDouble_Response! === self.response)
         
@@ -157,6 +159,12 @@ final class NetworkImageHandlerTestDouble: TDD_NetworkImageHandler {
     override class func imageClass() -> AnyClass {
         
         return NetworkImageHandler_ImageTestDouble.self
+        
+    }
+    
+    override class func screenClass() -> AnyClass {
+        
+        return NetworkImageHandler_ScreenTestDouble.self
         
     }
     
