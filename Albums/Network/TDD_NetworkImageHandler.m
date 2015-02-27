@@ -44,6 +44,8 @@
 
 + (id)imageWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing *)error {
     
+    [[self dataHandlerClass] dataWithResponse: response error: error];
+    
     return 0;
     
 }

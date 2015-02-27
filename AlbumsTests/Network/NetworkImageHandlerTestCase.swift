@@ -26,9 +26,51 @@
 
 import XCTest
 
+extension TDD_NetworkDataHandler: TDD_NetworkImageHandler_DataHandlerType {
+    
+    
+    
+}
+
+var NetworkImageHandler_DataHandlerTestDouble_Data: NSData?
+
+var NetworkImageHandler_DataHandlerTestDouble_Error: NSError?
+
+var NetworkImageHandler_DataHandlerTestDouble_Response: TDD_NetworkResponse?
+
+final class NetworkImageHandler_DataHandlerTestDouble: NSObject, TDD_NetworkImageHandler_DataHandlerType {
+    
+    class func dataWithResponse(response: TDD_NetworkResponse, error: NSErrorPointer) -> NSData? {
+        
+        NetworkImageHandler_DataHandlerTestDouble_Response = response
+        
+        if error != nil {
+            
+            error.memory = NetworkImageHandler_DataHandlerTestDouble_Error
+            
+        }
+        
+        return NetworkImageHandler_DataHandlerTestDouble_Data
+        
+    }
+    
+}
+
 final class NetworkImageHandlerTestCase: XCTestCase {
     
+    var error: NSError?
     
+    lazy var response = TDD_NetworkResponse()
+    
+    override func tearDown() {
+        
+        NetworkImageHandler_DataHandlerTestDouble_Data = nil
+        
+        NetworkImageHandler_DataHandlerTestDouble_Error = nil
+        
+        NetworkImageHandler_DataHandlerTestDouble_Response = nil
+        
+    }
     
 }
 
@@ -44,9 +86,25 @@ extension NetworkImageHandlerTestCase {
 
 extension NetworkImageHandlerTestCase {
     
-    func test() {
+    func testError() {
         
-        XCTAssertTrue(TDD_NetworkImageHandler.imageWithResponse(nil, error: nil) == nil)
+        NetworkImageHandler_DataHandlerTestDouble_Error = ErrorTestDouble()
+        
+        XCTAssertTrue(NetworkImageHandlerTestDouble.imageWithResponse(self.response, error: &self.error) == nil)
+        
+        XCTAssertTrue(NetworkImageHandler_DataHandlerTestDouble_Response! === self.response)
+        
+        XCTAssertTrue(self.error! === NetworkImageHandler_DataHandlerTestDouble_Error)
+        
+    }
+    
+}
+
+final class NetworkImageHandlerTestDouble: TDD_NetworkImageHandler {
+    
+    override class func dataHandlerClass() -> AnyClass {
+        
+        return NetworkImageHandler_DataHandlerTestDouble.self
         
     }
     
