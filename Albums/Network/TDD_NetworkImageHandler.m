@@ -30,6 +30,16 @@
 
 @end
 
+@implementation TDD_NetworkImageHandler (Class)
+
++ (Class <TDD_NetworkImageHandler_DataHandlerType>)dataHandlerClass {
+    
+    return [TDD_NetworkDataHandler class];
+    
+}
+
+@end
+
 @implementation TDD_NetworkImageHandler (Image)
 
 + (id)imageWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing *)error {

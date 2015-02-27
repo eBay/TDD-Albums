@@ -34,6 +34,16 @@ final class NetworkImageHandlerTestCase: XCTestCase {
 
 extension NetworkImageHandlerTestCase {
     
+    func testClass() {
+        
+        XCTAssertTrue(TDD_NetworkImageHandler.dataHandlerClass()! === TDD_NetworkDataHandler.self)
+        
+    }
+    
+}
+
+extension NetworkImageHandlerTestCase {
+    
     func test() {
         
         XCTAssertTrue(TDD_NetworkImageHandler.imageWithResponse(nil, error: nil) == nil)
