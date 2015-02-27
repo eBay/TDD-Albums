@@ -50,7 +50,13 @@
 
 + (id)imageWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing *)error {
     
-    [[self dataHandlerClass] dataWithResponse: response error: error];
+    NSData *data = [[self dataHandlerClass] dataWithResponse: response error: error];
+    
+    if (data) {
+        
+        return [[[self imageClass] alloc] initWithData: data scale: 0];
+        
+    }
     
     return 0;
     
