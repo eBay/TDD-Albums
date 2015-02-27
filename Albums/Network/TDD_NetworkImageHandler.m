@@ -38,6 +38,12 @@
     
 }
 
++ (Class <TDD_NetworkImageHandler_ImageType>)imageClass {
+    
+    return [UIImage class];
+    
+}
+
 @end
 
 @implementation TDD_NetworkImageHandler (Image)

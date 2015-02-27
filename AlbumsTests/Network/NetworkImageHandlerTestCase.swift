@@ -80,6 +80,8 @@ extension NetworkImageHandlerTestCase {
         
         XCTAssertTrue(TDD_NetworkImageHandler.dataHandlerClass()! === TDD_NetworkDataHandler.self)
         
+        XCTAssertTrue(TDD_NetworkImageHandler.imageClass()! === UIImage.self)
+        
     }
     
 }

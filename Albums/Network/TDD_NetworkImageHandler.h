@@ -24,11 +24,21 @@
 //  THE SOFTWARE.
 //
 
+@import UIKit;
+
 #import "TDD_NetworkDataHandler.h"
 
 @protocol TDD_NetworkImageHandler_DataHandlerType <NSObject>
 
 + (NSData *)dataWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error;
+
+@end
+
+@protocol TDD_NetworkImageHandler_ImageType <NSObject>
+
++ (id <TDD_NetworkImageHandler_ImageType>)alloc;
+
+- (id <TDD_NetworkImageHandler_ImageType>)initWithData:(NSData *)data scale:(CGFloat)scale;
 
 @end
 
@@ -39,6 +49,7 @@
 @interface TDD_NetworkImageHandler (Class)
 
 + (Class <TDD_NetworkImageHandler_DataHandlerType>)dataHandlerClass;
++ (Class <TDD_NetworkImageHandler_ImageType>)imageClass;
 
 @end
 
