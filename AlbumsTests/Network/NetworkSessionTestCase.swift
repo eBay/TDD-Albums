@@ -38,6 +38,8 @@ extension NetworkSessionTestCase {
         
         XCTAssertTrue(TDD_NetworkSession.configurationClass()! === NSURLSessionConfiguration.self)
         
+        XCTAssertTrue(TDD_NetworkSession.sessionClass()! === NSURLSession.self)
+        
     }
     
 }

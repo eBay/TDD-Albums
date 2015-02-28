@@ -32,6 +32,14 @@
 
 @end
 
+@protocol TDD_NetworkSession_SessionType <NSObject>
+
++ (id <TDD_NetworkSession_SessionType>)sessionWithConfiguration:(id <TDD_NetworkSession_ConfigurationType>)configuration delegate:(id)delegate delegateQueue:(NSOperationQueue *)delegateQueue;
+
+- (id)dataTaskWithRequest:(NSURLRequest *)request completionHandler:(void (^)(NSData *, NSURLResponse *, NSError *))completionHandler;
+
+@end
+
 typedef void (^TDD_NetworkSession_CompletionHandler)(NSData *, NSURLResponse *, NSError *);
 
 @interface TDD_NetworkSession: NSObject
@@ -41,6 +49,7 @@ typedef void (^TDD_NetworkSession_CompletionHandler)(NSData *, NSURLResponse *, 
 @interface TDD_NetworkSession (Class)
 
 + (Class <TDD_NetworkSession_ConfigurationType>)configurationClass;
++ (Class <TDD_NetworkSession_SessionType>)sessionClass;
 
 @end
 

@@ -38,6 +38,12 @@
     
 }
 
++ (Class <TDD_NetworkSession_SessionType>)sessionClass {
+    
+    return [NSURLSession class];
+    
+}
+
 @end
 
 @implementation TDD_NetworkSession (Task)
