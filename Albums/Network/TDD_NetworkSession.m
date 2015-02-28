@@ -28,6 +28,14 @@
 
 @implementation TDD_NetworkSession
 
+- (id <TDD_NetworkSession_SessionType>)session {
+    
+    id <TDD_NetworkSession_ConfigurationType> ephemeralSessionConfiguration = [[[self class] configurationClass] ephemeralSessionConfiguration];
+    
+    return [[[self class] sessionClass] sessionWithConfiguration: ephemeralSessionConfiguration delegate: 0 delegateQueue: 0];
+    
+}
+
 @end
 
 @implementation TDD_NetworkSession (Class)
@@ -50,7 +58,7 @@
 
 - (id)taskWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkSession_CompletionHandler)completionHandler {
     
-    return 0;
+    return [[self session] dataTaskWithRequest: request completionHandler: 0];
     
 }
 

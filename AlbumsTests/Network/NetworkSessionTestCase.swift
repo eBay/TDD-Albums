@@ -26,9 +26,75 @@
 
 import XCTest
 
+let NetworkSession_ConfigurationTestDouble_EphemeralSessionConfiguration = NetworkSession_ConfigurationTestDouble()
+
+final class NetworkSession_ConfigurationTestDouble: NSObject, TDD_NetworkSession_ConfigurationType {
+    
+    class func ephemeralSessionConfiguration() -> TDD_NetworkSession_ConfigurationType {
+        
+        return NetworkSession_ConfigurationTestDouble_EphemeralSessionConfiguration
+        
+    }
+    
+}
+
+var NetworkSession_SessionTestDouble_Configuration: TDD_NetworkSession_ConfigurationType?
+
+var NetworkSession_SessionTestDouble_Delegate: AnyObject?
+
+var NetworkSession_SessionTestDouble_DelegateQueue: NSOperationQueue?
+
+let NetworkSession_SessionTestDouble_Session = NetworkSession_SessionTestDouble()
+
+final class NetworkSession_SessionTestDouble: NSObject, TDD_NetworkSession_SessionType {
+    
+    var completionHandler: TDD_NetworkSession_CompletionHandler?
+    
+    lazy var dataTask = NSObject()
+    
+    var request: NSURLRequest?
+    
+    class func sessionWithConfiguration(configuration: TDD_NetworkSession_ConfigurationType, delegate: AnyObject?, delegateQueue: NSOperationQueue?) -> TDD_NetworkSession_SessionType {
+        
+        NetworkSession_SessionTestDouble_Configuration = configuration
+        
+        NetworkSession_SessionTestDouble_Delegate = delegate
+        
+        NetworkSession_SessionTestDouble_DelegateQueue = delegateQueue
+        
+        return NetworkSession_SessionTestDouble_Session
+        
+    }
+    
+    func dataTaskWithRequest(request: NSURLRequest, completionHandler: TDD_NetworkSession_CompletionHandler) -> AnyObject {
+        
+        self.request = request
+        
+        self.completionHandler = completionHandler
+        
+        return self.dataTask
+        
+    }
+    
+}
+
 final class NetworkSessionTestCase: XCTestCase {
     
-    lazy var session = TDD_NetworkSession()
+    lazy var request = RequestTestDouble()
+    
+    lazy var session = NetworkSessionTestDouble()
+    
+    var task: AnyObject?
+    
+    override func tearDown() {
+        
+        NetworkSession_SessionTestDouble_Configuration = nil
+        
+        NetworkSession_SessionTestDouble_Delegate = nil
+        
+        NetworkSession_SessionTestDouble_DelegateQueue = nil
+        
+    }
     
 }
 
@@ -46,13 +112,45 @@ extension NetworkSessionTestCase {
 
 extension NetworkSessionTestCase {
     
+    func assertSession() {
+        
+        XCTAssertTrue(NetworkSession_SessionTestDouble_Configuration! === NetworkSession_ConfigurationTestDouble_EphemeralSessionConfiguration)
+        
+        XCTAssertTrue(NetworkSession_SessionTestDouble_Delegate == nil)
+        
+        XCTAssertTrue(NetworkSession_SessionTestDouble_DelegateQueue == nil)
+        
+        XCTAssertTrue(self.task! === NetworkSession_SessionTestDouble_Session.dataTask)
+        
+        XCTAssertTrue(NetworkSession_SessionTestDouble_Session.request! === self.request)
+        
+    }
+    
     func testTask() {
         
-        self.session.taskWithRequest(nil) {(data, response, error) in
+        self.task = self.session.taskWithRequest(self.request) {(data, response, error) in
             
             
             
         }
+        
+        self.assertSession()
+        
+    }
+    
+}
+
+final class NetworkSessionTestDouble: TDD_NetworkSession {
+    
+    override class func configurationClass() -> AnyClass {
+        
+        return NetworkSession_ConfigurationTestDouble.self
+        
+    }
+    
+    override class func sessionClass() -> AnyClass {
+        
+        return NetworkSession_SessionTestDouble.self
         
     }
     
