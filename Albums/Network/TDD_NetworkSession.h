@@ -32,6 +32,14 @@
 
 @end
 
+@protocol TDD_NetworkSession_QueueType <NSObject>
+
++ (id <TDD_NetworkSession_QueueType>)mainQueue;
+
+- (void)addOperationWithBlock:(dispatch_block_t)block;
+
+@end
+
 @protocol TDD_NetworkSession_SessionType <NSObject>
 
 + (id <TDD_NetworkSession_SessionType>)sessionWithConfiguration:(id <TDD_NetworkSession_ConfigurationType>)configuration delegate:(id)delegate delegateQueue:(NSOperationQueue *)delegateQueue;
@@ -49,6 +57,7 @@ typedef void (^TDD_NetworkSession_CompletionHandler)(NSData *, NSURLResponse *, 
 @interface TDD_NetworkSession (Class)
 
 + (Class <TDD_NetworkSession_ConfigurationType>)configurationClass;
++ (Class <TDD_NetworkSession_QueueType>)queueClass;
 + (Class <TDD_NetworkSession_SessionType>)sessionClass;
 
 @end

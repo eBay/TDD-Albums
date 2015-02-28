@@ -46,6 +46,12 @@
     
 }
 
++ (Class <TDD_NetworkSession_QueueType>)queueClass {
+    
+    return [NSOperationQueue class];
+    
+}
+
 + (Class <TDD_NetworkSession_SessionType>)sessionClass {
     
     return [NSURLSession class];
