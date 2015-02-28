@@ -64,7 +64,17 @@
 
 - (id)taskWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkSession_CompletionHandler)completionHandler {
     
-    return [[self session] dataTaskWithRequest: request completionHandler: completionHandler];
+    TDD_NetworkSession *__weak weakSelf = self;
+    
+    return [[self session] dataTaskWithRequest: request completionHandler: ^void (NSData *data, NSURLResponse *response, NSError *error) {
+        
+        [[[[weakSelf class] queueClass] mainQueue] addOperationWithBlock: ^void (void) {
+            
+            completionHandler(data, response, error);
+            
+        }];
+        
+    }];
     
 }
 

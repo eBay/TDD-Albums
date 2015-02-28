@@ -38,6 +38,26 @@ final class NetworkSession_ConfigurationTestDouble: NSObject, TDD_NetworkSession
     
 }
 
+let NetworkSession_QueueTestDouble_MainQueue = NetworkSession_QueueTestDouble()
+
+final class NetworkSession_QueueTestDouble: NSObject, TDD_NetworkSession_QueueType {
+    
+    var block: dispatch_block_t?
+    
+    class func mainQueue() -> TDD_NetworkSession_QueueType {
+        
+        return NetworkSession_QueueTestDouble_MainQueue
+        
+    }
+    
+    func addOperationWithBlock(block: dispatch_block_t) {
+        
+        self.block = block
+        
+    }
+    
+}
+
 var NetworkSession_SessionTestDouble_Configuration: TDD_NetworkSession_ConfigurationType?
 
 var NetworkSession_SessionTestDouble_Delegate: AnyObject?
@@ -130,6 +150,12 @@ extension NetworkSessionTestCase {
         
     }
     
+    func assertQueue() {
+        
+        NetworkSession_QueueTestDouble_MainQueue.block!()
+        
+    }
+    
     func assertSession() {
         
         XCTAssertTrue(NetworkSession_SessionTestDouble_Configuration! === NetworkSession_ConfigurationTestDouble_DefaultSessionConfiguration)
@@ -160,6 +186,10 @@ extension NetworkSessionTestCase {
         
         self.assertSession()
         
+        XCTAssertTrue(didAssertData == false)
+        
+        self.assertQueue()
+        
         XCTAssertTrue(didAssertData)
         
     }
@@ -171,6 +201,12 @@ final class NetworkSessionTestDouble: TDD_NetworkSession {
     override class func configurationClass() -> AnyClass {
         
         return NetworkSession_ConfigurationTestDouble.self
+        
+    }
+    
+    override class func queueClass() -> AnyClass {
+        
+        return NetworkSession_QueueTestDouble.self
         
     }
     
