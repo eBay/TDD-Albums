@@ -38,13 +38,13 @@ extension NetworkDataHandlerTestCase {
     
     func testResponseError() {
         
-        XCTAssertTrue(TDD_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
+        XCTAssert(TDD_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
         
-        XCTAssertTrue(self.error!.domain == TDD_NetworkDataHandler_ErrorDomain)
+        XCTAssert(self.error!.domain == TDD_NetworkDataHandler_ErrorDomain)
         
-        XCTAssertTrue(self.error!.code == TDD_NetworkDataHandler_ResponseError)
+        XCTAssert(self.error!.code == TDD_NetworkDataHandler_ResponseError)
         
-        XCTAssertTrue(self.error!.userInfo![NSUnderlyingErrorKey] == nil)
+        XCTAssert(self.error!.userInfo![NSUnderlyingErrorKey] == nil)
         
     }
     
@@ -52,13 +52,13 @@ extension NetworkDataHandlerTestCase {
         
         self.response.error = ErrorTestDouble()
         
-        XCTAssertTrue(TDD_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
+        XCTAssert(TDD_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
         
-        XCTAssertTrue(self.error!.domain == TDD_NetworkDataHandler_ErrorDomain)
+        XCTAssert(self.error!.domain == TDD_NetworkDataHandler_ErrorDomain)
         
-        XCTAssertTrue(self.error!.code == TDD_NetworkDataHandler_ResponseError)
+        XCTAssert(self.error!.code == TDD_NetworkDataHandler_ResponseError)
         
-        XCTAssertTrue(self.error!.userInfo![NSUnderlyingErrorKey]! === self.response.error)
+        XCTAssert(self.error!.userInfo![NSUnderlyingErrorKey]! === self.response.error)
         
     }
     
@@ -66,13 +66,13 @@ extension NetworkDataHandlerTestCase {
         
         self.response.response = ResponseTestDouble()
         
-        XCTAssertTrue(TDD_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
+        XCTAssert(TDD_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
         
-        XCTAssertTrue(self.error!.domain == TDD_NetworkDataHandler_ErrorDomain)
+        XCTAssert(self.error!.domain == TDD_NetworkDataHandler_ErrorDomain)
         
-        XCTAssertTrue(self.error!.code == TDD_NetworkDataHandler_DataError)
+        XCTAssert(self.error!.code == TDD_NetworkDataHandler_DataError)
         
-        XCTAssertTrue(self.error!.userInfo![NSUnderlyingErrorKey] == nil)
+        XCTAssert(self.error!.userInfo![NSUnderlyingErrorKey] == nil)
         
     }
     
@@ -82,13 +82,13 @@ extension NetworkDataHandlerTestCase {
         
         self.response.response = ResponseTestDouble()
         
-        XCTAssertTrue(TDD_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
+        XCTAssert(TDD_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
         
-        XCTAssertTrue(self.error!.domain == TDD_NetworkDataHandler_ErrorDomain)
+        XCTAssert(self.error!.domain == TDD_NetworkDataHandler_ErrorDomain)
         
-        XCTAssertTrue(self.error!.code == TDD_NetworkDataHandler_DataError)
+        XCTAssert(self.error!.code == TDD_NetworkDataHandler_DataError)
         
-        XCTAssertTrue(self.error!.userInfo![NSUnderlyingErrorKey]! === self.response.error)
+        XCTAssert(self.error!.userInfo![NSUnderlyingErrorKey]! === self.response.error)
         
     }
     
@@ -98,9 +98,9 @@ extension NetworkDataHandlerTestCase {
         
         self.response.response = ResponseTestDouble()
         
-        XCTAssertTrue(TDD_NetworkDataHandler.dataWithResponse(self.response, error: &self.error)! === self.response.data)
+        XCTAssert(TDD_NetworkDataHandler.dataWithResponse(self.response, error: &self.error)! === self.response.data)
         
-        XCTAssertTrue(self.error == nil)
+        XCTAssert(self.error == nil)
         
     }
     

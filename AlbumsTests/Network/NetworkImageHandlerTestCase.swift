@@ -104,11 +104,11 @@ extension NetworkImageHandlerTestCase {
     
     func testClass() {
         
-        XCTAssertTrue(TDD_NetworkImageHandler.dataHandlerClass()! === TDD_NetworkDataHandler.self)
+        XCTAssert(TDD_NetworkImageHandler.dataHandlerClass()! === TDD_NetworkDataHandler.self)
         
-        XCTAssertTrue(TDD_NetworkImageHandler.imageClass()! === UIImage.self)
+        XCTAssert(TDD_NetworkImageHandler.imageClass()! === UIImage.self)
         
-        XCTAssertTrue(TDD_NetworkImageHandler.screenClass()! === UIScreen.self)
+        XCTAssert(TDD_NetworkImageHandler.screenClass()! === UIScreen.self)
         
     }
     
@@ -120,11 +120,11 @@ extension NetworkImageHandlerTestCase {
         
         NetworkImageHandler_DataHandlerTestDouble_Error = ErrorTestDouble()
         
-        XCTAssertTrue(NetworkImageHandlerTestDouble.imageWithResponse(self.response, error: &self.error) == nil)
+        XCTAssert(NetworkImageHandlerTestDouble.imageWithResponse(self.response, error: &self.error) == nil)
         
-        XCTAssertTrue(NetworkImageHandler_DataHandlerTestDouble_Response! === self.response)
+        XCTAssert(NetworkImageHandler_DataHandlerTestDouble_Response! === self.response)
         
-        XCTAssertTrue(self.error! === NetworkImageHandler_DataHandlerTestDouble_Error)
+        XCTAssert(self.error! === NetworkImageHandler_DataHandlerTestDouble_Error)
         
     }
     
@@ -136,13 +136,13 @@ extension NetworkImageHandlerTestCase {
         
         let image = (NetworkImageHandlerTestDouble.imageWithResponse(self.response, error: &self.error) as! NetworkImageHandler_ImageTestDouble)
         
-        XCTAssertTrue(image.data! === NetworkImageHandler_DataHandlerTestDouble_Data)
+        XCTAssert(image.data! === NetworkImageHandler_DataHandlerTestDouble_Data)
         
-        XCTAssertTrue(image.scale == 3.14)
+        XCTAssert(image.scale == 3.14)
         
-        XCTAssertTrue(NetworkImageHandler_DataHandlerTestDouble_Response! === self.response)
+        XCTAssert(NetworkImageHandler_DataHandlerTestDouble_Response! === self.response)
         
-        XCTAssertTrue(self.error! === NetworkImageHandler_DataHandlerTestDouble_Error)
+        XCTAssert(self.error! === NetworkImageHandler_DataHandlerTestDouble_Error)
         
     }
     
