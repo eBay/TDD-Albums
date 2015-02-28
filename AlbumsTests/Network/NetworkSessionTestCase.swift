@@ -34,6 +34,16 @@ final class NetworkSessionTestCase: XCTestCase {
 
 extension NetworkSessionTestCase {
     
+    func testClass() {
+        
+        XCTAssertTrue(TDD_NetworkSession.configurationClass()! === NSURLSessionConfiguration.self)
+        
+    }
+    
+}
+
+extension NetworkSessionTestCase {
+    
     func testTask() {
         
         self.session.taskWithRequest(nil) {(data, response, error) in

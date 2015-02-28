@@ -30,6 +30,16 @@
 
 @end
 
+@implementation TDD_NetworkSession (Class)
+
++ (Class <TDD_NetworkSession_ConfigurationType>)configurationClass {
+    
+    return [NSURLSessionConfiguration class];
+    
+}
+
+@end
+
 @implementation TDD_NetworkSession (Task)
 
 - (id)taskWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkSession_CompletionHandler)completionHandler {

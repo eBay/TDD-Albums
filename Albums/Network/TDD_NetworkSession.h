@@ -26,9 +26,21 @@
 
 @import Foundation;
 
+@protocol TDD_NetworkSession_ConfigurationType <NSObject>
+
++ (id <TDD_NetworkSession_ConfigurationType>)ephemeralSessionConfiguration;
+
+@end
+
 typedef void (^TDD_NetworkSession_CompletionHandler)(NSData *, NSURLResponse *, NSError *);
 
 @interface TDD_NetworkSession: NSObject
+
+@end
+
+@interface TDD_NetworkSession (Class)
+
++ (Class <TDD_NetworkSession_ConfigurationType>)configurationClass;
 
 @end
 
