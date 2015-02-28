@@ -30,9 +30,9 @@
 
 - (id <TDD_NetworkSession_SessionType>)session {
     
-    id <TDD_NetworkSession_ConfigurationType> ephemeralSessionConfiguration = [[[self class] configurationClass] ephemeralSessionConfiguration];
+    id <TDD_NetworkSession_ConfigurationType> defaultSessionConfiguration = [[[self class] configurationClass] defaultSessionConfiguration];
     
-    return [[[self class] sessionClass] sessionWithConfiguration: ephemeralSessionConfiguration delegate: 0 delegateQueue: 0];
+    return [[[self class] sessionClass] sessionWithConfiguration: defaultSessionConfiguration delegate: 0 delegateQueue: 0];
     
 }
 

@@ -28,7 +28,7 @@
 
 @protocol TDD_NetworkSession_ConfigurationType <NSObject>
 
-+ (id <TDD_NetworkSession_ConfigurationType>)ephemeralSessionConfiguration;
++ (id <TDD_NetworkSession_ConfigurationType>)defaultSessionConfiguration;
 
 @end
 

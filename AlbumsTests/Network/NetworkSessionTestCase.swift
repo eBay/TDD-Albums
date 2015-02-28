@@ -26,13 +26,13 @@
 
 import XCTest
 
-let NetworkSession_ConfigurationTestDouble_EphemeralSessionConfiguration = NetworkSession_ConfigurationTestDouble()
+let NetworkSession_ConfigurationTestDouble_DefaultSessionConfiguration = NetworkSession_ConfigurationTestDouble()
 
 final class NetworkSession_ConfigurationTestDouble: NSObject, TDD_NetworkSession_ConfigurationType {
     
-    class func ephemeralSessionConfiguration() -> TDD_NetworkSession_ConfigurationType {
+    class func defaultSessionConfiguration() -> TDD_NetworkSession_ConfigurationType {
         
-        return NetworkSession_ConfigurationTestDouble_EphemeralSessionConfiguration
+        return NetworkSession_ConfigurationTestDouble_DefaultSessionConfiguration
         
     }
     
@@ -114,7 +114,7 @@ extension NetworkSessionTestCase {
     
     func assertSession() {
         
-        XCTAssertTrue(NetworkSession_SessionTestDouble_Configuration! === NetworkSession_ConfigurationTestDouble_EphemeralSessionConfiguration)
+        XCTAssertTrue(NetworkSession_SessionTestDouble_Configuration! === NetworkSession_ConfigurationTestDouble_DefaultSessionConfiguration)
         
         XCTAssertTrue(NetworkSession_SessionTestDouble_Delegate == nil)
         
