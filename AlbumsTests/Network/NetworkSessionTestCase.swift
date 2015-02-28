@@ -80,7 +80,13 @@ final class NetworkSession_SessionTestDouble: NSObject, TDD_NetworkSession_Sessi
 
 final class NetworkSessionTestCase: XCTestCase {
     
+    lazy var data = DataTestDouble()
+    
+    lazy var error = ErrorTestDouble()
+    
     lazy var request = RequestTestDouble()
+    
+    lazy var response = ResponseTestDouble()
     
     lazy var session = NetworkSessionTestDouble()
     
@@ -112,6 +118,16 @@ extension NetworkSessionTestCase {
 
 extension NetworkSessionTestCase {
     
+    func assertData(data: NSData, response: NSURLResponse, error: NSError) {
+        
+        XCTAssertTrue(data === self.data)
+        
+        XCTAssertTrue(response === self.response)
+        
+        XCTAssertTrue(error === self.error)
+        
+    }
+    
     func assertSession() {
         
         XCTAssertTrue(NetworkSession_SessionTestDouble_Configuration! === NetworkSession_ConfigurationTestDouble_DefaultSessionConfiguration)
@@ -124,17 +140,25 @@ extension NetworkSessionTestCase {
         
         XCTAssertTrue(NetworkSession_SessionTestDouble_Session.request! === self.request)
         
+        NetworkSession_SessionTestDouble_Session.completionHandler!(self.data, self.response, self.error)
+        
     }
     
     func testTask() {
         
+        var didAssertData = false
+        
         self.task = self.session.taskWithRequest(self.request) {(data, response, error) in
             
+            self.assertData(data, response: response, error: error)
             
+            didAssertData = true
             
         }
         
         self.assertSession()
+        
+        XCTAssertTrue(didAssertData)
         
     }
     

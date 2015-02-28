@@ -58,7 +58,7 @@
 
 - (id)taskWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkSession_CompletionHandler)completionHandler {
     
-    return [[self session] dataTaskWithRequest: request completionHandler: 0];
+    return [[self session] dataTaskWithRequest: request completionHandler: completionHandler];
     
 }
 
