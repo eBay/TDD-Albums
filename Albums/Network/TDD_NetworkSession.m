@@ -25,14 +25,35 @@
 //
 
 #import "TDD_NetworkSession.h"
+#import "TDD_Shared.h"
+
+@interface TDD_NetworkSession ()
+
+@property (nonatomic, strong) id <TDD_NetworkSession_SessionType> session;
+
+@end
 
 @implementation TDD_NetworkSession
 
 - (id <TDD_NetworkSession_SessionType>)session {
     
-    id <TDD_NetworkSession_ConfigurationType> defaultSessionConfiguration = [[[self class] configurationClass] defaultSessionConfiguration];
+    return TDD_LazyPropertyWithExpression((self->_session), {
+        
+        id <TDD_NetworkSession_ConfigurationType> defaultSessionConfiguration = [[[self class] configurationClass] defaultSessionConfiguration];
+        
+        (self->_session) = [[[self class] sessionClass] sessionWithConfiguration: defaultSessionConfiguration delegate: 0 delegateQueue: 0];
+        
+    });
     
-    return [[[self class] sessionClass] sessionWithConfiguration: defaultSessionConfiguration delegate: 0 delegateQueue: 0];
+}
+
+@end
+
+@implementation TDD_NetworkSession (Cancel)
+
+- (void)cancel {
+    
+    [[self session] invalidateAndCancel];
     
 }
 

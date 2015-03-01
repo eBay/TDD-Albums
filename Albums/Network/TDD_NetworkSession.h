@@ -45,12 +45,19 @@
 + (id <TDD_NetworkSession_SessionType>)sessionWithConfiguration:(id <TDD_NetworkSession_ConfigurationType>)configuration delegate:(id)delegate delegateQueue:(NSOperationQueue *)delegateQueue;
 
 - (id)dataTaskWithRequest:(NSURLRequest *)request completionHandler:(void (^)(NSData *, NSURLResponse *, NSError *))completionHandler;
+- (void)invalidateAndCancel;
 
 @end
 
 typedef void (^TDD_NetworkSession_CompletionHandler)(NSData *, NSURLResponse *, NSError *);
 
 @interface TDD_NetworkSession: NSObject
+
+@end
+
+@interface TDD_NetworkSession (Cancel)
+
+- (void)cancel;
 
 @end
 

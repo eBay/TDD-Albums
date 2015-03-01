@@ -64,13 +64,15 @@ var NetworkSession_SessionTestDouble_Delegate: AnyObject?
 
 var NetworkSession_SessionTestDouble_DelegateQueue: NSOperationQueue?
 
-let NetworkSession_SessionTestDouble_Session = NetworkSession_SessionTestDouble()
+var NetworkSession_SessionTestDouble_Session: NetworkSession_SessionTestDouble?
 
 final class NetworkSession_SessionTestDouble: NSObject, TDD_NetworkSession_SessionType {
     
     var completionHandler: TDD_NetworkSession_CompletionHandler?
     
     lazy var dataTask = NSObject()
+    
+    var didInvalidateAndCancel = false
     
     var request: NSURLRequest?
     
@@ -82,7 +84,9 @@ final class NetworkSession_SessionTestDouble: NSObject, TDD_NetworkSession_Sessi
         
         NetworkSession_SessionTestDouble_DelegateQueue = delegateQueue
         
-        return NetworkSession_SessionTestDouble_Session
+        NetworkSession_SessionTestDouble_Session = NetworkSession_SessionTestDouble()
+        
+        return NetworkSession_SessionTestDouble_Session!
         
     }
     
@@ -93,6 +97,12 @@ final class NetworkSession_SessionTestDouble: NSObject, TDD_NetworkSession_Sessi
         self.completionHandler = completionHandler
         
         return self.dataTask
+        
+    }
+    
+    func invalidateAndCancel() {
+        
+        self.didInvalidateAndCancel = true
         
     }
     
@@ -120,6 +130,8 @@ final class NetworkSessionTestCase: XCTestCase {
         
         NetworkSession_SessionTestDouble_DelegateQueue = nil
         
+        NetworkSession_SessionTestDouble_Session = nil
+        
     }
     
 }
@@ -139,6 +151,16 @@ extension NetworkSessionTestCase {
 }
 
 extension NetworkSessionTestCase {
+    
+    func assertCancel() {
+        
+        let session = NetworkSession_SessionTestDouble_Session!
+        
+        self.session.cancel()
+        
+        XCTAssert(session.didInvalidateAndCancel)
+        
+    }
     
     func assertData(data: NSData, response: NSURLResponse, error: NSError) {
         
@@ -164,11 +186,11 @@ extension NetworkSessionTestCase {
         
         XCTAssert(NetworkSession_SessionTestDouble_DelegateQueue == nil)
         
-        XCTAssert(self.task! === NetworkSession_SessionTestDouble_Session.dataTask)
+        XCTAssert(self.task! === NetworkSession_SessionTestDouble_Session!.dataTask)
         
-        XCTAssert(NetworkSession_SessionTestDouble_Session.request! === self.request)
+        XCTAssert(NetworkSession_SessionTestDouble_Session!.request! === self.request)
         
-        NetworkSession_SessionTestDouble_Session.completionHandler!(self.data, self.response, self.error)
+        NetworkSession_SessionTestDouble_Session!.completionHandler!(self.data, self.response, self.error)
         
     }
     
@@ -191,6 +213,8 @@ extension NetworkSessionTestCase {
         self.assertQueue()
         
         XCTAssert(didAssertData)
+        
+        self.assertCancel()
         
     }
     
