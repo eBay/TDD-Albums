@@ -70,7 +70,7 @@ final class NetworkSession_SessionTestDouble: NSObject, TDD_NetworkSession_Sessi
     
     var completionHandler: TDD_NetworkSession_CompletionHandler?
     
-    lazy var dataTask = NSObject()
+    var dataTask: NSObject?
     
     var didInvalidateAndCancel = false
     
@@ -96,7 +96,9 @@ final class NetworkSession_SessionTestDouble: NSObject, TDD_NetworkSession_Sessi
         
         self.completionHandler = completionHandler
         
-        return self.dataTask
+        self.dataTask = NSObject()
+        
+        return self.dataTask!
         
     }
     

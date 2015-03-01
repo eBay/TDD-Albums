@@ -28,6 +28,12 @@
 
 @implementation TDD_NetworkTask
 
+- (id <TDD_NetworkTask_SessionType>)session {
+    
+    return [[[[self class] sessionClass] alloc] init];
+    
+}
+
 @end
 
 @implementation TDD_NetworkTask (Class)
@@ -44,7 +50,7 @@
 
 - (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkTask_CompletionHandler)completionHandler {
     
-    
+    [[self session] taskWithRequest: request completionHandler: 0];
     
 }
 

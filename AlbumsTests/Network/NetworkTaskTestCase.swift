@@ -26,9 +26,77 @@
 
 import XCTest
 
+var NetworkTask_SessionTestDouble_Self: NetworkTask_SessionTestDouble?
+
+final class NetworkTask_SessionTestDouble: NSObject, TDD_NetworkTask_SessionType {
+    
+    override init() {
+        
+        super.init()
+        
+        NetworkTask_SessionTestDouble_Self = self
+        
+    }
+    
+    var completionHandler: TDD_NetworkSession_CompletionHandler?
+    
+    var didCancel = false
+    
+    var request: NSURLRequest?
+    
+    var task: NetworkTask_TaskTestDouble?
+    
+    func cancel() {
+        
+        self.didCancel = true
+        
+    }
+    
+    func taskWithRequest(request: NSURLRequest, completionHandler: TDD_NetworkSession_CompletionHandler) -> TDD_NetworkTask_TaskType {
+        
+        self.request = request
+        
+        self.completionHandler = completionHandler
+        
+        self.task = NetworkTask_TaskTestDouble()
+        
+        return self.task!
+        
+    }
+    
+}
+
+final class NetworkTask_TaskTestDouble: NSObject, TDD_NetworkTask_TaskType {
+    
+    var didCancel = false
+    
+    var didResume = false
+    
+    func cancel() {
+        
+        self.didCancel = true
+        
+    }
+    
+    func resume() {
+        
+        self.didResume = true
+        
+    }
+    
+}
+
 final class NetworkTaskTestCase: XCTestCase {
     
-    lazy var task = TDD_NetworkTask()
+    lazy var request = RequestTestDouble()
+    
+    lazy var task = NetworkTaskTestDouble()
+    
+    override func tearDown() {
+        
+        NetworkTask_SessionTestDouble_Self = nil
+        
+    }
     
 }
 
@@ -44,9 +112,27 @@ extension NetworkTaskTestCase {
 
 extension NetworkTaskTestCase {
     
+    func assertSession() {
+        
+        XCTAssert(NetworkTask_SessionTestDouble_Self!.request! === self.request)
+        
+    }
+    
     func testStart() {
         
-        self.task.startWithRequest(nil, completionHandler: nil)
+        self.task.startWithRequest(self.request, completionHandler: nil)
+        
+        self.assertSession()
+        
+    }
+    
+}
+
+final class NetworkTaskTestDouble: TDD_NetworkTask {
+    
+    override class func sessionClass() -> AnyClass {
+        
+        return NetworkTask_SessionTestDouble.self
         
     }
     
