@@ -116,6 +116,8 @@ extension NetworkTaskTestCase {
         
         XCTAssert(NetworkTask_SessionTestDouble_Self!.request! === self.request)
         
+        XCTAssert(NetworkTask_SessionTestDouble_Self!.task!.didResume)
+        
     }
     
     func testStart() {
