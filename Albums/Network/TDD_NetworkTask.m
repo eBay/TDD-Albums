@@ -25,12 +25,33 @@
 //
 
 #import "TDD_NetworkTask.h"
+#import "TDD_Shared.h"
+
+@interface TDD_NetworkTask ()
+
+@property (nonatomic, strong) id <TDD_NetworkTask_TaskType> task;
+
+@end
 
 @implementation TDD_NetworkTask
 
 - (id <TDD_NetworkTask_SessionType>)session {
     
     return [[[[self class] sessionClass] alloc] init];
+    
+}
+
+- (void)setTask:(id <TDD_NetworkTask_TaskType>)task {
+    
+    TDD_PropertySetter((self->_task), task, {
+        
+        [(self->_task) cancel];
+        
+    }, {
+        
+        [(self->_task) resume];
+        
+    });
     
 }
 
@@ -50,7 +71,9 @@
 
 - (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkTask_CompletionHandler)completionHandler {
     
-    [[[self session] taskWithRequest: request completionHandler: completionHandler] resume];
+    id <TDD_NetworkTask_TaskType> task = [[self session] taskWithRequest: request completionHandler: completionHandler];
+    
+    [self setTask: task];
     
 }
 

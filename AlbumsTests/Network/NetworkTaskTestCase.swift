@@ -118,6 +118,16 @@ extension NetworkTaskTestCase {
 
 extension NetworkTaskTestCase {
     
+    func assertCancel() {
+        
+        let task = NetworkTask_SessionTestDouble_Self!.task!
+        
+        self.task.startWithRequest(nil, completionHandler: nil)
+        
+        XCTAssert(task.didCancel)
+        
+    }
+    
     func assertData(data: NSData, response: NSURLResponse, error: NSError) {
         
         XCTAssert(data === self.data)
@@ -153,6 +163,8 @@ extension NetworkTaskTestCase {
         self.assertSession()
         
         XCTAssert(didAssertData)
+        
+        self.assertCancel()
         
     }
     
