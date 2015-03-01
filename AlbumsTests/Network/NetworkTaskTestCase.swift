@@ -88,7 +88,13 @@ final class NetworkTask_TaskTestDouble: NSObject, TDD_NetworkTask_TaskType {
 
 final class NetworkTaskTestCase: XCTestCase {
     
+    lazy var data = DataTestDouble()
+    
+    lazy var error = ErrorTestDouble()
+    
     lazy var request = RequestTestDouble()
+    
+    lazy var response = ResponseTestDouble()
     
     lazy var task = NetworkTaskTestDouble()
     
@@ -112,19 +118,41 @@ extension NetworkTaskTestCase {
 
 extension NetworkTaskTestCase {
     
+    func assertData(data: NSData, response: NSURLResponse, error: NSError) {
+        
+        XCTAssert(data === self.data)
+        
+        XCTAssert(response === self.response)
+        
+        XCTAssert(error === self.error)
+        
+    }
+    
     func assertSession() {
         
         XCTAssert(NetworkTask_SessionTestDouble_Self!.request! === self.request)
         
         XCTAssert(NetworkTask_SessionTestDouble_Self!.task!.didResume)
         
+        NetworkTask_SessionTestDouble_Self!.completionHandler!(self.data, self.response, self.error)
+        
     }
     
     func testStart() {
         
-        self.task.startWithRequest(self.request, completionHandler: nil)
+        var didAssertData = false
+        
+        self.task.startWithRequest(self.request) {(data, response, error) in
+            
+            self.assertData(data, response: response, error: error)
+            
+            didAssertData = true
+            
+        }
         
         self.assertSession()
+        
+        XCTAssert(didAssertData)
         
     }
     

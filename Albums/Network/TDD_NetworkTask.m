@@ -50,7 +50,7 @@
 
 - (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkTask_CompletionHandler)completionHandler {
     
-    [[[self session] taskWithRequest: request completionHandler: 0] resume];
+    [[[self session] taskWithRequest: request completionHandler: completionHandler] resume];
     
 }
 
