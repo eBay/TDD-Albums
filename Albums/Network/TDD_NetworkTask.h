@@ -51,6 +51,12 @@ typedef void (^TDD_NetworkTask_CompletionHandler)(NSData *, NSURLResponse *, NSE
 
 @end
 
+@interface TDD_NetworkTask (Cancel)
+
+- (void)cancel;
+
+@end
+
 @interface TDD_NetworkTask (Class)
 
 + (Class <TDD_NetworkTask_SessionType>)sessionClass;

@@ -108,6 +108,24 @@ final class NetworkTaskTestCase: XCTestCase {
 
 extension NetworkTaskTestCase {
     
+    func testCancel() {
+        
+        self.task.startWithRequest(nil, completionHandler: nil)
+        
+        let session = NetworkTask_SessionTestDouble_Self!
+        
+        self.task.cancel()
+        
+        XCTAssert(session.didCancel)
+        
+        XCTAssert(session.task!.didCancel)
+        
+    }
+    
+}
+
+extension NetworkTaskTestCase {
+    
     func testClass() {
         
         XCTAssert(TDD_NetworkTask.sessionClass()! === TDD_NetworkSession.self)

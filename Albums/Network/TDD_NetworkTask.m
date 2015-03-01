@@ -29,6 +29,7 @@
 
 @interface TDD_NetworkTask ()
 
+@property (nonatomic, strong) id <TDD_NetworkTask_SessionType> session;
 @property (nonatomic, strong) id <TDD_NetworkTask_TaskType> task;
 
 @end
@@ -37,7 +38,7 @@
 
 - (id <TDD_NetworkTask_SessionType>)session {
     
-    return [[[[self class] sessionClass] alloc] init];
+    return TDD_LazyPropertyWithClass((self->_session), [[self class] sessionClass]);
     
 }
 
@@ -52,6 +53,18 @@
         [(self->_task) resume];
         
     });
+    
+}
+
+@end
+
+@implementation TDD_NetworkTask (Cancel)
+
+- (void)cancel {
+    
+    [[self session] cancel];
+    
+    [self setTask: 0];
     
 }
 
