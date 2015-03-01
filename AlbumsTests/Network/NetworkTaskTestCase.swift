@@ -114,11 +114,13 @@ extension NetworkTaskTestCase {
         
         let session = NetworkTask_SessionTestDouble_Self!
         
+        let task = NetworkTask_SessionTestDouble_Self!.task!
+        
         self.task.cancel()
         
         XCTAssert(session.didCancel)
         
-        XCTAssert(session.task!.didCancel)
+        XCTAssert(task.didCancel)
         
     }
     
