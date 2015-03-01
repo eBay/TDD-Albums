@@ -67,11 +67,11 @@ static SecCertificateRef INV_CertificateSerialization_SerializationFunctionTestD
     
     INV_CertificateSerialization_SerializationFunctionTestDouble_Certificate = [[NSObject alloc] init];
     
-    XCTAssertTrue([INV_CertificateSerializationTestDouble createCertificateWithData: [self data]] == (__bridge SecCertificateRef)INV_CertificateSerialization_SerializationFunctionTestDouble_Certificate);
+    XCTAssert([INV_CertificateSerializationTestDouble createCertificateWithData: [self data]] == (__bridge SecCertificateRef)INV_CertificateSerialization_SerializationFunctionTestDouble_Certificate);
     
-    XCTAssertTrue(INV_CertificateSerialization_SerializationFunctionTestDouble_Allocator == 0);
+    XCTAssert(INV_CertificateSerialization_SerializationFunctionTestDouble_Allocator == 0);
     
-    XCTAssertTrue(INV_CertificateSerialization_SerializationFunctionTestDouble_Data == [self data]);
+    XCTAssert(INV_CertificateSerialization_SerializationFunctionTestDouble_Data == [self data]);
     
 }
 
@@ -81,7 +81,7 @@ static SecCertificateRef INV_CertificateSerialization_SerializationFunctionTestD
 
 - (void)testClass {
     
-    XCTAssertTrue([INV_CertificateSerialization serializationFunction] == SecCertificateCreateWithData);
+    XCTAssert([INV_CertificateSerialization serializationFunction] == SecCertificateCreateWithData);
     
 }
 

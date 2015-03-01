@@ -84,9 +84,9 @@ extension TableModelTestCase {
     
     func testClass() {
         
-        XCTAssertTrue(INV_TableModel.albumClass()! === INV_Album.self)
+        XCTAssert(INV_TableModel.albumClass()! === INV_Album.self)
         
-        XCTAssertTrue(INV_TableModel.operationClass()! === INV_NetworkJSONOperation.self)
+        XCTAssert(INV_TableModel.operationClass()! === INV_NetworkJSONOperation.self)
         
     }
     
@@ -104,21 +104,21 @@ extension TableModelTestCase {
             
             XCTAssertFalse(success)
             
-            XCTAssertTrue(error! === self.error)
+            XCTAssert(error! === self.error)
             
-            XCTAssertTrue(self.model.albums == nil)
+            XCTAssert(self.model.albums == nil)
             
         }
         
-        XCTAssertTrue(self.modelOperation.request!.URL!.absoluteString == "https://itunes.apple.com/us/rss/topalbums/limit=100/json")
+        XCTAssert(self.modelOperation.request!.URL!.absoluteString == "https://itunes.apple.com/us/rss/topalbums/limit=100/json")
         
-        XCTAssertTrue(self.modelOperation.request!.cachePolicy == NSURLRequestCachePolicy.UseProtocolCachePolicy)
+        XCTAssert(self.modelOperation.request!.cachePolicy == NSURLRequestCachePolicy.UseProtocolCachePolicy)
         
-        XCTAssertTrue(self.modelOperation.request!.timeoutInterval == 60.0)
+        XCTAssert(self.modelOperation.request!.timeoutInterval == 60.0)
         
         self.modelOperation.completionHandler!(nil, self.error)
         
-        XCTAssertTrue(didStart)
+        XCTAssert(didStart)
         
     }
     
@@ -130,31 +130,31 @@ extension TableModelTestCase {
             
             didStart = true
             
-            XCTAssertTrue(success)
+            XCTAssert(success)
             
-            XCTAssertTrue(error == nil)
+            XCTAssert(error == nil)
             
             let feed = (self.json["feed"] as! NSDictionary)
             
             let entry = (feed["entry"] as! NSArray)
             
-            XCTAssertTrue(self.model.albums.count == entry.count)
+            XCTAssert(self.model.albums.count == entry.count)
             
             let dictionary = (entry[0] as! NSDictionary)
             
-            XCTAssertTrue(self.model.albums[0].dictionary == dictionary)
+            XCTAssert(self.model.albums[0].dictionary == dictionary)
             
         }
         
-        XCTAssertTrue(self.modelOperation.request!.URL!.absoluteString == "https://itunes.apple.com/us/rss/topalbums/limit=100/json")
+        XCTAssert(self.modelOperation.request!.URL!.absoluteString == "https://itunes.apple.com/us/rss/topalbums/limit=100/json")
         
-        XCTAssertTrue(self.modelOperation.request!.cachePolicy == NSURLRequestCachePolicy.UseProtocolCachePolicy)
+        XCTAssert(self.modelOperation.request!.cachePolicy == NSURLRequestCachePolicy.UseProtocolCachePolicy)
         
-        XCTAssertTrue(self.modelOperation.request!.timeoutInterval == 60.0)
+        XCTAssert(self.modelOperation.request!.timeoutInterval == 60.0)
         
         self.modelOperation.completionHandler!(self.json, self.error)
         
-        XCTAssertTrue(didStart)
+        XCTAssert(didStart)
         
     }
     

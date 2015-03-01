@@ -114,7 +114,7 @@ extension NetworkImageOperationTestCase {
         
         self.operation.cancel()
         
-        XCTAssertTrue(task.didCancel)
+        XCTAssert(task.didCancel)
         
     }
     
@@ -124,9 +124,9 @@ extension NetworkImageOperationTestCase {
     
     func testClass() {
         
-        XCTAssertTrue(INV_NetworkImageOperation.imageHandlerClass()! === INV_NetworkImageHandler.self)
+        XCTAssert(INV_NetworkImageOperation.imageHandlerClass()! === INV_NetworkImageHandler.self)
         
-        XCTAssertTrue(INV_NetworkImageOperation.taskClass()! === INV_NetworkTask.self)
+        XCTAssert(INV_NetworkImageOperation.taskClass()! === INV_NetworkTask.self)
         
     }
     
@@ -146,23 +146,23 @@ extension NetworkImageOperationTestCase {
             
             didStart = true
             
-            XCTAssertTrue(image! === NetworkImageOperation_ImageHandlerTestDouble_Image)
+            XCTAssert(image! === NetworkImageOperation_ImageHandlerTestDouble_Image)
             
-            XCTAssertTrue(error! === NetworkImageOperation_ImageHandlerTestDouble_Error)
+            XCTAssert(error! === NetworkImageOperation_ImageHandlerTestDouble_Error)
             
         }
         
-        XCTAssertTrue(self.operationTask.request! === self.request)
+        XCTAssert(self.operationTask.request! === self.request)
         
         self.operationTask.completionHandler!(self.data, self.response, self.error)
         
-        XCTAssertTrue(NetworkImageOperation_ImageHandlerTestDouble_Response!.data! === self.data)
+        XCTAssert(NetworkImageOperation_ImageHandlerTestDouble_Response!.data! === self.data)
         
-        XCTAssertTrue(NetworkImageOperation_ImageHandlerTestDouble_Response!.error! === self.error)
+        XCTAssert(NetworkImageOperation_ImageHandlerTestDouble_Response!.error! === self.error)
         
-        XCTAssertTrue(NetworkImageOperation_ImageHandlerTestDouble_Response!.response! === self.response)
+        XCTAssert(NetworkImageOperation_ImageHandlerTestDouble_Response!.response! === self.response)
         
-        XCTAssertTrue(didStart)
+        XCTAssert(didStart)
         
     }
     

@@ -114,7 +114,7 @@ extension NetworkJSONOperationTestCase {
         
         self.operation.cancel()
         
-        XCTAssertTrue(task.didCancel)
+        XCTAssert(task.didCancel)
         
     }
     
@@ -124,9 +124,9 @@ extension NetworkJSONOperationTestCase {
     
     func testClass() {
         
-        XCTAssertTrue(INV_NetworkJSONOperation.jsonHandlerClass()! === INV_NetworkJSONHandler.self)
+        XCTAssert(INV_NetworkJSONOperation.jsonHandlerClass()! === INV_NetworkJSONHandler.self)
         
-        XCTAssertTrue(INV_NetworkJSONOperation.taskClass()! === INV_NetworkTask.self)
+        XCTAssert(INV_NetworkJSONOperation.taskClass()! === INV_NetworkTask.self)
         
     }
     
@@ -146,23 +146,23 @@ extension NetworkJSONOperationTestCase {
             
             didStart = true
             
-            XCTAssertTrue(json! === NetworkJSONOperation_JSONHandlerTestDouble_JSON)
+            XCTAssert(json! === NetworkJSONOperation_JSONHandlerTestDouble_JSON)
             
-            XCTAssertTrue(error! === NetworkJSONOperation_JSONHandlerTestDouble_Error)
+            XCTAssert(error! === NetworkJSONOperation_JSONHandlerTestDouble_Error)
             
         }
         
-        XCTAssertTrue(self.operationTask.request! === self.request)
+        XCTAssert(self.operationTask.request! === self.request)
         
         self.operationTask.completionHandler!(self.data, self.response, self.error)
         
-        XCTAssertTrue(NetworkJSONOperation_JSONHandlerTestDouble_Response!.data! === self.data)
+        XCTAssert(NetworkJSONOperation_JSONHandlerTestDouble_Response!.data! === self.data)
         
-        XCTAssertTrue(NetworkJSONOperation_JSONHandlerTestDouble_Response!.error! === self.error)
+        XCTAssert(NetworkJSONOperation_JSONHandlerTestDouble_Response!.error! === self.error)
         
-        XCTAssertTrue(NetworkJSONOperation_JSONHandlerTestDouble_Response!.response! === self.response)
+        XCTAssert(NetworkJSONOperation_JSONHandlerTestDouble_Response!.response! === self.response)
         
-        XCTAssertTrue(didStart)
+        XCTAssert(didStart)
         
     }
     

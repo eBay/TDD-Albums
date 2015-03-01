@@ -182,13 +182,13 @@ extension NetworkSessionTestCase {
     
     func testClass() {
         
-        XCTAssertTrue(INV_NetworkSession.configurationClass()! === NSURLSessionConfiguration.self)
+        XCTAssert(INV_NetworkSession.configurationClass()! === NSURLSessionConfiguration.self)
         
-        XCTAssertTrue(INV_NetworkSession.queueClass()! === NSOperationQueue.self)
+        XCTAssert(INV_NetworkSession.queueClass()! === NSOperationQueue.self)
         
-        XCTAssertTrue(INV_NetworkSession.sessionClass()! === NSURLSession.self)
+        XCTAssert(INV_NetworkSession.sessionClass()! === NSURLSession.self)
         
-        XCTAssertTrue(INV_NetworkSession.trustClass()! === INV_NetworkTrust.self)
+        XCTAssert(INV_NetworkSession.trustClass()! === INV_NetworkTrust.self)
         
     }
     
@@ -200,7 +200,7 @@ extension NetworkSessionTestCase {
         
         self.session.cancel()
         
-        XCTAssertTrue(NetworkSession_SessionTestDouble_Session!.didInvalidateAndCancel)
+        XCTAssert(NetworkSession_SessionTestDouble_Session!.didInvalidateAndCancel)
         
         NetworkSession_SessionTestDouble_Session!.didInvalidateAndCancel = false
         
@@ -208,25 +208,25 @@ extension NetworkSessionTestCase {
     
     func assertData(data: NSData, response: NSURLResponse, error: NSError) {
         
-        XCTAssertTrue(data === self.data)
+        XCTAssert(data === self.data)
         
-        XCTAssertTrue(response === self.response)
+        XCTAssert(response === self.response)
         
-        XCTAssertTrue(error === self.error)
+        XCTAssert(error === self.error)
         
     }
     
     func assertSession() {
         
-        XCTAssertTrue(NetworkSession_SessionTestDouble_Configuration! === NetworkSession_ConfigurationTestDouble_EphemeralSessionConfiguration)
+        XCTAssert(NetworkSession_SessionTestDouble_Configuration! === NetworkSession_ConfigurationTestDouble_EphemeralSessionConfiguration)
         
-        XCTAssertTrue(NetworkSession_SessionTestDouble_Delegate! === self.session)
+        XCTAssert(NetworkSession_SessionTestDouble_Delegate! === self.session)
         
-        XCTAssertTrue(NetworkSession_SessionTestDouble_DelegateQueue == nil)
+        XCTAssert(NetworkSession_SessionTestDouble_DelegateQueue == nil)
         
-        XCTAssertTrue(self.task! === NetworkSession_SessionTestDouble_Session!.dataTask)
+        XCTAssert(self.task! === NetworkSession_SessionTestDouble_Session!.dataTask)
         
-        XCTAssertTrue(NetworkSession_SessionTestDouble_Session!.request! === self.request)
+        XCTAssert(NetworkSession_SessionTestDouble_Session!.request! === self.request)
         
         NetworkSession_SessionTestDouble_Session!.completionHandler!(self.data, self.response, self.error)
         
@@ -256,7 +256,7 @@ extension NetworkSessionTestCase {
         
         self.assertCancel()
         
-        XCTAssertTrue(didStart)
+        XCTAssert(didStart)
         
     }
     
@@ -272,17 +272,17 @@ extension NetworkSessionTestCase {
             
             didStart = true
             
-            XCTAssertTrue(disposition == NSURLSessionAuthChallengeDisposition.CancelAuthenticationChallenge)
+            XCTAssert(disposition == NSURLSessionAuthChallengeDisposition.CancelAuthenticationChallenge)
             
-            XCTAssertTrue(credential! === self.credential)
+            XCTAssert(credential! === self.credential)
             
         }
         
-        XCTAssertTrue(NetworkSession_TrustTestDouble_Challenge! === self.challenge)
+        XCTAssert(NetworkSession_TrustTestDouble_Challenge! === self.challenge)
         
         NetworkSession_TrustTestDouble_CompletionHandler!(NSURLSessionAuthChallengeDisposition.CancelAuthenticationChallenge, self.credential)
         
-        XCTAssertTrue(didStart)
+        XCTAssert(didStart)
         
     }
     
@@ -294,17 +294,17 @@ extension NetworkSessionTestCase {
             
             didStart = true
             
-            XCTAssertTrue(disposition == NSURLSessionAuthChallengeDisposition.UseCredential)
+            XCTAssert(disposition == NSURLSessionAuthChallengeDisposition.UseCredential)
             
-            XCTAssertTrue(credential! === self.credential)
+            XCTAssert(credential! === self.credential)
             
         }
         
-        XCTAssertTrue(NetworkSession_TrustTestDouble_Challenge! === self.challenge)
+        XCTAssert(NetworkSession_TrustTestDouble_Challenge! === self.challenge)
         
         NetworkSession_TrustTestDouble_CompletionHandler!(NSURLSessionAuthChallengeDisposition.UseCredential, self.credential)
         
-        XCTAssertTrue(didStart)
+        XCTAssert(didStart)
         
     }
     

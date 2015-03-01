@@ -134,13 +134,13 @@ static id INV_NetworkTrust_OperationTestDouble_Certificate = 0;
 
 - (void)testClass {
     
-    XCTAssertTrue([INV_NetworkTrust anchorCertificatesFunction] == SecTrustSetAnchorCertificates);
+    XCTAssert([INV_NetworkTrust anchorCertificatesFunction] == SecTrustSetAnchorCertificates);
     
-    XCTAssertTrue([INV_NetworkTrust credentialClass] == [NSURLCredential class]);
+    XCTAssert([INV_NetworkTrust credentialClass] == [NSURLCredential class]);
     
-    XCTAssertTrue([INV_NetworkTrust evaluateAsyncFunction] == SecTrustEvaluateAsync);
+    XCTAssert([INV_NetworkTrust evaluateAsyncFunction] == SecTrustEvaluateAsync);
     
-    XCTAssertTrue([INV_NetworkTrust operationClass] == [INV_CertificateOperation class]);
+    XCTAssert([INV_NetworkTrust operationClass] == [INV_CertificateOperation class]);
     
 }
 
@@ -150,9 +150,9 @@ static id INV_NetworkTrust_OperationTestDouble_Certificate = 0;
 
 - (void)assertError {
     
-    XCTAssertTrue([self disposition] == NSURLSessionAuthChallengeCancelAuthenticationChallenge);
+    XCTAssert([self disposition] == NSURLSessionAuthChallengeCancelAuthenticationChallenge);
     
-    XCTAssertTrue([self credential] == 0);
+    XCTAssert([self credential] == 0);
     
 }
 
@@ -168,15 +168,15 @@ static id INV_NetworkTrust_OperationTestDouble_Certificate = 0;
         
     }];
     
-    XCTAssertTrue(INV_NetworkTrust_AnchorCertificatesFunctionTestDouble_Trust == (id)[[[self challenge] protectionSpace] serverTrust]);
+    XCTAssert(INV_NetworkTrust_AnchorCertificatesFunctionTestDouble_Trust == (id)[[[self challenge] protectionSpace] serverTrust]);
     
-    XCTAssertTrue([INV_NetworkTrust_AnchorCertificatesFunctionTestDouble_Array count] == 1);
+    XCTAssert([INV_NetworkTrust_AnchorCertificatesFunctionTestDouble_Array count] == 1);
     
-    XCTAssertTrue([INV_NetworkTrust_AnchorCertificatesFunctionTestDouble_Array objectAtIndex: 0] == INV_NetworkTrust_OperationTestDouble_Certificate);
+    XCTAssert([INV_NetworkTrust_AnchorCertificatesFunctionTestDouble_Array objectAtIndex: 0] == INV_NetworkTrust_OperationTestDouble_Certificate);
     
-    XCTAssertTrue(INV_NetworkTrust_EvaluateAsyncFunctionTestDouble_Trust == (id)[[[self challenge] protectionSpace] serverTrust]);
+    XCTAssert(INV_NetworkTrust_EvaluateAsyncFunctionTestDouble_Trust == (id)[[[self challenge] protectionSpace] serverTrust]);
     
-    XCTAssertTrue(INV_NetworkTrust_EvaluateAsyncFunctionTestDouble_Queue == dispatch_get_main_queue());
+    XCTAssert(INV_NetworkTrust_EvaluateAsyncFunctionTestDouble_Queue == dispatch_get_main_queue());
     
     INV_NetworkTrust_EvaluateAsyncFunctionTestDouble_Callback((__bridge SecTrustRef)INV_NetworkTrust_EvaluateAsyncFunctionTestDouble_Trust, result);
     
@@ -184,9 +184,9 @@ static id INV_NetworkTrust_OperationTestDouble_Certificate = 0;
 
 - (void)assertSuccess {
     
-    XCTAssertTrue([self disposition] == NSURLSessionAuthChallengeUseCredential);
+    XCTAssert([self disposition] == NSURLSessionAuthChallengeUseCredential);
     
-    XCTAssertTrue([(INV_NetworkTrust_CredentialTestDouble *)[self credential] trust] == INV_NetworkTrust_EvaluateAsyncFunctionTestDouble_Trust);
+    XCTAssert([(INV_NetworkTrust_CredentialTestDouble *)[self credential] trust] == INV_NetworkTrust_EvaluateAsyncFunctionTestDouble_Trust);
     
 }
 

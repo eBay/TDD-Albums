@@ -40,13 +40,13 @@ extension NetworkDataHandlerTestCase {
         
         self.response.error = ErrorTestDouble()
         
-        XCTAssertTrue(INV_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
+        XCTAssert(INV_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
         
-        XCTAssertTrue(self.error!.domain == INV_NetworkDataHandler_ErrorDomain)
+        XCTAssert(self.error!.domain == INV_NetworkDataHandler_ErrorDomain)
         
-        XCTAssertTrue(self.error!.code == INV_NetworkDataHandler_ResponseError)
+        XCTAssert(self.error!.code == INV_NetworkDataHandler_ResponseError)
         
-        XCTAssertTrue(self.error!.userInfo![NSUnderlyingErrorKey]! === self.response.error)
+        XCTAssert(self.error!.userInfo![NSUnderlyingErrorKey]! === self.response.error)
         
     }
     
@@ -56,13 +56,13 @@ extension NetworkDataHandlerTestCase {
         
         self.response.response = ResponseTestDouble()
         
-        XCTAssertTrue(INV_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
+        XCTAssert(INV_NetworkDataHandler.dataWithResponse(self.response, error: &self.error) == nil)
         
-        XCTAssertTrue(self.error!.domain == INV_NetworkDataHandler_ErrorDomain)
+        XCTAssert(self.error!.domain == INV_NetworkDataHandler_ErrorDomain)
         
-        XCTAssertTrue(self.error!.code == INV_NetworkDataHandler_DataError)
+        XCTAssert(self.error!.code == INV_NetworkDataHandler_DataError)
         
-        XCTAssertTrue(self.error!.userInfo![NSUnderlyingErrorKey]! === self.response.error)
+        XCTAssert(self.error!.userInfo![NSUnderlyingErrorKey]! === self.response.error)
         
     }
     
@@ -72,9 +72,9 @@ extension NetworkDataHandlerTestCase {
         
         self.response.response = ResponseTestDouble()
         
-        XCTAssertTrue(INV_NetworkDataHandler.dataWithResponse(self.response, error: &self.error)! === self.response.data)
+        XCTAssert(INV_NetworkDataHandler.dataWithResponse(self.response, error: &self.error)! === self.response.data)
         
-        XCTAssertTrue(self.error == nil)
+        XCTAssert(self.error == nil)
         
     }
     

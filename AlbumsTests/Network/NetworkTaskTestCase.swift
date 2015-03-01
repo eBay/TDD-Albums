@@ -104,9 +104,9 @@ extension NetworkTaskTestCase {
         
         self.task.cancel()
         
-        XCTAssertTrue(session.didCancel)
+        XCTAssert(session.didCancel)
         
-        XCTAssertTrue(session.task.didCancel)
+        XCTAssert(session.task.didCancel)
         
     }
     
@@ -116,7 +116,7 @@ extension NetworkTaskTestCase {
     
     func testClass() {
         
-        XCTAssertTrue(INV_NetworkTask.sessionClass()! === INV_NetworkSession.self)
+        XCTAssert(INV_NetworkTask.sessionClass()! === INV_NetworkSession.self)
         
     }
     
@@ -132,9 +132,9 @@ extension NetworkTaskTestCase {
         
         self.task = NetworkTaskTestDouble()
         
-        XCTAssertTrue(session.didCancel)
+        XCTAssert(session.didCancel)
         
-        XCTAssertTrue(session.task.didCancel)
+        XCTAssert(session.task.didCancel)
         
     }
     
@@ -150,25 +150,25 @@ extension NetworkTaskTestCase {
         
         self.task.startWithRequest(nil, completionHandler: nil)
         
-        XCTAssertTrue(task.didCancel)
+        XCTAssert(task.didCancel)
         
     }
     
     func assertData(data: NSData, response: NSURLResponse, error: NSError) {
         
-        XCTAssertTrue(data === self.data)
+        XCTAssert(data === self.data)
         
-        XCTAssertTrue(response === self.response)
+        XCTAssert(response === self.response)
         
-        XCTAssertTrue(error === self.error)
+        XCTAssert(error === self.error)
         
     }
     
     func assertSession() {
         
-        XCTAssertTrue(self.taskSession.task.didResume)
+        XCTAssert(self.taskSession.task.didResume)
         
-        XCTAssertTrue(self.taskSession.request! === self.request)
+        XCTAssert(self.taskSession.request! === self.request)
         
         self.taskSession.completionHandler!(self.data, self.response, self.error)
         
@@ -190,7 +190,7 @@ extension NetworkTaskTestCase {
         
         self.assertCancel()
         
-        XCTAssertTrue(didStart)
+        XCTAssert(didStart)
         
     }
     

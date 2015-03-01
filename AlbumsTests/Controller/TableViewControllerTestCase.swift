@@ -160,15 +160,15 @@ extension TableViewControllerTestCase {
     
     func testClass() {
         
-        XCTAssertTrue(INV_TableViewController.alertViewClass()! === UIAlertView.self)
+        XCTAssert(INV_TableViewController.alertViewClass()! === UIAlertView.self)
         
-        XCTAssertTrue(INV_TableViewController.applicationClass()! === UIApplication.self)
+        XCTAssert(INV_TableViewController.applicationClass()! === UIApplication.self)
         
-        XCTAssertTrue(INV_TableViewController.cellClass()! === INV_TableViewCell.self)
+        XCTAssert(INV_TableViewController.cellClass()! === INV_TableViewCell.self)
         
-        XCTAssertTrue(INV_TableViewController.modelClass()! === INV_TableModel.self)
+        XCTAssert(INV_TableViewController.modelClass()! === INV_TableModel.self)
         
-        XCTAssertTrue(INV_TableViewController.viewClass()! === UITableView.self)
+        XCTAssert(INV_TableViewController.viewClass()! === UITableView.self)
         
     }
     
@@ -178,13 +178,13 @@ extension TableViewControllerTestCase {
     
     func testLoadView() {
         
-        XCTAssertTrue(self.controllerView.invFrame == CGRectZero)
+        XCTAssert(self.controllerView.invFrame == CGRectZero)
         
-        XCTAssertTrue(self.controllerView.invStyle == UITableViewStyle.Plain)
+        XCTAssert(self.controllerView.invStyle == UITableViewStyle.Plain)
         
-        XCTAssertTrue(self.controllerView.dataSource! === self.controller)
+        XCTAssert(self.controllerView.dataSource! === self.controller)
         
-        XCTAssertTrue(self.controllerView.delegate! === self.controller)
+        XCTAssert(self.controllerView.delegate! === self.controller)
         
     }
     
@@ -194,7 +194,7 @@ extension TableViewControllerTestCase {
         
         self.controllerModel.completionHandler!(true, nil)
         
-        XCTAssertTrue(self.controllerView.didReloadData)
+        XCTAssert(self.controllerView.didReloadData)
         
     }
     
@@ -204,7 +204,7 @@ extension TableViewControllerTestCase {
     
     func testNumberOfSectionsInTableView() {
         
-        XCTAssertTrue(self.controller.numberOfSectionsInTableView(nil) == 1)
+        XCTAssert(self.controller.numberOfSectionsInTableView(nil) == 1)
         
     }
     
@@ -214,11 +214,11 @@ extension TableViewControllerTestCase {
         
         let cell = (self.controller.tableView(self.controllerView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! TableViewController_CellTestDouble)
         
-        XCTAssertTrue(cell === self.controllerView.cell)
+        XCTAssert(cell === self.controllerView.cell)
         
-        XCTAssertTrue(self.controllerView.identifier == "TableViewController")
+        XCTAssert(self.controllerView.identifier == "TableViewController")
         
-        XCTAssertTrue(cell.album! === self.controllerModel.albums[0])
+        XCTAssert(cell.album! === self.controllerModel.albums[0])
         
     }
     
@@ -226,19 +226,19 @@ extension TableViewControllerTestCase {
         
         let cell = (self.controller.tableView(self.controllerView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! TableViewController_CellTestDouble)
         
-        XCTAssertTrue(cell.style == UITableViewCellStyle.Subtitle)
+        XCTAssert(cell.style == UITableViewCellStyle.Subtitle)
         
-        XCTAssertTrue(cell.reuseIdentifier == "TableViewController")
+        XCTAssert(cell.reuseIdentifier == "TableViewController")
         
-        XCTAssertTrue(self.controllerView.identifier == "TableViewController")
+        XCTAssert(self.controllerView.identifier == "TableViewController")
         
-        XCTAssertTrue(cell.album! === self.controllerModel.albums[0])
+        XCTAssert(cell.album! === self.controllerModel.albums[0])
         
     }
     
     func testTableViewNumberOfRowsInSection() {
         
-        XCTAssertTrue(self.controller.tableView(nil, numberOfRowsInSection: 0) == self.controllerModel.albums.count)
+        XCTAssert(self.controller.tableView(nil, numberOfRowsInSection: 0) == self.controllerModel.albums.count)
         
     }
     
@@ -250,17 +250,17 @@ extension TableViewControllerTestCase {
         
         self.controller.tableView(nil, didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
         
-        XCTAssertTrue(self.controllerAlertView.title == "Open in iTunes")
+        XCTAssert(self.controllerAlertView.title == "Open in iTunes")
         
-        XCTAssertTrue(self.controllerAlertView.message == "Are you sure you want to leave Albums?")
+        XCTAssert(self.controllerAlertView.message == "Are you sure you want to leave Albums?")
         
-        XCTAssertTrue(self.controllerAlertView.delegate! === self.controller)
+        XCTAssert(self.controllerAlertView.delegate! === self.controller)
         
-        XCTAssertTrue(self.controllerAlertView.cancelButtonTitle == "Cancel")
+        XCTAssert(self.controllerAlertView.cancelButtonTitle == "Cancel")
         
-        XCTAssertTrue(self.controllerAlertView.otherButtonTitles == "OK")
+        XCTAssert(self.controllerAlertView.otherButtonTitles == "OK")
         
-        XCTAssertTrue(self.controllerAlertView.didShow);
+        XCTAssert(self.controllerAlertView.didShow);
         
     }
     
@@ -272,7 +272,7 @@ extension TableViewControllerTestCase {
         
         self.controller.alertView(nil, clickedButtonAtIndex: 0)
         
-        XCTAssertTrue(TableViewController_ApplicationTestDouble_SharedApplication.url == nil)
+        XCTAssert(TableViewController_ApplicationTestDouble_SharedApplication.url == nil)
         
     }
     
@@ -284,7 +284,7 @@ extension TableViewControllerTestCase {
         
         let album = (self.controllerModel.albums[0] as! INV_Album)
         
-        XCTAssertTrue(TableViewController_ApplicationTestDouble_SharedApplication.url!.absoluteString == album.link)
+        XCTAssert(TableViewController_ApplicationTestDouble_SharedApplication.url!.absoluteString == album.link)
         
     }
     

@@ -106,31 +106,31 @@ extension TableViewCellTestCase {
     
     func assertCell(album: INV_TableViewCell_AlbumType) {
         
-        XCTAssertTrue(self.cell.textLabel!.text == album.artist)
+        XCTAssert(self.cell.textLabel!.text == album.artist)
         
-        XCTAssertTrue(self.cell.detailTextLabel!.text == album.name)
+        XCTAssert(self.cell.detailTextLabel!.text == album.name)
         
-        XCTAssertTrue(self.cell.imageView!.image == nil)
+        XCTAssert(self.cell.imageView!.image == nil)
         
     }
     
     func assertOperation(album: INV_TableViewCell_AlbumType) {
         
-        XCTAssertTrue(self.cellOperation.didCancel)
+        XCTAssert(self.cellOperation.didCancel)
         
-        XCTAssertTrue(self.cellOperation.request!.URL!.absoluteString == album.image)
+        XCTAssert(self.cellOperation.request!.URL!.absoluteString == album.image)
         
-        XCTAssertTrue(self.cellOperation.request!.cachePolicy == NSURLRequestCachePolicy.UseProtocolCachePolicy)
+        XCTAssert(self.cellOperation.request!.cachePolicy == NSURLRequestCachePolicy.UseProtocolCachePolicy)
         
-        XCTAssertTrue(self.cellOperation.request!.timeoutInterval == 60.0)
+        XCTAssert(self.cellOperation.request!.timeoutInterval == 60.0)
         
         self.cell.didSetNeedsLayout = false
         
         self.cellOperation.completionHandler!(self.image, nil)
         
-        XCTAssertTrue(self.cell.imageView!.image! === self.image)
+        XCTAssert(self.cell.imageView!.image! === self.image)
         
-        XCTAssertTrue(self.cell.didSetNeedsLayout)
+        XCTAssert(self.cell.didSetNeedsLayout)
         
     }
     
@@ -148,7 +148,7 @@ extension TableViewCellTestCase {
     
     func testClass() {
         
-        XCTAssertTrue(INV_TableViewCell.operationClass()! === INV_NetworkImageOperation.self)
+        XCTAssert(INV_TableViewCell.operationClass()! === INV_NetworkImageOperation.self)
         
     }
     

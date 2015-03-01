@@ -108,9 +108,9 @@ extension NetworkJSONHandlerTestCase {
     
     func testClass() {
         
-        XCTAssertTrue(INV_NetworkJSONHandler.dataHandlerClass()! === INV_NetworkDataHandler.self)
+        XCTAssert(INV_NetworkJSONHandler.dataHandlerClass()! === INV_NetworkDataHandler.self)
         
-        XCTAssertTrue(INV_NetworkJSONHandler.jsonSerializationClass()! === NSJSONSerialization.self)
+        XCTAssert(INV_NetworkJSONHandler.jsonSerializationClass()! === NSJSONSerialization.self)
         
     }
     
@@ -122,11 +122,11 @@ extension NetworkJSONHandlerTestCase {
         
         NetworkJSONHandler_DataHandlerTestDouble_Error = ErrorTestDouble()
         
-        XCTAssertTrue(NetworkJSONHandlerTestDouble.jsonWithResponse(self.response, error: &self.error) == nil)
+        XCTAssert(NetworkJSONHandlerTestDouble.jsonWithResponse(self.response, error: &self.error) == nil)
         
-        XCTAssertTrue(NetworkJSONHandler_DataHandlerTestDouble_Response! === self.response)
+        XCTAssert(NetworkJSONHandler_DataHandlerTestDouble_Response! === self.response)
         
-        XCTAssertTrue(self.error! === NetworkJSONHandler_DataHandlerTestDouble_Error)
+        XCTAssert(self.error! === NetworkJSONHandler_DataHandlerTestDouble_Error)
         
     }
     
@@ -138,15 +138,15 @@ extension NetworkJSONHandlerTestCase {
         
         NetworkJSONHandler_JSONSerializationTestDouble_Error = ErrorTestDouble()
         
-        XCTAssertTrue(NetworkJSONHandlerTestDouble.jsonWithResponse(self.response, error: &self.error)! === NetworkJSONHandler_JSONSerializationTestDouble_JSON)
+        XCTAssert(NetworkJSONHandlerTestDouble.jsonWithResponse(self.response, error: &self.error)! === NetworkJSONHandler_JSONSerializationTestDouble_JSON)
         
-        XCTAssertTrue(NetworkJSONHandler_JSONSerializationTestDouble_Data! === NetworkJSONHandler_DataHandlerTestDouble_Data)
+        XCTAssert(NetworkJSONHandler_JSONSerializationTestDouble_Data! === NetworkJSONHandler_DataHandlerTestDouble_Data)
         
-        XCTAssertTrue(NetworkJSONHandler_JSONSerializationTestDouble_Options!.rawValue == 0)
+        XCTAssert(NetworkJSONHandler_JSONSerializationTestDouble_Options!.rawValue == 0)
         
-        XCTAssertTrue(NetworkJSONHandler_DataHandlerTestDouble_Response! === self.response)
+        XCTAssert(NetworkJSONHandler_DataHandlerTestDouble_Response! === self.response)
         
-        XCTAssertTrue(self.error! === NetworkJSONHandler_JSONSerializationTestDouble_Error)
+        XCTAssert(self.error! === NetworkJSONHandler_JSONSerializationTestDouble_Error)
         
     }
     

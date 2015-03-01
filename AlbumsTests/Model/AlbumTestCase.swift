@@ -52,13 +52,13 @@ extension AlbumTestCase {
         
         let album = INV_Album(dictionary: dictionary)
         
-        XCTAssertTrue(album.artist == ((dictionary["im:artist"] as! NSDictionary)["label"] as! String))
+        XCTAssert(album.artist == ((dictionary["im:artist"] as! NSDictionary)["label"] as! String))
         
-        XCTAssertTrue(album.image == (((dictionary["im:image"] as! NSArray)[2] as! NSDictionary)["label"] as! String))
+        XCTAssert(album.image == (((dictionary["im:image"] as! NSArray)[2] as! NSDictionary)["label"] as! String))
         
-        XCTAssertTrue(album.link == (((dictionary["link"] as! NSDictionary)["attributes"] as! NSDictionary)["href"] as! String))
+        XCTAssert(album.link == (((dictionary["link"] as! NSDictionary)["attributes"] as! NSDictionary)["href"] as! String))
         
-        XCTAssertTrue(album.name == ((dictionary["im:name"] as! NSDictionary)["label"] as! String))
+        XCTAssert(album.name == ((dictionary["im:name"] as! NSDictionary)["label"] as! String))
         
     }
     
