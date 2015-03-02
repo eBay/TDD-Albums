@@ -112,6 +112,22 @@ final class NetworkJSONOperationTestCase: XCTestCase {
 
 extension NetworkJSONOperationTestCase {
     
+    func testCancel() {
+        
+        self.operation.startWithRequest(nil, completionHandler: nil)
+        
+        let task = NetworkJSONOperation_TaskTestDouble_Self!
+        
+        self.operation.cancel()
+        
+        XCTAssert(task.didCancel)
+        
+    }
+    
+}
+
+extension NetworkJSONOperationTestCase {
+    
     func testClass() {
         
         XCTAssert(TDD_NetworkJSONOperation.jsonHandlerClass()! === TDD_NetworkJSONHandler.self)

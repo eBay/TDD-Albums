@@ -49,6 +49,12 @@ typedef void (^TDD_NetworkJSONOperation_CompletionHandler)(id, NSError *);
 
 @end
 
+@interface TDD_NetworkJSONOperation (Cancel)
+
+- (void)cancel;
+
+@end
+
 @interface TDD_NetworkJSONOperation (Class)
 
 + (Class <TDD_NetworkJSONOperation_JSONHandlerType>)jsonHandlerClass;

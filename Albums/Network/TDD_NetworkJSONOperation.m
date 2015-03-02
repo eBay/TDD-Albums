@@ -25,12 +25,29 @@
 //
 
 #import "TDD_NetworkJSONOperation.h"
+#import "TDD_Shared.h"
+
+@interface TDD_NetworkJSONOperation ()
+
+@property (nonatomic, strong) id <TDD_NetworkJSONOperation_TaskType> task;
+
+@end
 
 @implementation TDD_NetworkJSONOperation
 
 - (id <TDD_NetworkJSONOperation_TaskType>)task {
     
-    return [[[[self class] taskClass] alloc] init];
+    return TDD_LazyPropertyWithClass((self->_task), [[self class] taskClass]);
+    
+}
+
+@end
+
+@implementation TDD_NetworkJSONOperation (Cancel)
+
+- (void)cancel {
+    
+    [[self task] cancel];
     
 }
 
