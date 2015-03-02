@@ -86,9 +86,15 @@ final class NetworkJSONOperation_TaskTestDouble: NSObject, TDD_NetworkJSONOperat
 
 final class NetworkJSONOperationTestCase: XCTestCase {
     
+    lazy var data = DataTestDouble()
+    
+    lazy var error = ErrorTestDouble()
+    
     lazy var operation = NetworkJSONOperationTestDouble()
     
     lazy var request = RequestTestDouble()
+    
+    lazy var response = ResponseTestDouble()
     
     override func tearDown() {
         
@@ -118,9 +124,21 @@ extension NetworkJSONOperationTestCase {
 
 extension NetworkJSONOperationTestCase {
     
+    func assertJSONHandler() {
+        
+        XCTAssert(NetworkJSONOperation_JSONHandlerTestDouble_Response!.data! === self.data)
+        
+        XCTAssert(NetworkJSONOperation_JSONHandlerTestDouble_Response!.error! === self.error)
+        
+        XCTAssert(NetworkJSONOperation_JSONHandlerTestDouble_Response!.response! === self.response)
+        
+    }
+    
     func assertTask() {
         
         XCTAssert(NetworkJSONOperation_TaskTestDouble_Self!.request! === self.request)
+        
+        NetworkJSONOperation_TaskTestDouble_Self!.completionHandler!(self.data, self.response, self.error)
         
     }
     
@@ -129,6 +147,8 @@ extension NetworkJSONOperationTestCase {
         self.operation.startWithRequest(self.request, completionHandler: nil)
         
         self.assertTask()
+        
+        self.assertJSONHandler()
         
     }
     

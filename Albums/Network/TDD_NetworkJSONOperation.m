@@ -56,7 +56,29 @@
 
 - (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkJSONOperation_CompletionHandler)completionHandler {
     
-    [[self task] startWithRequest: request completionHandler: 0];
+    TDD_NetworkJSONOperation *__weak weakSelf = self;
+    
+    [[self task] startWithRequest: request completionHandler: ^void (NSData *data, NSURLResponse *response, NSError *error) {
+        
+        TDD_NetworkJSONOperation *strongSelf = weakSelf;
+        
+        if (strongSelf) {
+            
+            TDD_NetworkResponse *jsonResponse = [[TDD_NetworkResponse alloc] init];
+            
+            [jsonResponse setData: data];
+            
+            [jsonResponse setResponse: response];
+            
+            [jsonResponse setError: error];
+            
+            NSError *jsonError = 0;
+            
+            [[[strongSelf class] jsonHandlerClass] jsonWithResponse: jsonResponse error: &jsonError];
+            
+        }
+        
+    }];
     
 }
 
