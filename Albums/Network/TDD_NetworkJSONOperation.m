@@ -28,6 +28,12 @@
 
 @implementation TDD_NetworkJSONOperation
 
+- (id <TDD_NetworkJSONOperation_TaskType>)task {
+    
+    return [[[[self class] taskClass] alloc] init];
+    
+}
+
 @end
 
 @implementation TDD_NetworkJSONOperation (Class)
@@ -50,7 +56,7 @@
 
 - (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkJSONOperation_CompletionHandler)completionHandler {
     
-    
+    [[self task] startWithRequest: request completionHandler: 0];
     
 }
 

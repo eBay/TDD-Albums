@@ -26,9 +26,81 @@
 
 import XCTest
 
+var NetworkJSONOperation_JSONHandlerTestDouble_Error: NSError?
+
+var NetworkJSONOperation_JSONHandlerTestDouble_JSON: NSObject?
+
+var NetworkJSONOperation_JSONHandlerTestDouble_Response: TDD_NetworkResponse?
+
+final class NetworkJSONOperation_JSONHandlerTestDouble: NSObject, TDD_NetworkJSONOperation_JSONHandlerType {
+    
+    class func jsonWithResponse(response: TDD_NetworkResponse, error: NSErrorPointer) -> AnyObject? {
+        
+        NetworkJSONOperation_JSONHandlerTestDouble_Response = response
+        
+        if error != nil {
+            
+            error.memory = NetworkJSONOperation_JSONHandlerTestDouble_Error
+            
+        }
+        
+        return NetworkJSONOperation_JSONHandlerTestDouble_JSON
+        
+    }
+    
+}
+
+var NetworkJSONOperation_TaskTestDouble_Self: NetworkJSONOperation_TaskTestDouble?
+
+final class NetworkJSONOperation_TaskTestDouble: NSObject, TDD_NetworkJSONOperation_TaskType {
+    
+    override init() {
+        
+        super.init()
+        
+        NetworkJSONOperation_TaskTestDouble_Self = self
+        
+    }
+    
+    var completionHandler: TDD_NetworkTask_CompletionHandler?
+    
+    var didCancel = false
+    
+    var request: NSURLRequest?
+    
+    func cancel() {
+        
+        self.didCancel = true
+        
+    }
+    
+    func startWithRequest(request: NSURLRequest, completionHandler: TDD_NetworkTask_CompletionHandler) {
+        
+        self.request = request
+        
+        self.completionHandler = completionHandler
+        
+    }
+    
+}
+
 final class NetworkJSONOperationTestCase: XCTestCase {
     
-    lazy var operation = TDD_NetworkJSONOperation()
+    lazy var operation = NetworkJSONOperationTestDouble()
+    
+    lazy var request = RequestTestDouble()
+    
+    override func tearDown() {
+        
+        NetworkJSONOperation_JSONHandlerTestDouble_Error = nil
+        
+        NetworkJSONOperation_JSONHandlerTestDouble_JSON = nil
+        
+        NetworkJSONOperation_JSONHandlerTestDouble_Response = nil
+        
+        NetworkJSONOperation_TaskTestDouble_Self = nil
+        
+    }
     
 }
 
@@ -46,9 +118,33 @@ extension NetworkJSONOperationTestCase {
 
 extension NetworkJSONOperationTestCase {
     
+    func assertTask() {
+        
+        XCTAssert(NetworkJSONOperation_TaskTestDouble_Self!.request! === self.request)
+        
+    }
+    
     func testStart() {
         
-        self.operation.startWithRequest(nil, completionHandler: nil)
+        self.operation.startWithRequest(self.request, completionHandler: nil)
+        
+        self.assertTask()
+        
+    }
+    
+}
+
+final class NetworkJSONOperationTestDouble: TDD_NetworkJSONOperation {
+    
+    override class func jsonHandlerClass() -> AnyClass {
+        
+        return NetworkJSONOperation_JSONHandlerTestDouble.self
+        
+    }
+    
+    override class func taskClass() -> AnyClass {
+        
+        return NetworkJSONOperation_TaskTestDouble.self
         
     }
     
