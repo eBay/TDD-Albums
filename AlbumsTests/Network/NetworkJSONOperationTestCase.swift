@@ -124,6 +124,14 @@ extension NetworkJSONOperationTestCase {
 
 extension NetworkJSONOperationTestCase {
     
+    func assertJSON(json: AnyObject, error: NSError) {
+        
+        XCTAssert(json === NetworkJSONOperation_JSONHandlerTestDouble_JSON)
+        
+        XCTAssert(error === NetworkJSONOperation_JSONHandlerTestDouble_Error)
+        
+    }
+    
     func assertJSONHandler() {
         
         XCTAssert(NetworkJSONOperation_JSONHandlerTestDouble_Response!.data! === self.data)
@@ -144,11 +152,25 @@ extension NetworkJSONOperationTestCase {
     
     func testStart() {
         
-        self.operation.startWithRequest(self.request, completionHandler: nil)
+        NetworkJSONOperation_JSONHandlerTestDouble_JSON = NSObject()
+        
+        NetworkJSONOperation_JSONHandlerTestDouble_Error = ErrorTestDouble()
+        
+        var didAssertJSON = false
+        
+        self.operation.startWithRequest(self.request) {(json, error) in
+            
+            self.assertJSON(json, error: error)
+            
+            didAssertJSON = true
+            
+        }
         
         self.assertTask()
         
         self.assertJSONHandler()
+        
+        XCTAssert(didAssertJSON)
         
     }
     

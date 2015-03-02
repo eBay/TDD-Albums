@@ -74,7 +74,7 @@
             
             NSError *jsonError = 0;
             
-            [[[strongSelf class] jsonHandlerClass] jsonWithResponse: jsonResponse error: &jsonError];
+            completionHandler([[[strongSelf class] jsonHandlerClass] jsonWithResponse: jsonResponse error: &jsonError], jsonError);
             
         }
         
