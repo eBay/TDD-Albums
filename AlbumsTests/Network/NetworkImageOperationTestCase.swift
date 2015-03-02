@@ -112,6 +112,22 @@ final class NetworkImageOperationTestCase: XCTestCase {
 
 extension NetworkImageOperationTestCase {
     
+    func testCancel() {
+        
+        self.operation.startWithRequest(nil, completionHandler: nil)
+        
+        let task = NetworkImageOperation_TaskTestDouble_Self!
+        
+        self.operation.cancel()
+        
+        XCTAssert(task.didCancel)
+        
+    }
+    
+}
+
+extension NetworkImageOperationTestCase {
+    
     func testClass() {
         
         XCTAssert(TDD_NetworkImageOperation.imageHandlerClass()! === TDD_NetworkImageHandler.self)

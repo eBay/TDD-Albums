@@ -25,12 +25,29 @@
 //
 
 #import "TDD_NetworkImageOperation.h"
+#import "TDD_Shared.h"
+
+@interface TDD_NetworkImageOperation ()
+
+@property (nonatomic, strong) id <TDD_NetworkImageOperation_TaskType> task;
+
+@end
 
 @implementation TDD_NetworkImageOperation
 
 - (id <TDD_NetworkImageOperation_TaskType>)task {
     
-    return [[[[self class] taskClass] alloc] init];
+    return TDD_LazyPropertyWithClass((self->_task), [[self class] taskClass]);
+    
+}
+
+@end
+
+@implementation TDD_NetworkImageOperation (Cancel)
+
+- (void)cancel {
+    
+    [[self task] cancel];
     
 }
 

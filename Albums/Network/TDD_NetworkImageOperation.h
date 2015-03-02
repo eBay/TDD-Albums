@@ -49,6 +49,12 @@ typedef void (^TDD_NetworkImageOperation_CompletionHandler)(id, NSError *);
 
 @end
 
+@interface TDD_NetworkImageOperation (Cancel)
+
+- (void)cancel;
+
+@end
+
 @interface TDD_NetworkImageOperation (Class)
 
 + (Class <TDD_NetworkImageOperation_ImageHandlerType>)imageHandlerClass;
