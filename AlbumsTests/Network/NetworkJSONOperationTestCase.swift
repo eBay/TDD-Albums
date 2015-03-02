@@ -34,6 +34,16 @@ final class NetworkJSONOperationTestCase: XCTestCase {
 
 extension NetworkJSONOperationTestCase {
     
+    func testClass() {
+        
+        XCTAssert(TDD_NetworkJSONOperation.jsonHandlerClass()! === TDD_NetworkJSONHandler.self)
+        
+    }
+    
+}
+
+extension NetworkJSONOperationTestCase {
+    
     func testStart() {
         
         self.operation.startWithRequest(nil, completionHandler: nil)

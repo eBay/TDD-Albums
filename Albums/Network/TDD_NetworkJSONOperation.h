@@ -24,12 +24,24 @@
 //  THE SOFTWARE.
 //
 
-#import "TDD_NetworkDataHandler.h"
+#import "TDD_NetworkJSONHandler.h"
 #import "TDD_NetworkTask.h"
+
+@protocol TDD_NetworkJSONOperation_JSONHandlerType <NSObject>
+
++ (id)jsonWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error;
+
+@end
 
 typedef void (^TDD_NetworkJSONOperation_CompletionHandler)(id, NSError *);
 
 @interface TDD_NetworkJSONOperation: NSObject
+
+@end
+
+@interface TDD_NetworkJSONOperation (Class)
+
++ (Class <TDD_NetworkJSONOperation_JSONHandlerType>)jsonHandlerClass;
 
 @end
 

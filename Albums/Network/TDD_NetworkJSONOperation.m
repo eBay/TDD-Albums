@@ -30,6 +30,16 @@
 
 @end
 
+@implementation TDD_NetworkJSONOperation (Class)
+
++ (Class <TDD_NetworkJSONOperation_JSONHandlerType>)jsonHandlerClass {
+    
+    return [TDD_NetworkJSONHandler class];
+    
+}
+
+@end
+
 @implementation TDD_NetworkJSONOperation (Start)
 
 - (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkJSONOperation_CompletionHandler)completionHandler {
