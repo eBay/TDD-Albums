@@ -26,6 +26,9 @@
 		1DD1D3481A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD1D3471A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift */; };
 		1DD1D34B1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD1D34A1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m */; };
 		1DDB5F831A91D654005C979F /* TDD_NetworkJSONHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB5F821A91D654005C979F /* TDD_NetworkJSONHandler.m */; };
+		1DDE5BF71AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BF61AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m */; };
+		1DDE5BF81AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BF61AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m */; };
+		1DDE5BFA1AA4201F0075C0C8 /* NetworkJSONOperationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BF91AA4201F0075C0C8 /* NetworkJSONOperationTestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,9 @@
 		1DDB5F811A91D654005C979F /* TDD_NetworkJSONHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_NetworkJSONHandler.h; sourceTree = "<group>"; };
 		1DDB5F821A91D654005C979F /* TDD_NetworkJSONHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDD_NetworkJSONHandler.m; sourceTree = "<group>"; };
 		1DDB5F841A91D6A3005C979F /* NetworkJSONHandlerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkJSONHandlerTestCase.swift; sourceTree = "<group>"; };
+		1DDE5BF51AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_NetworkJSONOperation.h; sourceTree = "<group>"; };
+		1DDE5BF61AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDD_NetworkJSONOperation.m; sourceTree = "<group>"; };
+		1DDE5BF91AA4201F0075C0C8 /* NetworkJSONOperationTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkJSONOperationTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,8 @@
 				1D7284F01AA05D9A00F9C61E /* TDD_NetworkImageHandler.m */,
 				1DDB5F811A91D654005C979F /* TDD_NetworkJSONHandler.h */,
 				1DDB5F821A91D654005C979F /* TDD_NetworkJSONHandler.m */,
+				1DDE5BF51AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.h */,
+				1DDE5BF61AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m */,
 				1DD1D3391A8C885B00C4A775 /* TDD_NetworkResponse.h */,
 				1DD1D33A1A8C885B00C4A775 /* TDD_NetworkResponse.m */,
 				1D7284F51AA1931300F9C61E /* TDD_NetworkSession.h */,
@@ -182,6 +190,7 @@
 				1DD1D3471A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift */,
 				1D7284F31AA05DE200F9C61E /* NetworkImageHandlerTestCase.swift */,
 				1DDB5F841A91D6A3005C979F /* NetworkJSONHandlerTestCase.swift */,
+				1DDE5BF91AA4201F0075C0C8 /* NetworkJSONOperationTestCase.swift */,
 				1D7284F91AA1933D00F9C61E /* NetworkSessionTestCase.swift */,
 				1DBCC20A1AA3263E005F8DBC /* NetworkTaskTestCase.swift */,
 			);
@@ -277,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DBCC2081AA32623005F8DBC /* TDD_NetworkTask.m in Sources */,
+				1DDE5BF71AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m in Sources */,
 				1D7284F71AA1931300F9C61E /* TDD_NetworkSession.m in Sources */,
 				1DDB5F831A91D654005C979F /* TDD_NetworkJSONHandler.m in Sources */,
 				1DD1D34B1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m in Sources */,
@@ -293,6 +303,7 @@
 				1DBCC20B1AA3263E005F8DBC /* NetworkTaskTestCase.swift in Sources */,
 				1D7284F81AA1931300F9C61E /* TDD_NetworkSession.m in Sources */,
 				1D09A9DF1A91DB9700AF91B3 /* TDD_NetworkJSONHandler.m in Sources */,
+				1DDE5BFA1AA4201F0075C0C8 /* NetworkJSONOperationTestCase.swift in Sources */,
 				1D7284F41AA05DE200F9C61E /* NetworkImageHandlerTestCase.swift in Sources */,
 				1D7284F21AA05D9A00F9C61E /* TDD_NetworkImageHandler.m in Sources */,
 				1D09A9DD1A91DB2800AF91B3 /* TDD_NetworkResponse.m in Sources */,
@@ -300,6 +311,7 @@
 				1D09A9DC1A91DB2500AF91B3 /* TDD_NetworkDataHandler.m in Sources */,
 				1D7284FA1AA1933D00F9C61E /* NetworkSessionTestCase.swift in Sources */,
 				1D09A9DE1A91DB8E00AF91B3 /* NetworkJSONHandlerTestCase.swift in Sources */,
+				1DDE5BF81AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m in Sources */,
 				1DD1D3481A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
