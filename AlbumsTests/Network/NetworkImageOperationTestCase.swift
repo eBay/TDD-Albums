@@ -34,6 +34,16 @@ final class NetworkImageOperationTestCase: XCTestCase {
 
 extension NetworkImageOperationTestCase {
     
+    func testClass() {
+        
+        XCTAssert(TDD_NetworkImageOperation.imageHandlerClass()! === TDD_NetworkImageHandler.self)
+        
+    }
+    
+}
+
+extension NetworkImageOperationTestCase {
+    
     func testStart() {
         
         self.operation.startWithRequest(nil, completionHandler: nil)

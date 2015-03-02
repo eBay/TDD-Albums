@@ -30,6 +30,16 @@
 
 @end
 
+@implementation TDD_NetworkImageOperation (Class)
+
++ (Class <TDD_NetworkImageOperation_ImageHandlerType>)imageHandlerClass {
+    
+    return [TDD_NetworkImageHandler class];
+    
+}
+
+@end
+
 @implementation TDD_NetworkImageOperation (Start)
 
 - (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkImageOperation_CompletionHandler)completionHandler {

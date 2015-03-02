@@ -27,9 +27,21 @@
 #import "TDD_NetworkImageHandler.h"
 #import "TDD_NetworkTask.h"
 
+@protocol TDD_NetworkImageOperation_ImageHandlerType <NSObject>
+
++ (id)imageWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error;
+
+@end
+
 typedef void (^TDD_NetworkImageOperation_CompletionHandler)(id, NSError *);
 
 @interface TDD_NetworkImageOperation: NSObject
+
+@end
+
+@interface TDD_NetworkImageOperation (Class)
+
++ (Class <TDD_NetworkImageOperation_ImageHandlerType>)imageHandlerClass;
 
 @end
 
