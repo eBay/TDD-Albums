@@ -38,6 +38,8 @@ extension NetworkJSONOperationTestCase {
         
         XCTAssert(TDD_NetworkJSONOperation.jsonHandlerClass()! === TDD_NetworkJSONHandler.self)
         
+        XCTAssert(TDD_NetworkJSONOperation.taskClass()! === TDD_NetworkTask.self)
+        
     }
     
 }

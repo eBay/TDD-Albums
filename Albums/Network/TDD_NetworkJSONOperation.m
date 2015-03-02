@@ -38,6 +38,12 @@
     
 }
 
++ (Class <TDD_NetworkJSONOperation_TaskType>)taskClass {
+    
+    return [TDD_NetworkTask class];
+    
+}
+
 @end
 
 @implementation TDD_NetworkJSONOperation (Start)
