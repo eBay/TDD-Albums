@@ -29,6 +29,9 @@
 		1DDE5BF71AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BF61AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m */; };
 		1DDE5BF81AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BF61AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m */; };
 		1DDE5BFA1AA4201F0075C0C8 /* NetworkJSONOperationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BF91AA4201F0075C0C8 /* NetworkJSONOperationTestCase.swift */; };
+		1DDE5BFD1AA454610075C0C8 /* TDD_NetworkImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BFC1AA454610075C0C8 /* TDD_NetworkImageOperation.m */; };
+		1DDE5BFE1AA454610075C0C8 /* TDD_NetworkImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BFC1AA454610075C0C8 /* TDD_NetworkImageOperation.m */; };
+		1DDE5C001AA454870075C0C8 /* NetworkImageOperationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BFF1AA454870075C0C8 /* NetworkImageOperationTestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +83,9 @@
 		1DDE5BF51AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_NetworkJSONOperation.h; sourceTree = "<group>"; };
 		1DDE5BF61AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDD_NetworkJSONOperation.m; sourceTree = "<group>"; };
 		1DDE5BF91AA4201F0075C0C8 /* NetworkJSONOperationTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkJSONOperationTestCase.swift; sourceTree = "<group>"; };
+		1DDE5BFB1AA454610075C0C8 /* TDD_NetworkImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_NetworkImageOperation.h; sourceTree = "<group>"; };
+		1DDE5BFC1AA454610075C0C8 /* TDD_NetworkImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDD_NetworkImageOperation.m; sourceTree = "<group>"; };
+		1DDE5BFF1AA454870075C0C8 /* NetworkImageOperationTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkImageOperationTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +176,8 @@
 				1DD1D34A1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m */,
 				1D7284EF1AA05D9A00F9C61E /* TDD_NetworkImageHandler.h */,
 				1D7284F01AA05D9A00F9C61E /* TDD_NetworkImageHandler.m */,
+				1DDE5BFB1AA454610075C0C8 /* TDD_NetworkImageOperation.h */,
+				1DDE5BFC1AA454610075C0C8 /* TDD_NetworkImageOperation.m */,
 				1DDB5F811A91D654005C979F /* TDD_NetworkJSONHandler.h */,
 				1DDB5F821A91D654005C979F /* TDD_NetworkJSONHandler.m */,
 				1DDE5BF51AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.h */,
@@ -189,6 +197,7 @@
 			children = (
 				1DD1D3471A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift */,
 				1D7284F31AA05DE200F9C61E /* NetworkImageHandlerTestCase.swift */,
+				1DDE5BFF1AA454870075C0C8 /* NetworkImageOperationTestCase.swift */,
 				1DDB5F841A91D6A3005C979F /* NetworkJSONHandlerTestCase.swift */,
 				1DDE5BF91AA4201F0075C0C8 /* NetworkJSONOperationTestCase.swift */,
 				1D7284F91AA1933D00F9C61E /* NetworkSessionTestCase.swift */,
@@ -292,6 +301,7 @@
 				1DD1D34B1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m in Sources */,
 				1D7284F11AA05D9A00F9C61E /* TDD_NetworkImageHandler.m in Sources */,
 				1DD1D33B1A8C885B00C4A775 /* TDD_NetworkResponse.m in Sources */,
+				1DDE5BFD1AA454610075C0C8 /* TDD_NetworkImageOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,12 +313,14 @@
 				1DBCC20B1AA3263E005F8DBC /* NetworkTaskTestCase.swift in Sources */,
 				1D7284F81AA1931300F9C61E /* TDD_NetworkSession.m in Sources */,
 				1D09A9DF1A91DB9700AF91B3 /* TDD_NetworkJSONHandler.m in Sources */,
+				1DDE5C001AA454870075C0C8 /* NetworkImageOperationTestCase.swift in Sources */,
 				1DDE5BFA1AA4201F0075C0C8 /* NetworkJSONOperationTestCase.swift in Sources */,
 				1D7284F41AA05DE200F9C61E /* NetworkImageHandlerTestCase.swift in Sources */,
 				1D7284F21AA05D9A00F9C61E /* TDD_NetworkImageHandler.m in Sources */,
 				1D09A9DD1A91DB2800AF91B3 /* TDD_NetworkResponse.m in Sources */,
 				1DCA29741A8DD8C8008050A6 /* Shared.swift in Sources */,
 				1D09A9DC1A91DB2500AF91B3 /* TDD_NetworkDataHandler.m in Sources */,
+				1DDE5BFE1AA454610075C0C8 /* TDD_NetworkImageOperation.m in Sources */,
 				1D7284FA1AA1933D00F9C61E /* NetworkSessionTestCase.swift in Sources */,
 				1D09A9DE1A91DB8E00AF91B3 /* NetworkJSONHandlerTestCase.swift in Sources */,
 				1DDE5BF81AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m in Sources */,
