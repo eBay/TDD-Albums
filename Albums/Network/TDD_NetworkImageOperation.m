@@ -28,6 +28,12 @@
 
 @implementation TDD_NetworkImageOperation
 
+- (id <TDD_NetworkImageOperation_TaskType>)task {
+    
+    return [[[[self class] taskClass] alloc] init];
+    
+}
+
 @end
 
 @implementation TDD_NetworkImageOperation (Class)
@@ -50,7 +56,7 @@
 
 - (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkImageOperation_CompletionHandler)completionHandler {
     
-    
+    [[self task] startWithRequest: request completionHandler: 0];
     
 }
 

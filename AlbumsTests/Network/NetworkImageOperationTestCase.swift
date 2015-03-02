@@ -26,9 +26,81 @@
 
 import XCTest
 
+var NetworkImageOperation_ImageHandlerTestDouble_Error: NSError?
+
+var NetworkImageOperation_ImageHandlerTestDouble_Image: NSObject?
+
+var NetworkImageOperation_ImageHandlerTestDouble_Response: TDD_NetworkResponse?
+
+final class NetworkImageOperation_ImageHandlerTestDouble: NSObject, TDD_NetworkImageOperation_ImageHandlerType {
+    
+    class func imageWithResponse(response: TDD_NetworkResponse, error: NSErrorPointer) -> AnyObject? {
+        
+        NetworkImageOperation_ImageHandlerTestDouble_Response = response
+        
+        if error != nil {
+            
+            error.memory = NetworkImageOperation_ImageHandlerTestDouble_Error
+            
+        }
+        
+        return NetworkImageOperation_ImageHandlerTestDouble_Image
+        
+    }
+    
+}
+
+var NetworkImageOperation_TaskTestDouble_Self: NetworkImageOperation_TaskTestDouble?
+
+final class NetworkImageOperation_TaskTestDouble: NSObject, TDD_NetworkImageOperation_TaskType {
+    
+    override init() {
+        
+        super.init()
+        
+        NetworkImageOperation_TaskTestDouble_Self = self
+        
+    }
+    
+    var completionHandler: TDD_NetworkTask_CompletionHandler?
+    
+    var didCancel = false
+    
+    var request: NSURLRequest?
+    
+    func cancel() {
+        
+        self.didCancel = true
+        
+    }
+    
+    func startWithRequest(request: NSURLRequest, completionHandler: TDD_NetworkTask_CompletionHandler) {
+        
+        self.request = request
+        
+        self.completionHandler = completionHandler
+        
+    }
+    
+}
+
 final class NetworkImageOperationTestCase: XCTestCase {
     
-    lazy var operation = TDD_NetworkImageOperation()
+    lazy var operation = NetworkImageOperationTestDouble()
+    
+    lazy var request = RequestTestDouble()
+    
+    override func tearDown() {
+        
+        NetworkImageOperation_ImageHandlerTestDouble_Error = nil
+        
+        NetworkImageOperation_ImageHandlerTestDouble_Image = nil
+        
+        NetworkImageOperation_ImageHandlerTestDouble_Response = nil
+        
+        NetworkImageOperation_TaskTestDouble_Self = nil
+        
+    }
     
 }
 
@@ -46,9 +118,33 @@ extension NetworkImageOperationTestCase {
 
 extension NetworkImageOperationTestCase {
     
+    func assertTask() {
+        
+        XCTAssert(NetworkImageOperation_TaskTestDouble_Self!.request! === self.request)
+        
+    }
+    
     func testStart() {
         
-        self.operation.startWithRequest(nil, completionHandler: nil)
+        self.operation.startWithRequest(self.request, completionHandler: nil)
+        
+        self.assertTask()
+        
+    }
+    
+}
+
+final class NetworkImageOperationTestDouble: TDD_NetworkImageOperation {
+    
+    override class func imageHandlerClass() -> AnyClass {
+        
+        return NetworkImageOperation_ImageHandlerTestDouble.self
+        
+    }
+    
+    override class func taskClass() -> AnyClass {
+        
+        return NetworkImageOperation_TaskTestDouble.self
         
     }
     
