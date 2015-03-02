@@ -74,7 +74,7 @@
             
             NSError *imageError = 0;
             
-            [[[strongSelf class] imageHandlerClass] imageWithResponse: imageResponse error: &imageError];
+            completionHandler([[[strongSelf class] imageHandlerClass] imageWithResponse: imageResponse error: &imageError], imageError);
             
         }
         

@@ -124,6 +124,14 @@ extension NetworkImageOperationTestCase {
 
 extension NetworkImageOperationTestCase {
     
+    func assertImage(image: AnyObject, error: NSError) {
+        
+        XCTAssert(image === NetworkImageOperation_ImageHandlerTestDouble_Image)
+        
+        XCTAssert(error === NetworkImageOperation_ImageHandlerTestDouble_Error)
+        
+    }
+    
     func assertImageHandler() {
         
         XCTAssert(NetworkImageOperation_ImageHandlerTestDouble_Response!.data! === self.data)
@@ -144,11 +152,25 @@ extension NetworkImageOperationTestCase {
     
     func testStart() {
         
-        self.operation.startWithRequest(self.request, completionHandler: nil)
+        NetworkImageOperation_ImageHandlerTestDouble_Image = NSObject()
+        
+        NetworkImageOperation_ImageHandlerTestDouble_Error = ErrorTestDouble()
+        
+        var didAssertImage = false
+        
+        self.operation.startWithRequest(self.request) {(image, error) in
+            
+            self.assertImage(image, error: error)
+            
+            didAssertImage = true
+            
+        }
         
         self.assertTask()
         
         self.assertImageHandler()
+        
+        XCTAssert(didAssertImage)
         
     }
     
