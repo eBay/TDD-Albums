@@ -86,9 +86,15 @@ final class NetworkImageOperation_TaskTestDouble: NSObject, TDD_NetworkImageOper
 
 final class NetworkImageOperationTestCase: XCTestCase {
     
+    lazy var data = DataTestDouble()
+    
+    lazy var error = ErrorTestDouble()
+    
     lazy var operation = NetworkImageOperationTestDouble()
     
     lazy var request = RequestTestDouble()
+    
+    lazy var response = ResponseTestDouble()
     
     override func tearDown() {
         
@@ -118,9 +124,21 @@ extension NetworkImageOperationTestCase {
 
 extension NetworkImageOperationTestCase {
     
+    func assertImageHandler() {
+        
+        XCTAssert(NetworkImageOperation_ImageHandlerTestDouble_Response!.data! === self.data)
+        
+        XCTAssert(NetworkImageOperation_ImageHandlerTestDouble_Response!.error! === self.error)
+        
+        XCTAssert(NetworkImageOperation_ImageHandlerTestDouble_Response!.response! === self.response)
+        
+    }
+    
     func assertTask() {
         
         XCTAssert(NetworkImageOperation_TaskTestDouble_Self!.request! === self.request)
+        
+        NetworkImageOperation_TaskTestDouble_Self!.completionHandler!(self.data, self.response, self.error)
         
     }
     
@@ -129,6 +147,8 @@ extension NetworkImageOperationTestCase {
         self.operation.startWithRequest(self.request, completionHandler: nil)
         
         self.assertTask()
+        
+        self.assertImageHandler()
         
     }
     

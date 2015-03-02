@@ -56,7 +56,29 @@
 
 - (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkImageOperation_CompletionHandler)completionHandler {
     
-    [[self task] startWithRequest: request completionHandler: 0];
+    TDD_NetworkImageOperation *__weak weakSelf = self;
+    
+    [[self task] startWithRequest: request completionHandler: ^void (NSData *data, NSURLResponse *response, NSError *error) {
+        
+        TDD_NetworkImageOperation *strongSelf = weakSelf;
+        
+        if (strongSelf) {
+            
+            TDD_NetworkResponse *imageResponse = [[TDD_NetworkResponse alloc] init];
+            
+            [imageResponse setData: data];
+            
+            [imageResponse setResponse: response];
+            
+            [imageResponse setError: error];
+            
+            NSError *imageError = 0;
+            
+            [[[strongSelf class] imageHandlerClass] imageWithResponse: imageResponse error: &imageError];
+            
+        }
+        
+    }];
     
 }
 
