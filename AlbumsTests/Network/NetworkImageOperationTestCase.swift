@@ -38,6 +38,8 @@ extension NetworkImageOperationTestCase {
         
         XCTAssert(TDD_NetworkImageOperation.imageHandlerClass()! === TDD_NetworkImageHandler.self)
         
+        XCTAssert(TDD_NetworkImageOperation.taskClass()! === TDD_NetworkTask.self)
+        
     }
     
 }

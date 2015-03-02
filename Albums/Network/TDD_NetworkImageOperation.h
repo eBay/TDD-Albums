@@ -33,6 +33,16 @@
 
 @end
 
+@protocol TDD_NetworkImageOperation_TaskType <NSObject>
+
++ (id <TDD_NetworkImageOperation_TaskType>)alloc;
+
+- (void)cancel;
+- (id <TDD_NetworkImageOperation_TaskType>)init;
+- (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkTask_CompletionHandler)completionHandler;
+
+@end
+
 typedef void (^TDD_NetworkImageOperation_CompletionHandler)(id, NSError *);
 
 @interface TDD_NetworkImageOperation: NSObject
@@ -42,6 +52,7 @@ typedef void (^TDD_NetworkImageOperation_CompletionHandler)(id, NSError *);
 @interface TDD_NetworkImageOperation (Class)
 
 + (Class <TDD_NetworkImageOperation_ImageHandlerType>)imageHandlerClass;
++ (Class <TDD_NetworkImageOperation_TaskType>)taskClass;
 
 @end
 
