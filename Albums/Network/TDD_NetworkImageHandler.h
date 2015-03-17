@@ -26,7 +26,7 @@
 
 @import UIKit;
 
-#import "TDD_NetworkDataHandler.h"
+#import "TDD_NetworkHandler.h"
 
 @protocol TDD_NetworkImageHandler_DataHandlerType <NSObject>
 
@@ -50,7 +50,7 @@
 
 @end
 
-@interface TDD_NetworkImageHandler: NSObject
+@interface TDD_NetworkImageHandler: TDD_NetworkHandler
 
 @end
 
