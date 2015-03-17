@@ -50,7 +50,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D398CA81AA2E65B009615F3 /* TDD_Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDD_Shared.h; sourceTree = "<group>"; };
+		1D3B4A191AB7C44400D61DA6 /* TDD_NetworkHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_NetworkHandler.h; sourceTree = "<group>"; };
+		1D3B4A1A1AB7C44400D61DA6 /* TDD_NetworkHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDD_NetworkHandler.m; sourceTree = "<group>"; };
+		1D3B4A1D1AB7CBBC00D61DA6 /* TDD_Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_Shared.h; sourceTree = "<group>"; };
 		1D7284EF1AA05D9A00F9C61E /* TDD_NetworkImageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_NetworkImageHandler.h; sourceTree = "<group>"; };
 		1D7284F01AA05D9A00F9C61E /* TDD_NetworkImageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDD_NetworkImageHandler.m; sourceTree = "<group>"; };
 		1D7284F31AA05DE200F9C61E /* NetworkImageHandlerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkImageHandlerTestCase.swift; sourceTree = "<group>"; };
@@ -94,7 +96,7 @@
 		1D398CA71AA2E65B009615F3 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				1D398CA81AA2E65B009615F3 /* TDD_Shared.h */,
+				1D3B4A1D1AB7CBBC00D61DA6 /* TDD_Shared.h */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
