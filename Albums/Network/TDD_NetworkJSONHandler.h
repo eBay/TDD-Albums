@@ -26,12 +26,6 @@
 
 #import "TDD_NetworkHandler.h"
 
-@protocol TDD_NetworkJSONHandler_DataHandlerType <NSObject>
-
-+ (NSData *)dataWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error;
-
-@end
-
 @protocol TDD_NetworkJSONHandler_JSONSerializationType <NSObject>
 
 + (id)JSONObjectWithData:(NSData *)data options:(NSJSONReadingOptions)options error:(NSError *__autoreleasing*)error;
