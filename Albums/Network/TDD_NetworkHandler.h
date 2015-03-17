@@ -26,6 +26,18 @@
 
 #import "TDD_NetworkDataHandler.h"
 
+@protocol TDD_NetworkHandler_DataHandlerType <NSObject>
+
++ (NSData *)dataWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error;
+
+@end
+
 @interface TDD_NetworkHandler: NSObject
+
+@end
+
+@interface TDD_NetworkHandler (Class)
+
++ (Class <TDD_NetworkHandler_DataHandlerType>)dataHandlerClass;
 
 @end

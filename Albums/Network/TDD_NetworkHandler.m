@@ -29,3 +29,13 @@
 @implementation TDD_NetworkHandler
 
 @end
+
+@implementation TDD_NetworkHandler (Class)
+
++ (Class <TDD_NetworkHandler_DataHandlerType>)dataHandlerClass {
+    
+    return [TDD_NetworkDataHandler class];
+    
+}
+
+@end
