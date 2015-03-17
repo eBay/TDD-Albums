@@ -35,6 +35,8 @@
 
 @implementation TDD_NetworkSession
 
+@synthesize session = _session;
+
 - (id <TDD_NetworkSession_SessionType>)session {
     
     return TDD_LazyPropertyWithExpression((self->_session), {
@@ -47,13 +49,27 @@
     
 }
 
+- (void)setSession:(id <TDD_NetworkSession_SessionType>)session {
+    
+    TDD_PropertySetter((self->_session), session, {
+        
+        [(self->_session) invalidateAndCancel];
+        
+    }, {
+        
+        
+        
+    });
+    
+}
+
 @end
 
 @implementation TDD_NetworkSession (Cancel)
 
 - (void)cancel {
     
-    [[self session] invalidateAndCancel];
+    [self setSession: 0];
     
 }
 
