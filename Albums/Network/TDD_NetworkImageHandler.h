@@ -56,7 +56,6 @@
 
 @interface TDD_NetworkImageHandler (Class)
 
-+ (Class <TDD_NetworkImageHandler_DataHandlerType>)dataHandlerClass;
 + (Class <TDD_NetworkImageHandler_ImageType>)imageClass;
 + (Class <TDD_NetworkImageHandler_ScreenType>)screenClass;
 

@@ -44,7 +44,6 @@
 
 @interface TDD_NetworkJSONHandler (Class)
 
-+ (Class <TDD_NetworkJSONHandler_DataHandlerType>)dataHandlerClass;
 + (Class <TDD_NetworkJSONHandler_JSONSerializationType>)jsonSerializationClass;
 
 @end
