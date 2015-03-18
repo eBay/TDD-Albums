@@ -13,6 +13,7 @@
 		1D09A9DF1A91DB9700AF91B3 /* TDD_NetworkJSONHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB5F821A91D654005C979F /* TDD_NetworkJSONHandler.m */; };
 		1D3B4A1B1AB7C44400D61DA6 /* TDD_NetworkHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3B4A1A1AB7C44400D61DA6 /* TDD_NetworkHandler.m */; };
 		1D3B4A1C1AB7C44400D61DA6 /* TDD_NetworkHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3B4A1A1AB7C44400D61DA6 /* TDD_NetworkHandler.m */; };
+		1D69F5171AB948F1000F2045 /* TDD_NetworkJSONOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BF61AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m */; };
 		1D7284F11AA05D9A00F9C61E /* TDD_NetworkImageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7284F01AA05D9A00F9C61E /* TDD_NetworkImageHandler.m */; };
 		1D7284F21AA05D9A00F9C61E /* TDD_NetworkImageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7284F01AA05D9A00F9C61E /* TDD_NetworkImageHandler.m */; };
 		1D7284F41AA05DE200F9C61E /* NetworkImageHandlerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7284F31AA05DE200F9C61E /* NetworkImageHandlerTestCase.swift */; };
@@ -318,7 +319,6 @@
 				1DBCC2091AA32623005F8DBC /* TDD_NetworkTask.m in Sources */,
 				1DBCC20B1AA3263E005F8DBC /* NetworkTaskTestCase.swift in Sources */,
 				1D7284F81AA1931300F9C61E /* TDD_NetworkSession.m in Sources */,
-				1DE6362F1AB93D8600CCF47B /* TDD_NetworkJSONOperation.m in Sources */,
 				1D09A9DF1A91DB9700AF91B3 /* TDD_NetworkJSONHandler.m in Sources */,
 				1DDE5C001AA454870075C0C8 /* NetworkImageOperationTestCase.swift in Sources */,
 				1DDE5BFA1AA4201F0075C0C8 /* NetworkJSONOperationTestCase.swift in Sources */,
@@ -332,6 +332,7 @@
 				1D09A9DE1A91DB8E00AF91B3 /* NetworkJSONHandlerTestCase.swift in Sources */,
 				1D3B4A1C1AB7C44400D61DA6 /* TDD_NetworkHandler.m in Sources */,
 				1DD1D3481A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift in Sources */,
+				1D69F5171AB948F1000F2045 /* TDD_NetworkJSONOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
