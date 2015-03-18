@@ -32,12 +32,6 @@
 
 @implementation TDD_NetworkJSONHandler (Class)
 
-+ (Class <TDD_NetworkJSONHandler_DataHandlerType>)dataHandlerClass {
-    
-    return [TDD_NetworkDataHandler class];
-    
-}
-
 + (Class <TDD_NetworkJSONHandler_JSONSerializationType>)jsonSerializationClass {
     
     return [NSJSONSerialization class];
