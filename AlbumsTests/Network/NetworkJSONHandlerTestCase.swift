@@ -32,7 +32,7 @@ var NetworkJSONHandler_DataHandlerTestDouble_Error: NSError?
 
 var NetworkJSONHandler_DataHandlerTestDouble_Response: TDD_NetworkResponse?
 
-final class NetworkJSONHandler_DataHandlerTestDouble: NSObject, TDD_NetworkJSONHandler_DataHandlerType {
+final class NetworkJSONHandler_DataHandlerTestDouble: NSObject, TDD_NetworkHandler_DataHandlerType {
     
     class func dataWithResponse(response: TDD_NetworkResponse, error: NSErrorPointer) -> NSData? {
         

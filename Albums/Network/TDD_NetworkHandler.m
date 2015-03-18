@@ -1,8 +1,8 @@
 //
-//  TDD_NetworkJSONHandler.h
+//  TDD_NetworkHandler.m
 //  Albums
 //
-//  Created by Rick van Voorden on 2/15/15.
+//  Created by Rick van Voorden on 3/16/15.
 //  Copyright (c) 2015 eBay Software Foundation. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,24 +26,16 @@
 
 #import "TDD_NetworkHandler.h"
 
-@protocol TDD_NetworkJSONHandler_JSONSerializationType <NSObject>
-
-+ (id)JSONObjectWithData:(NSData *)data options:(NSJSONReadingOptions)options error:(NSError *__autoreleasing*)error;
+@implementation TDD_NetworkHandler
 
 @end
 
-@interface TDD_NetworkJSONHandler: TDD_NetworkHandler
+@implementation TDD_NetworkHandler (Class)
 
-@end
-
-@interface TDD_NetworkJSONHandler (Class)
-
-+ (Class <TDD_NetworkJSONHandler_JSONSerializationType>)jsonSerializationClass;
-
-@end
-
-@interface TDD_NetworkJSONHandler (JSON)
-
-+ (id)jsonWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error;
++ (Class <TDD_NetworkHandler_DataHandlerType>)dataHandlerClass {
+    
+    return [TDD_NetworkDataHandler class];
+    
+}
 
 @end

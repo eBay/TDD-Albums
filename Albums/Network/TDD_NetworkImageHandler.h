@@ -26,13 +26,7 @@
 
 @import UIKit;
 
-#import "TDD_NetworkDataHandler.h"
-
-@protocol TDD_NetworkImageHandler_DataHandlerType <NSObject>
-
-+ (NSData *)dataWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error;
-
-@end
+#import "TDD_NetworkHandler.h"
 
 @protocol TDD_NetworkImageHandler_ImageType <NSObject>
 
@@ -50,13 +44,12 @@
 
 @end
 
-@interface TDD_NetworkImageHandler: NSObject
+@interface TDD_NetworkImageHandler: TDD_NetworkHandler
 
 @end
 
 @interface TDD_NetworkImageHandler (Class)
 
-+ (Class <TDD_NetworkImageHandler_DataHandlerType>)dataHandlerClass;
 + (Class <TDD_NetworkImageHandler_ImageType>)imageClass;
 + (Class <TDD_NetworkImageHandler_ScreenType>)screenClass;
 

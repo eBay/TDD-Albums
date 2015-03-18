@@ -124,6 +124,14 @@ extension NetworkTaskTestCase {
         
     }
     
+    func testCancelByItself() {
+        
+        self.task.cancel()
+        
+        XCTAssert(NetworkTask_SessionTestDouble_Self == nil)
+        
+    }
+    
 }
 
 extension NetworkTaskTestCase {
