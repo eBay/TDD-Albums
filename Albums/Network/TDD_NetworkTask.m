@@ -36,9 +36,25 @@
 
 @implementation TDD_NetworkTask
 
+@synthesize session = _session;
+
 - (id <TDD_NetworkTask_SessionType>)session {
     
     return TDD_LazyPropertyWithClass((self->_session), [[self class] sessionClass]);
+    
+}
+
+- (void)setSession:(id<TDD_NetworkTask_SessionType>)session {
+    
+    TDD_PropertySetter((self->_session), session, {
+        
+        [(self->_session) cancel];
+        
+    }, {
+        
+        
+        
+    });
     
 }
 
@@ -62,7 +78,7 @@
 
 - (void)cancel {
     
-    [[self session] cancel];
+    [self setSession: 0];
     
     [self setTask: 0];
     
