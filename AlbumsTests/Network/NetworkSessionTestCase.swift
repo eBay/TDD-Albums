@@ -150,6 +150,14 @@ extension NetworkSessionTestCase {
         
     }
     
+    func testCancelByItself() {
+        
+        self.session.cancel()
+        
+        XCTAssert(NetworkSession_SessionTestDouble_Session == nil)
+        
+    }
+    
 }
 
 extension NetworkSessionTestCase {
