@@ -124,6 +124,14 @@ extension NetworkJSONOperationTestCase {
         
     }
     
+    func testCancelByItself() {
+        
+        self.operation.cancel()
+        
+        XCTAssert(NetworkJSONOperation_TaskTestDouble_Self == nil)
+        
+    }
+    
 }
 
 extension NetworkJSONOperationTestCase {

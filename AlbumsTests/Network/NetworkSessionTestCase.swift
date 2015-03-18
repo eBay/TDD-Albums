@@ -140,6 +140,30 @@ final class NetworkSessionTestCase: XCTestCase {
 
 extension NetworkSessionTestCase {
     
+    func testCancel() {
+        
+        self.session.taskWithRequest(nil, completionHandler: nil)
+        
+        let session = NetworkSession_SessionTestDouble_Session!
+        
+        self.session.cancel()
+        
+        XCTAssert(session.didInvalidateAndCancel)
+        
+    }
+    
+    func testCancelByItself() {
+        
+        self.session.cancel()
+        
+        XCTAssert(NetworkSession_SessionTestDouble_Session == nil)
+        
+    }
+    
+}
+
+extension NetworkSessionTestCase {
+    
     func testClass() {
         
         XCTAssert(TDD_NetworkSession.configurationClass()! === NSURLSessionConfiguration.self)
@@ -153,16 +177,6 @@ extension NetworkSessionTestCase {
 }
 
 extension NetworkSessionTestCase {
-    
-    func assertCancel() {
-        
-        let session = NetworkSession_SessionTestDouble_Session!
-        
-        self.session.cancel()
-        
-        XCTAssert(session.didInvalidateAndCancel)
-        
-    }
     
     func assertData(data: NSData, response: NSURLResponse, error: NSError) {
         
@@ -215,8 +229,6 @@ extension NetworkSessionTestCase {
         self.assertQueue()
         
         XCTAssert(didAssertData)
-        
-        self.assertCancel()
         
     }
     

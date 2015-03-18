@@ -32,12 +32,6 @@
 
 @implementation TDD_NetworkImageHandler (Class)
 
-+ (Class <TDD_NetworkImageHandler_DataHandlerType>)dataHandlerClass {
-    
-    return [TDD_NetworkDataHandler class];
-    
-}
-
 + (Class <TDD_NetworkImageHandler_ImageType>)imageClass {
     
     return [UIImage class];

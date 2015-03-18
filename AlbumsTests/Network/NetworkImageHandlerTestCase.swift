@@ -32,7 +32,7 @@ var NetworkImageHandler_DataHandlerTestDouble_Error: NSError?
 
 var NetworkImageHandler_DataHandlerTestDouble_Response: TDD_NetworkResponse?
 
-final class NetworkImageHandler_DataHandlerTestDouble: NSObject, TDD_NetworkImageHandler_DataHandlerType {
+final class NetworkImageHandler_DataHandlerTestDouble: NSObject, TDD_NetworkHandler_DataHandlerType {
     
     class func dataWithResponse(response: TDD_NetworkResponse, error: NSErrorPointer) -> NSData? {
         
