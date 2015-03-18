@@ -29,8 +29,8 @@
 		1DD1D34B1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD1D34A1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m */; };
 		1DDB5F831A91D654005C979F /* TDD_NetworkJSONHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDB5F821A91D654005C979F /* TDD_NetworkJSONHandler.m */; };
 		1DDE5BF71AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BF61AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m */; };
-		1DDE5BF81AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BF61AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m */; };
 		1DDE5BFA1AA4201F0075C0C8 /* NetworkJSONOperationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BF91AA4201F0075C0C8 /* NetworkJSONOperationTestCase.swift */; };
+		1DE6362F1AB93D8600CCF47B /* TDD_NetworkJSONOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BF61AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -309,6 +309,7 @@
 				1DBCC2091AA32623005F8DBC /* TDD_NetworkTask.m in Sources */,
 				1DBCC20B1AA3263E005F8DBC /* NetworkTaskTestCase.swift in Sources */,
 				1D7284F81AA1931300F9C61E /* TDD_NetworkSession.m in Sources */,
+				1DE6362F1AB93D8600CCF47B /* TDD_NetworkJSONOperation.m in Sources */,
 				1D09A9DF1A91DB9700AF91B3 /* TDD_NetworkJSONHandler.m in Sources */,
 				1DDE5BFA1AA4201F0075C0C8 /* NetworkJSONOperationTestCase.swift in Sources */,
 				1D7284F41AA05DE200F9C61E /* NetworkImageHandlerTestCase.swift in Sources */,
@@ -318,7 +319,7 @@
 				1D09A9DC1A91DB2500AF91B3 /* TDD_NetworkDataHandler.m in Sources */,
 				1D7284FA1AA1933D00F9C61E /* NetworkSessionTestCase.swift in Sources */,
 				1D09A9DE1A91DB8E00AF91B3 /* NetworkJSONHandlerTestCase.swift in Sources */,
-				1DDE5BF81AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m in Sources */,
+				1D3B4A1C1AB7C44400D61DA6 /* TDD_NetworkHandler.m in Sources */,
 				1DD1D3481A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
