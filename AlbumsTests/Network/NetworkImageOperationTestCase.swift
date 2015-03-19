@@ -124,6 +124,14 @@ extension NetworkImageOperationTestCase {
         
     }
     
+    func testCancelByItself() {
+        
+        self.operation.cancel()
+        
+        XCTAssert(NetworkImageOperation_TaskTestDouble_Self == nil)
+        
+    }
+    
 }
 
 extension NetworkImageOperationTestCase {
