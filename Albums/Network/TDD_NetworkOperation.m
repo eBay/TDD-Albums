@@ -53,6 +53,16 @@
 
 @end
 
+@implementation TDD_NetworkOperation (Cancel)
+
+- (void)cancel {
+    
+    [self setTask: 0];
+    
+}
+
+@end
+
 @implementation TDD_NetworkOperation (Class)
 
 + (Class <TDD_NetworkOperation_TaskType>)taskClass {

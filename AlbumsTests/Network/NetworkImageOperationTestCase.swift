@@ -52,7 +52,7 @@ final class NetworkImageOperation_ImageHandlerTestDouble: NSObject, TDD_NetworkI
 
 var NetworkImageOperation_TaskTestDouble_Self: NetworkImageOperation_TaskTestDouble?
 
-final class NetworkImageOperation_TaskTestDouble: NSObject, TDD_NetworkImageOperation_TaskType {
+final class NetworkImageOperation_TaskTestDouble: NSObject, TDD_NetworkOperation_TaskType {
     
     override init() {
         

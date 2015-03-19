@@ -25,19 +25,8 @@
 //
 
 #import "TDD_NetworkJSONOperation.h"
-#import "TDD_Shared.h"
 
 @implementation TDD_NetworkJSONOperation
-
-@end
-
-@implementation TDD_NetworkJSONOperation (Cancel)
-
-- (void)cancel {
-    
-    [self setTask: 0];
-    
-}
 
 @end
 

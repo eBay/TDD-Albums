@@ -33,25 +33,9 @@
 
 @end
 
-@protocol TDD_NetworkJSONOperation_TaskType <NSObject>
-
-+ (id <TDD_NetworkJSONOperation_TaskType>)alloc;
-
-- (void)cancel;
-- (id <TDD_NetworkJSONOperation_TaskType>)init;
-- (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkTask_CompletionHandler)completionHandler;
-
-@end
-
 typedef void (^TDD_NetworkJSONOperation_CompletionHandler)(id, NSError *);
 
 @interface TDD_NetworkJSONOperation: TDD_NetworkOperation
-
-@end
-
-@interface TDD_NetworkJSONOperation (Cancel)
-
-- (void)cancel;
 
 @end
 

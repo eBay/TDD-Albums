@@ -25,19 +25,8 @@
 //
 
 #import "TDD_NetworkImageOperation.h"
-#import "TDD_Shared.h"
 
 @implementation TDD_NetworkImageOperation
-
-@end
-
-@implementation TDD_NetworkImageOperation (Cancel)
-
-- (void)cancel {
-    
-    [self setTask: 0];
-    
-}
 
 @end
 

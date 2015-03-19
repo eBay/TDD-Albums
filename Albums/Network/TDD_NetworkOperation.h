@@ -42,6 +42,12 @@
 
 @end
 
+@interface TDD_NetworkOperation (Cancel)
+
+- (void)cancel;
+
+@end
+
 @interface TDD_NetworkOperation (Class)
 
 + (Class <TDD_NetworkOperation_TaskType>)taskClass;

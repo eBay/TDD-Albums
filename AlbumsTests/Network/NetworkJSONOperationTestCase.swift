@@ -52,7 +52,7 @@ final class NetworkJSONOperation_JSONHandlerTestDouble: NSObject, TDD_NetworkJSO
 
 var NetworkJSONOperation_TaskTestDouble_Self: NetworkJSONOperation_TaskTestDouble?
 
-final class NetworkJSONOperation_TaskTestDouble: NSObject, TDD_NetworkJSONOperation_TaskType {
+final class NetworkJSONOperation_TaskTestDouble: NSObject, TDD_NetworkOperation_TaskType {
     
     override init() {
         
