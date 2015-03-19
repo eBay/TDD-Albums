@@ -1,8 +1,8 @@
 //
-//  TDD_NetworkImageOperation.h
+//  TDD_NetworkOperation.m
 //  Albums
 //
-//  Created by Rick van Voorden on 3/2/15.
+//  Created by Rick van Voorden on 3/18/15.
 //  Copyright (c) 2015 eBay Software Foundation. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,45 +24,41 @@
 //  THE SOFTWARE.
 //
 
-#import "TDD_NetworkImageHandler.h"
 #import "TDD_NetworkOperation.h"
+#import "TDD_Shared.h"
 
-@protocol TDD_NetworkImageOperation_ImageHandlerType <NSObject>
+@implementation TDD_NetworkOperation
 
-+ (id)imageWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error;
+@synthesize task = _task;
 
-@end
+- (void)setTask:(id<TDD_NetworkOperation_TaskType>)task {
+    
+    TDD_PropertySetter((self->_task), task, {
+        
+        [(self->_task) cancel];
+        
+    }, {
+        
+        
+        
+    });
+    
+}
 
-@protocol TDD_NetworkImageOperation_TaskType <NSObject>
-
-+ (id <TDD_NetworkImageOperation_TaskType>)alloc;
-
-- (void)cancel;
-- (id <TDD_NetworkImageOperation_TaskType>)init;
-- (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkTask_CompletionHandler)completionHandler;
-
-@end
-
-typedef void (^TDD_NetworkImageOperation_CompletionHandler)(id, NSError *);
-
-@interface TDD_NetworkImageOperation: TDD_NetworkOperation
-
-@end
-
-@interface TDD_NetworkImageOperation (Cancel)
-
-- (void)cancel;
-
-@end
-
-@interface TDD_NetworkImageOperation (Class)
-
-+ (Class <TDD_NetworkImageOperation_ImageHandlerType>)imageHandlerClass;
+- (id <TDD_NetworkOperation_TaskType>)task {
+    
+    return TDD_LazyPropertyWithClass((self->_task), [[self class] taskClass]);
+    
+}
 
 @end
 
-@interface TDD_NetworkImageOperation (Start)
+@implementation TDD_NetworkOperation (Class)
 
-- (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkImageOperation_CompletionHandler)completionHandler;
++ (Class <TDD_NetworkOperation_TaskType>)taskClass {
+    
+    return [TDD_NetworkTask class];
+    
+}
 
 @end

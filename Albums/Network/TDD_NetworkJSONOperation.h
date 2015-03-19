@@ -25,7 +25,7 @@
 //
 
 #import "TDD_NetworkJSONHandler.h"
-#import "TDD_NetworkTask.h"
+#import "TDD_NetworkOperation.h"
 
 @protocol TDD_NetworkJSONOperation_JSONHandlerType <NSObject>
 
@@ -45,7 +45,7 @@
 
 typedef void (^TDD_NetworkJSONOperation_CompletionHandler)(id, NSError *);
 
-@interface TDD_NetworkJSONOperation: NSObject
+@interface TDD_NetworkJSONOperation: TDD_NetworkOperation
 
 @end
 
@@ -58,7 +58,6 @@ typedef void (^TDD_NetworkJSONOperation_CompletionHandler)(id, NSError *);
 @interface TDD_NetworkJSONOperation (Class)
 
 + (Class <TDD_NetworkJSONOperation_JSONHandlerType>)jsonHandlerClass;
-+ (Class <TDD_NetworkJSONOperation_TaskType>)taskClass;
 
 @end
 

@@ -27,35 +27,7 @@
 #import "TDD_NetworkImageOperation.h"
 #import "TDD_Shared.h"
 
-@interface TDD_NetworkImageOperation ()
-
-@property (nonatomic, strong) id <TDD_NetworkImageOperation_TaskType> task;
-
-@end
-
 @implementation TDD_NetworkImageOperation
-
-@synthesize task = _task;
-
-- (void)setTask:(id<TDD_NetworkImageOperation_TaskType>)task {
-    
-    TDD_PropertySetter((self->_task), task, {
-        
-        [(self->_task) cancel];
-        
-    }, {
-        
-        
-        
-    });
-    
-}
-
-- (id <TDD_NetworkImageOperation_TaskType>)task {
-    
-    return TDD_LazyPropertyWithClass((self->_task), [[self class] taskClass]);
-    
-}
 
 @end
 
@@ -74,12 +46,6 @@
 + (Class <TDD_NetworkImageOperation_ImageHandlerType>)imageHandlerClass {
     
     return [TDD_NetworkImageHandler class];
-    
-}
-
-+ (Class <TDD_NetworkImageOperation_TaskType>)taskClass {
-    
-    return [TDD_NetworkTask class];
     
 }
 

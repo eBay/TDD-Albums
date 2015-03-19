@@ -1,8 +1,8 @@
 //
-//  TDD_NetworkImageOperation.h
+//  TDD_NetworkOperation.h
 //  Albums
 //
-//  Created by Rick van Voorden on 3/2/15.
+//  Created by Rick van Voorden on 3/18/15.
 //  Copyright (c) 2015 eBay Software Foundation. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,45 +24,26 @@
 //  THE SOFTWARE.
 //
 
-#import "TDD_NetworkImageHandler.h"
-#import "TDD_NetworkOperation.h"
+#import "TDD_NetworkTask.h"
 
-@protocol TDD_NetworkImageOperation_ImageHandlerType <NSObject>
+@protocol TDD_NetworkOperation_TaskType <NSObject>
 
-+ (id)imageWithResponse:(TDD_NetworkResponse *)response error:(NSError *__autoreleasing*)error;
-
-@end
-
-@protocol TDD_NetworkImageOperation_TaskType <NSObject>
-
-+ (id <TDD_NetworkImageOperation_TaskType>)alloc;
++ (id <TDD_NetworkOperation_TaskType>)alloc;
 
 - (void)cancel;
-- (id <TDD_NetworkImageOperation_TaskType>)init;
+- (id <TDD_NetworkOperation_TaskType>)init;
 - (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkTask_CompletionHandler)completionHandler;
 
 @end
 
-typedef void (^TDD_NetworkImageOperation_CompletionHandler)(id, NSError *);
+@interface TDD_NetworkOperation: NSObject
 
-@interface TDD_NetworkImageOperation: TDD_NetworkOperation
-
-@end
-
-@interface TDD_NetworkImageOperation (Cancel)
-
-- (void)cancel;
+@property (nonatomic, strong) id <TDD_NetworkOperation_TaskType> task;
 
 @end
 
-@interface TDD_NetworkImageOperation (Class)
+@interface TDD_NetworkOperation (Class)
 
-+ (Class <TDD_NetworkImageOperation_ImageHandlerType>)imageHandlerClass;
-
-@end
-
-@interface TDD_NetworkImageOperation (Start)
-
-- (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkImageOperation_CompletionHandler)completionHandler;
++ (Class <TDD_NetworkOperation_TaskType>)taskClass;
 
 @end

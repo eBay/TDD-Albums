@@ -27,35 +27,7 @@
 #import "TDD_NetworkJSONOperation.h"
 #import "TDD_Shared.h"
 
-@interface TDD_NetworkJSONOperation ()
-
-@property (nonatomic, strong) id <TDD_NetworkJSONOperation_TaskType> task;
-
-@end
-
 @implementation TDD_NetworkJSONOperation
-
-@synthesize task = _task;
-
-- (void)setTask:(id<TDD_NetworkJSONOperation_TaskType>)task {
-    
-    TDD_PropertySetter((self->_task), task, {
-        
-        [(self->_task) cancel];
-        
-    }, {
-        
-        
-        
-    });
-    
-}
-
-- (id <TDD_NetworkJSONOperation_TaskType>)task {
-    
-    return TDD_LazyPropertyWithClass((self->_task), [[self class] taskClass]);
-    
-}
 
 @end
 
@@ -74,12 +46,6 @@
 + (Class <TDD_NetworkJSONOperation_JSONHandlerType>)jsonHandlerClass {
     
     return [TDD_NetworkJSONHandler class];
-    
-}
-
-+ (Class <TDD_NetworkJSONOperation_TaskType>)taskClass {
-    
-    return [TDD_NetworkTask class];
     
 }
 
