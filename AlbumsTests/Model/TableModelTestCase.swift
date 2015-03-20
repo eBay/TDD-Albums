@@ -104,11 +104,11 @@ extension TableModelTestCase {
         
         self.model.startWithCompletionHandler(nil)
         
-        let operation = TableModel_JSONOperationTestDouble_Self!
+        let jsonOperation = TableModel_JSONOperationTestDouble_Self!
         
         self.model.cancel()
         
-        XCTAssert(operation.didCancel)
+        XCTAssert(jsonOperation.didCancel)
         
     }
     
