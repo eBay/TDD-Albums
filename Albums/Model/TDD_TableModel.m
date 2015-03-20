@@ -28,6 +28,12 @@
 
 @implementation TDD_TableModel
 
+- (id <TDD_TableModel_JSONOperationType>)operation {
+    
+    return [[[[self class] jsonOperationClass] alloc] init];
+    
+}
+
 @end
 
 @implementation TDD_TableModel (Class)
@@ -50,7 +56,11 @@
 
 - (void)startWithCompletionHandler:(TDD_TableModel_CompletionHandler)completionHandler {
     
+    NSURL *url = [[NSURL alloc] initWithString: @"https://itunes.apple.com/us/rss/topalbums/limit=100/json"];
     
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url];
+    
+    [[self operation] startWithRequest: request completionHandler: 0];
     
 }
 

@@ -26,9 +26,49 @@
 
 import XCTest
 
+final class TableModel_AlbumTestDouble: NSObject, TDD_TableModel_AlbumType {
+    
+    var dictionary: NSDictionary?
+    
+    convenience init(dictionary: [NSObject:AnyObject]) {
+        
+        self.init()
+        
+        self.dictionary = dictionary
+        
+    }
+    
+}
+
+var TableModel_JSONOperationTestDouble_Self: TableModel_JSONOperationTestDouble?
+
+final class TableModel_JSONOperationTestDouble: NSObject, TDD_TableModel_JSONOperationType {
+    
+    override init() {
+        
+        super.init()
+        
+        TableModel_JSONOperationTestDouble_Self = self
+        
+    }
+    
+    var completionHandler: TDD_NetworkJSONOperation_CompletionHandler?
+    
+    var request: NSURLRequest?
+    
+    func startWithRequest(request: NSURLRequest, completionHandler: TDD_NetworkJSONOperation_CompletionHandler) {
+        
+        self.request = request
+        
+        self.completionHandler = completionHandler
+        
+    }
+    
+}
+
 final class TableModelTestCase: XCTestCase {
     
-    lazy var model = TDD_TableModel()
+    lazy var model = TableModelTestDouble()
     
 }
 
@@ -46,9 +86,37 @@ extension TableModelTestCase {
 
 extension TableModelTestCase {
     
+    func assertRequest() {
+        
+        XCTAssert(TableModel_JSONOperationTestDouble_Self!.request!.URL!.absoluteString == "https://itunes.apple.com/us/rss/topalbums/limit=100/json")
+        
+        XCTAssert(TableModel_JSONOperationTestDouble_Self!.request!.cachePolicy == NSURLRequestCachePolicy.UseProtocolCachePolicy)
+        
+        XCTAssert(TableModel_JSONOperationTestDouble_Self!.request!.timeoutInterval == 60.0)
+        
+    }
+    
     func testStart() {
         
         self.model.startWithCompletionHandler(nil)
+        
+        self.assertRequest()
+        
+    }
+    
+}
+
+final class TableModelTestDouble: TDD_TableModel {
+    
+    override class func albumClass() -> AnyClass {
+        
+        return TableModel_AlbumTestDouble.self
+        
+    }
+    
+    override class func jsonOperationClass() -> AnyClass {
+        
+        return TableModel_JSONOperationTestDouble.self
         
     }
     
