@@ -26,6 +26,12 @@
 
 #import "TDD_TableModel.h"
 
+@interface TDD_TableModel ()
+
+@property (nonatomic, strong) NSArray *albums;
+
+@end
+
 @implementation TDD_TableModel
 
 - (id <TDD_TableModel_JSONOperationType>)operation {
@@ -54,6 +60,22 @@
 
 @implementation TDD_TableModel (Start)
 
+- (void)json:(id)json {
+    
+    NSMutableArray *newArray = [[NSMutableArray alloc] init];
+    
+    [[[json objectForKey: @"feed"] objectForKey: @"entry"] enumerateObjectsUsingBlock: ^void (NSDictionary *dictionary, NSUInteger index, BOOL *stop) {
+        
+        id <TDD_TableModel_AlbumType> album = [[[[self class] albumClass] alloc] initWithDictionary: dictionary];
+        
+        [newArray addObject: album];
+        
+    }];
+    
+    [self setAlbums: newArray];
+    
+}
+
 - (NSURLRequest *)request {
     
     NSURL *url = [[NSURL alloc] initWithString: @"https://itunes.apple.com/us/rss/topalbums/limit=100/json"];
@@ -64,15 +86,25 @@
 
 - (void)startWithCompletionHandler:(TDD_TableModel_CompletionHandler)completionHandler {
     
+    TDD_TableModel *__weak weakSelf = self;
+    
     [[self operation] startWithRequest: [self request] completionHandler: ^void (id json, NSError *error) {
         
-        if (json) {
+        TDD_TableModel *strongSelf = weakSelf;
+        
+        if (strongSelf) {
             
-            completionHandler(YES, 0);
-            
-        } else {
-            
-            completionHandler(NO, error);
+            if (json) {
+                
+                [strongSelf json: json];
+                
+                completionHandler(YES, 0);
+                
+            } else {
+                
+                completionHandler(NO, error);
+                
+            }
             
         }
         

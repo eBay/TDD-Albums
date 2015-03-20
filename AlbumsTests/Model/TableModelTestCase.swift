@@ -162,6 +162,18 @@ extension TableModelTestCase {
             
             XCTAssert(error == nil)
             
+            let feed = (self.json["feed"] as! [NSObject:AnyObject])
+            
+            let entry = (feed["entry"] as! [[NSObject:AnyObject]])
+            
+            XCTAssert(self.model.albums.count == entry.count)
+            
+            for index in 0...99 {
+                
+                XCTAssert(self.model.albums[index].dictionary == entry[index])
+                
+            }
+            
             didAssertSuccess = true
             
         }
