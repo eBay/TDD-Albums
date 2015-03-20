@@ -112,6 +112,14 @@ extension TableModelTestCase {
         
     }
     
+    func testCancelByItself() {
+        
+        self.model.cancel()
+        
+        XCTAssert(TableModel_JSONOperationTestDouble_Self == nil)
+        
+    }
+    
 }
 
 extension TableModelTestCase {

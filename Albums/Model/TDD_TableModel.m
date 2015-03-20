@@ -44,13 +44,27 @@
     
 }
 
+- (void)setJsonOperation:(id<TDD_TableModel_JSONOperationType>)jsonOperation {
+    
+    TDD_PropertySetter((self->_jsonOperation), jsonOperation, {
+        
+        [(self->_jsonOperation) cancel];
+        
+    }, {
+        
+        
+        
+    });
+    
+}
+
 @end
 
 @implementation TDD_TableModel (Cancel)
 
 - (void)cancel {
     
-    [[self jsonOperation] cancel];
+    [self setJsonOperation: 0];
     
 }
 
