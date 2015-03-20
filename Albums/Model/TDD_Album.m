@@ -38,7 +38,11 @@
     
     if (self) {
         
+        (self->_artist) = [[dictionary objectForKey: @"im:artist"] objectForKey: @"label"];
         
+        (self->_image) = [[[dictionary objectForKey: @"im:image"] objectAtIndex: 2] objectForKey: @"label"];
+        
+        (self->_name) = [[dictionary objectForKey: @"im:name"] objectForKey: @"label"];
         
     }
     

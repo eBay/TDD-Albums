@@ -28,6 +28,10 @@
 
 @interface TDD_Album: NSObject
 
+@property (nonatomic, readonly) NSString *artist;
+@property (nonatomic, readonly) NSString *image;
+@property (nonatomic, readonly) NSString *name;
+
 @end
 
 @interface TDD_Album (Album)

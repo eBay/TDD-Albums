@@ -28,7 +28,15 @@ import XCTest
 
 final class AlbumTestCase: XCTestCase {
     
-    
+    lazy var json: NSDictionary = {
+        
+        let url = NSBundle(identifier: "com.ebay.AlbumsTests")!.URLForResource("Albums", withExtension: "json")!
+        
+        let data = NSData(contentsOfURL: url, options: nil, error: nil)!
+        
+        return (NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)! as! NSDictionary)
+        
+        }()
     
 }
 
@@ -36,7 +44,21 @@ extension AlbumTestCase {
     
     func testAlbum() {
         
-        TDD_Album(dictionary: nil)
+        let feed = (self.json["feed"] as! [NSObject:AnyObject])
+        
+        let entry = (feed["entry"] as! [[NSObject:AnyObject]])
+        
+        for dictionary in entry {
+            
+            let album = TDD_Album(dictionary: dictionary)
+            
+            XCTAssert(album.artist == ((dictionary["im:artist"] as! [NSObject:AnyObject])["label"] as! String))
+            
+            XCTAssert(album.image == ((dictionary["im:image"] as! [[NSObject:AnyObject]])[2]["label"] as! String))
+            
+            XCTAssert(album.name == ((dictionary["im:name"] as! [NSObject:AnyObject])["label"] as! String))
+            
+        }
         
     }
     
