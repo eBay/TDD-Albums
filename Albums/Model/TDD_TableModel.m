@@ -60,7 +60,11 @@
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL: url];
     
-    [[self operation] startWithRequest: request completionHandler: 0];
+    [[self operation] startWithRequest: request completionHandler: ^void (id json, NSError *error) {
+        
+        completionHandler(NO, error);
+        
+    }];
     
 }
 

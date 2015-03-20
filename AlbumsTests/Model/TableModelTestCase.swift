@@ -68,6 +68,8 @@ final class TableModel_JSONOperationTestDouble: NSObject, TDD_TableModel_JSONOpe
 
 final class TableModelTestCase: XCTestCase {
     
+    lazy var error = ErrorTestDouble()
+    
     lazy var model = TableModelTestDouble()
     
 }
@@ -86,7 +88,7 @@ extension TableModelTestCase {
 
 extension TableModelTestCase {
     
-    func assertRequest() {
+    func assertOperation() {
         
         XCTAssert(TableModel_JSONOperationTestDouble_Self!.request!.URL!.absoluteString == "https://itunes.apple.com/us/rss/topalbums/limit=100/json")
         
@@ -96,11 +98,31 @@ extension TableModelTestCase {
         
     }
     
-    func testStart() {
+    func assertOperationError() {
         
-        self.model.startWithCompletionHandler(nil)
+        self.assertOperation()
         
-        self.assertRequest()
+        TableModel_JSONOperationTestDouble_Self!.completionHandler!(nil, self.error)
+        
+    }
+    
+    func testStartError() {
+        
+        var didAssertSuccess = false
+        
+        self.model.startWithCompletionHandler {(success, error) in
+            
+            XCTAssert(success == false)
+            
+            XCTAssert(error! === self.error)
+            
+            didAssertSuccess = true
+            
+        }
+        
+        self.assertOperationError()
+        
+        XCTAssert(didAssertSuccess)
         
     }
     
