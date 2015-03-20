@@ -200,7 +200,7 @@ extension TableModelTestCase {
             
             XCTAssert(self.model.albums.count == entry.count)
             
-            for index in 0...99 {
+            for index in 0..<entry.count {
                 
                 XCTAssert(self.model.albums[index].dictionary == entry[index])
                 
