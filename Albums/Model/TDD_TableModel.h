@@ -48,6 +48,8 @@ typedef void (^TDD_TableModel_CompletionHandler)(BOOL, NSError *);
 
 @interface TDD_TableModel: NSObject
 
+@property (nonatomic, readonly) NSArray *albums;
+
 @end
 
 @interface TDD_TableModel (Class)

@@ -116,6 +116,8 @@ extension TableModelTestCase {
             
             XCTAssert(error! === self.error)
             
+            XCTAssert(self.model.albums == nil)
+            
             didAssertSuccess = true
             
         }
