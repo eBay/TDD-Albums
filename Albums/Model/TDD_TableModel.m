@@ -24,19 +24,33 @@
 //  THE SOFTWARE.
 //
 
+#import "TDD_Shared.h"
 #import "TDD_TableModel.h"
 
 @interface TDD_TableModel ()
 
 @property (nonatomic, strong) NSArray *albums;
+@property (nonatomic, strong) id <TDD_TableModel_JSONOperationType> jsonOperation;
 
 @end
 
 @implementation TDD_TableModel
 
-- (id <TDD_TableModel_JSONOperationType>)operation {
+@synthesize jsonOperation = _jsonOperation;
+
+- (id <TDD_TableModel_JSONOperationType>)jsonOperation {
     
-    return [[[[self class] jsonOperationClass] alloc] init];
+    return TDD_LazyPropertyWithClass((self->_jsonOperation), [[self class] jsonOperationClass]);
+    
+}
+
+@end
+
+@implementation TDD_TableModel (Cancel)
+
+- (void)cancel {
+    
+    [[self jsonOperation] cancel];
     
 }
 
@@ -88,7 +102,7 @@
     
     TDD_TableModel *__weak weakSelf = self;
     
-    [[self operation] startWithRequest: [self request] completionHandler: ^void (id json, NSError *error) {
+    [[self jsonOperation] startWithRequest: [self request] completionHandler: ^void (id json, NSError *error) {
         
         TDD_TableModel *strongSelf = weakSelf;
         

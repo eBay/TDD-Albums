@@ -39,6 +39,7 @@
 
 + (id <TDD_TableModel_JSONOperationType>)alloc;
 
+- (void)cancel;
 - (id <TDD_TableModel_JSONOperationType>)init;
 - (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkJSONOperation_CompletionHandler)completionHandler;
 
@@ -49,6 +50,12 @@ typedef void (^TDD_TableModel_CompletionHandler)(BOOL, NSError *);
 @interface TDD_TableModel: NSObject
 
 @property (nonatomic, readonly) NSArray *albums;
+
+@end
+
+@interface TDD_TableModel (Cancel)
+
+- (void)cancel;
 
 @end
 

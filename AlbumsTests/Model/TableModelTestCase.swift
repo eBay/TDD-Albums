@@ -54,7 +54,15 @@ final class TableModel_JSONOperationTestDouble: NSObject, TDD_TableModel_JSONOpe
     
     var completionHandler: TDD_NetworkJSONOperation_CompletionHandler?
     
+    var didCancel = false
+    
     var request: NSURLRequest?
+    
+    func cancel() {
+        
+        self.didCancel = true
+        
+    }
     
     func startWithRequest(request: NSURLRequest, completionHandler: TDD_NetworkJSONOperation_CompletionHandler) {
         
@@ -85,6 +93,22 @@ final class TableModelTestCase: XCTestCase {
     override func tearDown() {
         
         TableModel_JSONOperationTestDouble_Self = nil
+        
+    }
+    
+}
+
+extension TableModelTestCase {
+    
+    func testCancel() {
+        
+        self.model.startWithCompletionHandler(nil)
+        
+        let operation = TableModel_JSONOperationTestDouble_Self!
+        
+        self.model.cancel()
+        
+        XCTAssert(operation.didCancel)
         
     }
     
