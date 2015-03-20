@@ -15,6 +15,9 @@
 		1D137BAA1ABBD5A700212F4E /* TDD_Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D137BA81ABBD5A700212F4E /* TDD_Album.m */; };
 		1D137BAC1ABBD5B400212F4E /* AlbumTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D137BAB1ABBD5B400212F4E /* AlbumTestCase.swift */; };
 		1D137BAF1ABBD83600212F4E /* Albums.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D137BAE1ABBD83600212F4E /* Albums.json */; };
+		1D137BB21ABBF6D500212F4E /* TDD_TableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D137BB11ABBF6D500212F4E /* TDD_TableModel.m */; };
+		1D137BB31ABBF6D500212F4E /* TDD_TableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D137BB11ABBF6D500212F4E /* TDD_TableModel.m */; };
+		1D137BB51ABBF6F700212F4E /* TableModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D137BB41ABBF6F700212F4E /* TableModelTestCase.swift */; };
 		1D3B4A1B1AB7C44400D61DA6 /* TDD_NetworkHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3B4A1A1AB7C44400D61DA6 /* TDD_NetworkHandler.m */; };
 		1D3B4A1C1AB7C44400D61DA6 /* TDD_NetworkHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3B4A1A1AB7C44400D61DA6 /* TDD_NetworkHandler.m */; };
 		1D69F5171AB948F1000F2045 /* TDD_NetworkJSONOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE5BF61AA41FCF0075C0C8 /* TDD_NetworkJSONOperation.m */; };
@@ -69,6 +72,9 @@
 		1D137BA81ABBD5A700212F4E /* TDD_Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDD_Album.m; sourceTree = "<group>"; };
 		1D137BAB1ABBD5B400212F4E /* AlbumTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumTestCase.swift; sourceTree = "<group>"; };
 		1D137BAE1ABBD83600212F4E /* Albums.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Albums.json; sourceTree = "<group>"; };
+		1D137BB01ABBF6D500212F4E /* TDD_TableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_TableModel.h; sourceTree = "<group>"; };
+		1D137BB11ABBF6D500212F4E /* TDD_TableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDD_TableModel.m; sourceTree = "<group>"; };
+		1D137BB41ABBF6F700212F4E /* TableModelTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableModelTestCase.swift; sourceTree = "<group>"; };
 		1D3B4A191AB7C44400D61DA6 /* TDD_NetworkHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_NetworkHandler.h; sourceTree = "<group>"; };
 		1D3B4A1A1AB7C44400D61DA6 /* TDD_NetworkHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDD_NetworkHandler.m; sourceTree = "<group>"; };
 		1D3B4A1D1AB7CBBC00D61DA6 /* TDD_Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDD_Shared.h; sourceTree = "<group>"; };
@@ -128,6 +134,8 @@
 			children = (
 				1D137BA71ABBD5A700212F4E /* TDD_Album.h */,
 				1D137BA81ABBD5A700212F4E /* TDD_Album.m */,
+				1D137BB01ABBF6D500212F4E /* TDD_TableModel.h */,
+				1D137BB11ABBF6D500212F4E /* TDD_TableModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -136,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				1D137BAB1ABBD5B400212F4E /* AlbumTestCase.swift */,
+				1D137BB41ABBF6F700212F4E /* TableModelTestCase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -350,6 +359,7 @@
 				1DDB5F831A91D654005C979F /* TDD_NetworkJSONHandler.m in Sources */,
 				1DD1D34B1A8C8E1300C4A775 /* TDD_NetworkDataHandler.m in Sources */,
 				1D7284F11AA05D9A00F9C61E /* TDD_NetworkImageHandler.m in Sources */,
+				1D137BB21ABBF6D500212F4E /* TDD_TableModel.m in Sources */,
 				1D137BA91ABBD5A700212F4E /* TDD_Album.m in Sources */,
 				1D3B4A1B1AB7C44400D61DA6 /* TDD_NetworkHandler.m in Sources */,
 				1DD1D33B1A8C885B00C4A775 /* TDD_NetworkResponse.m in Sources */,
@@ -377,6 +387,8 @@
 				1D7284FA1AA1933D00F9C61E /* NetworkSessionTestCase.swift in Sources */,
 				1D09A9DE1A91DB8E00AF91B3 /* NetworkJSONHandlerTestCase.swift in Sources */,
 				1D137BAC1ABBD5B400212F4E /* AlbumTestCase.swift in Sources */,
+				1D137BB51ABBF6F700212F4E /* TableModelTestCase.swift in Sources */,
+				1D137BB31ABBF6D500212F4E /* TDD_TableModel.m in Sources */,
 				1D3B4A1C1AB7C44400D61DA6 /* TDD_NetworkHandler.m in Sources */,
 				1DD1D3481A8C8E0100C4A775 /* NetworkDataHandlerTestCase.swift in Sources */,
 				1D69F5171AB948F1000F2045 /* TDD_NetworkJSONOperation.m in Sources */,
