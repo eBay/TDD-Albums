@@ -136,7 +136,7 @@ extension TableModelTestCase {
 
 extension TableModelTestCase {
     
-    func assertOperation() {
+    func assertJSONOperation() {
         
         XCTAssert(TableModel_JSONOperationTestDouble_Self!.request!.URL!.absoluteString == "https://itunes.apple.com/us/rss/topalbums/limit=100/json")
         
@@ -146,17 +146,17 @@ extension TableModelTestCase {
         
     }
     
-    func assertOperationError() {
+    func assertJSONOperationError() {
         
-        self.assertOperation()
+        self.assertJSONOperation()
         
         TableModel_JSONOperationTestDouble_Self!.completionHandler!(nil, self.error)
         
     }
     
-    func assertOperationSuccess() {
+    func assertJSONOperationSuccess() {
         
-        self.assertOperation()
+        self.assertJSONOperation()
         
         TableModel_JSONOperationTestDouble_Self!.completionHandler!(self.json, self.error)
         
@@ -178,7 +178,7 @@ extension TableModelTestCase {
             
         }
         
-        self.assertOperationError()
+        self.assertJSONOperationError()
         
         XCTAssert(didAssertError)
         
@@ -210,7 +210,7 @@ extension TableModelTestCase {
             
         }
         
-        self.assertOperationSuccess()
+        self.assertJSONOperationSuccess()
         
         XCTAssert(didAssertSuccess)
         
