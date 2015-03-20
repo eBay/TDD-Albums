@@ -30,6 +30,22 @@
 
 @end
 
+@implementation TDD_TableModel (Class)
+
++ (Class <TDD_TableModel_AlbumType>)albumClass {
+    
+    return [TDD_Album class];
+    
+}
+
++ (Class <TDD_TableModel_JSONOperationType>)jsonOperationClass {
+    
+    return [TDD_NetworkJSONOperation class];
+    
+}
+
+@end
+
 @implementation TDD_TableModel (Start)
 
 - (void)startWithCompletionHandler:(TDD_TableModel_CompletionHandler)completionHandler {

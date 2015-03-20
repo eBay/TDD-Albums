@@ -27,9 +27,33 @@
 #import "TDD_Album.h"
 #import "TDD_NetworkJSONOperation.h"
 
+@protocol TDD_TableModel_AlbumType <NSObject>
+
++ (id <TDD_TableModel_AlbumType>)alloc;
+
+- (id <TDD_TableModel_AlbumType>)initWithDictionary:(NSDictionary *)dictionary;
+
+@end
+
+@protocol TDD_TableModel_JSONOperationType <NSObject>
+
++ (id <TDD_TableModel_JSONOperationType>)alloc;
+
+- (id <TDD_TableModel_JSONOperationType>)init;
+- (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkJSONOperation_CompletionHandler)completionHandler;
+
+@end
+
 typedef void (^TDD_TableModel_CompletionHandler)(BOOL, NSError *);
 
 @interface TDD_TableModel: NSObject
+
+@end
+
+@interface TDD_TableModel (Class)
+
++ (Class <TDD_TableModel_AlbumType>)albumClass;
++ (Class <TDD_TableModel_JSONOperationType>)jsonOperationClass;
 
 @end
 

@@ -34,6 +34,18 @@ final class TableModelTestCase: XCTestCase {
 
 extension TableModelTestCase {
     
+    func testClass() {
+        
+        XCTAssert(TDD_TableModel.albumClass()! === TDD_Album.self)
+        
+        XCTAssert(TDD_TableModel.jsonOperationClass()! === TDD_NetworkJSONOperation.self)
+        
+    }
+    
+}
+
+extension TableModelTestCase {
+    
     func testStart() {
         
         self.model.startWithCompletionHandler(nil)
