@@ -70,7 +70,23 @@ final class TableModelTestCase: XCTestCase {
     
     lazy var error = ErrorTestDouble()
     
+    lazy var json: NSDictionary = {
+        
+        let url = NSBundle(identifier: "com.ebay.AlbumsTests")!.URLForResource("Albums", withExtension: "json")!
+        
+        let data = NSData(contentsOfURL: url, options: nil, error: nil)!
+        
+        return (NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)! as! NSDictionary)
+        
+        }()
+    
     lazy var model = TableModelTestDouble()
+    
+    override func tearDown() {
+        
+        TableModel_JSONOperationTestDouble_Self = nil
+        
+    }
     
 }
 
@@ -106,9 +122,17 @@ extension TableModelTestCase {
         
     }
     
+    func assertOperationSuccess() {
+        
+        self.assertOperation()
+        
+        TableModel_JSONOperationTestDouble_Self!.completionHandler!(self.json, self.error)
+        
+    }
+    
     func testStartError() {
         
-        var didAssertSuccess = false
+        var didAssertError = false
         
         self.model.startWithCompletionHandler {(success, error) in
             
@@ -118,11 +142,31 @@ extension TableModelTestCase {
             
             XCTAssert(self.model.albums == nil)
             
-            didAssertSuccess = true
+            didAssertError = true
             
         }
         
         self.assertOperationError()
+        
+        XCTAssert(didAssertError)
+        
+    }
+    
+    func testStartSuccess() {
+        
+        var didAssertSuccess = false
+        
+        self.model.startWithCompletionHandler {(success, error) in
+            
+            XCTAssert(success)
+            
+            XCTAssert(error == nil)
+            
+            didAssertSuccess = true
+            
+        }
+        
+        self.assertOperationSuccess()
         
         XCTAssert(didAssertSuccess)
         
