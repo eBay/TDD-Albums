@@ -27,6 +27,7 @@
 @import UIKit;
 
 #import "TDD_Album.h"
+#import "TDD_NetworkImageOperation.h"
 
 @protocol TDD_TableViewCell_AlbumType <NSObject>
 
@@ -36,8 +37,24 @@
 
 @end
 
+@protocol TDD_TableViewCell_ImageOperationType <NSObject>
+
++ (id <TDD_TableViewCell_ImageOperationType>)alloc;
+
+- (void)cancel;
+- (id <TDD_TableViewCell_ImageOperationType>)init;
+- (void)startWithRequest:(NSURLRequest *)request completionHandler:(TDD_NetworkImageOperation_CompletionHandler)completionHandler;
+
+@end
+
 @interface TDD_TableViewCell: UITableViewCell
 
 @property (nonatomic, strong) id <TDD_TableViewCell_AlbumType> album;
+
+@end
+
+@interface TDD_TableViewCell (Class)
+
++ (Class <TDD_TableViewCell_ImageOperationType>)imageOperationClass;
 
 @end

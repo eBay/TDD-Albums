@@ -52,3 +52,13 @@
 }
 
 @end
+
+@implementation TDD_TableViewCell (Class)
+
++ (Class <TDD_TableViewCell_ImageOperationType>)imageOperationClass {
+    
+    return [TDD_NetworkImageOperation class];
+    
+}
+
+@end

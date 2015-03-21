@@ -85,3 +85,13 @@ extension TableViewCellTestCase {
     }
     
 }
+
+extension TableViewCellTestCase {
+    
+    func testClass() {
+        
+        XCTAssert(TDD_TableViewCell.imageOperationClass()! === TDD_NetworkImageOperation.self)
+        
+    }
+    
+}
