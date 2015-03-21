@@ -35,8 +35,6 @@
     
     [[self detailTextLabel] setText: [[self album] name]];
     
-    [[self imageView] setImage: 0];
-    
 }
 
 - (void)setAlbum:(id <TDD_TableViewCell_AlbumType>)album {
