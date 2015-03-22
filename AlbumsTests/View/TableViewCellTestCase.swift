@@ -46,17 +46,81 @@ final class TableViewCell_BeatlesAlbumTestDouble: NSObject, TDD_TableViewCell_Al
     
 }
 
+var TableViewCell_ImageOperationTestDouble_Self: TableViewCell_ImageOperationTestDouble?
+
+final class TableViewCell_ImageOperationTestDouble: NSObject, TDD_TableViewCell_ImageOperationType {
+    
+    override init() {
+        
+        super.init()
+        
+        TableViewCell_ImageOperationTestDouble_Self = self
+        
+    }
+    
+    var didCancel = false
+    
+    var completionHandler: TDD_NetworkImageOperation_CompletionHandler?
+    
+    var request: NSURLRequest?
+    
+    func cancel() {
+        
+        self.didCancel = true
+        
+    }
+    
+    func startWithRequest(request: NSURLRequest, completionHandler: TDD_NetworkImageOperation_CompletionHandler) {
+        
+        self.request = request
+        
+        self.completionHandler = completionHandler
+        
+    }
+    
+}
+
 final class TableViewCellTestCase: XCTestCase {
     
     lazy var beachBoys = TableViewCell_BeachBoysAlbumTestDouble()
     
     lazy var beatles = TableViewCell_BeatlesAlbumTestDouble()
     
-    lazy var cell = TDD_TableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: nil)
+    lazy var cell = TableViewCellTestDouble(style: UITableViewCellStyle.Subtitle, reuseIdentifier: nil)
     
 }
 
 extension TableViewCellTestCase {
+    
+    func assertAlbumBeachBoys() {
+        
+        self.cell.album = self.beachBoys
+        
+        self.assertCell(self.beachBoys)
+        
+        self.assertOperationStart(self.beachBoys)
+        
+    }
+    
+    func assertAlbumBeatles() {
+        
+        self.cell.album = self.beatles
+        
+        self.assertCell(self.beatles)
+        
+        self.assertOperationStart(self.beatles)
+        
+    }
+    
+    func assertAlbumNil() {
+        
+        self.cell.album = nil
+        
+        self.assertCell(nil)
+        
+        self.assertOperationCancel()
+        
+    }
     
     func assertCell(album: TDD_TableViewCell_AlbumType?) {
         
@@ -68,19 +132,29 @@ extension TableViewCellTestCase {
         
     }
     
+    func assertOperationCancel() {
+        
+        XCTAssert(TableViewCell_ImageOperationTestDouble_Self!.didCancel)
+        
+    }
+    
+    func assertOperationStart(album: TDD_TableViewCell_AlbumType) {
+        
+        XCTAssert(TableViewCell_ImageOperationTestDouble_Self!.request!.URL!.absoluteString == album.image)
+        
+        XCTAssert(TableViewCell_ImageOperationTestDouble_Self!.request!.cachePolicy == NSURLRequestCachePolicy.UseProtocolCachePolicy)
+        
+        XCTAssert(TableViewCell_ImageOperationTestDouble_Self!.request!.timeoutInterval == 60.0)
+        
+    }
+    
     func testAlbum() {
         
-        self.cell.album = self.beachBoys
+        self.assertAlbumBeachBoys()
         
-        self.assertCell(self.beachBoys)
+        self.assertAlbumBeatles()
         
-        self.cell.album = self.beatles
-        
-        self.assertCell(self.beatles)
-        
-        self.cell.album = nil
-        
-        self.assertCell(nil)
+        self.assertAlbumNil()
         
     }
     
@@ -91,6 +165,16 @@ extension TableViewCellTestCase {
     func testClass() {
         
         XCTAssert(TDD_TableViewCell.imageOperationClass()! === TDD_NetworkImageOperation.self)
+        
+    }
+    
+}
+
+final class TableViewCellTestDouble: TDD_TableViewCell {
+    
+    override class func imageOperationClass() -> AnyClass {
+        
+        return TableViewCell_ImageOperationTestDouble.self
         
     }
     

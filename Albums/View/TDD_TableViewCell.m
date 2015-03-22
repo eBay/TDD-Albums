@@ -27,13 +27,51 @@
 #import "TDD_Shared.h"
 #import "TDD_TableViewCell.h"
 
+@interface TDD_TableViewCell ()
+
+@property (nonatomic, strong) id <TDD_TableViewCell_ImageOperationType> imageOperation;
+
+@end
+
 @implementation TDD_TableViewCell
+
+@synthesize imageOperation = _imageOperation;
+
+- (id <TDD_TableViewCell_ImageOperationType>)imageOperation {
+    
+    return TDD_LazyPropertyWithClass((self->_imageOperation), [[self class] imageOperationClass]);
+    
+}
 
 - (void)reloadAlbum {
     
     [[self textLabel] setText: [[self album] artist]];
     
     [[self detailTextLabel] setText: [[self album] name]];
+    
+    [self reloadImage];
+    
+}
+
+- (void)reloadImage {
+    
+    if ([[self album] image]) {
+        
+        [[self imageOperation] startWithRequest: [self request] completionHandler: 0];
+        
+    } else {
+        
+        [[self imageOperation] cancel];
+        
+    }
+    
+}
+
+- (NSURLRequest *)request {
+    
+    NSURL *url = [[NSURL alloc] initWithString: [[self album] image]];
+    
+    return [[NSURLRequest alloc] initWithURL: url];
     
 }
 
