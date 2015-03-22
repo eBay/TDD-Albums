@@ -46,6 +46,16 @@ final class TableViewCell_BeatlesAlbumTestDouble: NSObject, TDD_TableViewCell_Al
     
 }
 
+final class TableViewCell_BlankAlbumTestDouble: NSObject, TDD_TableViewCell_AlbumType {
+    
+    var artist: String?
+    
+    var image: String?
+    
+    var name: String?
+    
+}
+
 var TableViewCell_ImageOperationTestDouble_Self: TableViewCell_ImageOperationTestDouble?
 
 final class TableViewCell_ImageOperationTestDouble: NSObject, TDD_TableViewCell_ImageOperationType {
@@ -86,6 +96,8 @@ final class TableViewCellTestCase: XCTestCase {
     
     lazy var beatles = TableViewCell_BeatlesAlbumTestDouble()
     
+    lazy var blank = TableViewCell_BlankAlbumTestDouble()
+    
     lazy var cell = TableViewCellTestDouble(style: UITableViewCellStyle.Subtitle, reuseIdentifier: nil)
     
     lazy var image = UIImage()
@@ -114,23 +126,23 @@ extension TableViewCellTestCase {
         
     }
     
-    func assertAlbumNil() {
+    func assertAlbumBlank() {
         
         let imageOperation = TableViewCell_ImageOperationTestDouble_Self!
         
-        self.cell.album = nil
+        self.cell.album = self.blank
         
-        self.assertCell(nil)
+        self.assertCell(self.blank)
         
-        XCTAssert(imageOperation.didCancel)
+        XCTAssert(TableViewCell_ImageOperationTestDouble_Self!.didCancel)
         
     }
     
-    func assertCell(album: TDD_TableViewCell_AlbumType?) {
+    func assertCell(album: TDD_TableViewCell_AlbumType) {
         
-        XCTAssert(self.cell.textLabel!.text == album?.artist)
+        XCTAssert(self.cell.textLabel!.text == album.artist)
         
-        XCTAssert(self.cell.detailTextLabel!.text == album?.name)
+        XCTAssert(self.cell.detailTextLabel!.text == album.name)
         
         XCTAssert(self.cell.imageView!.image == nil)
         
@@ -156,7 +168,7 @@ extension TableViewCellTestCase {
         
         self.assertAlbumBeatles()
         
-        self.assertAlbumNil()
+        self.assertAlbumBlank()
         
     }
     
