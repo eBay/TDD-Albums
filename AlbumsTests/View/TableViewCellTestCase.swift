@@ -138,6 +138,16 @@ extension TableViewCellTestCase {
         
     }
     
+    func assertAlbumBlankByItself() {
+        
+        self.cell.album = self.blank
+        
+        self.assertCell(self.blank)
+        
+        XCTAssert(TableViewCell_ImageOperationTestDouble_Self == nil)
+        
+    }
+    
     func assertCell(album: TDD_TableViewCell_AlbumType) {
         
         XCTAssert(self.cell.textLabel!.text == album.artist)
@@ -163,6 +173,8 @@ extension TableViewCellTestCase {
     }
     
     func testAlbum() {
+        
+        self.assertAlbumBlankByItself()
         
         self.assertAlbumBeachBoys()
         

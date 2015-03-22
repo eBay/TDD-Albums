@@ -69,7 +69,7 @@
         
     } else {
         
-        [[self imageOperation] cancel];
+        [self setImageOperation: 0];
         
     }
     
@@ -92,6 +92,20 @@
     }, {
         
         [self reloadAlbum];
+        
+    });
+    
+}
+
+- (void)setImageOperation:(id<TDD_TableViewCell_ImageOperationType>)imageOperation {
+    
+    TDD_PropertySetter((self->_imageOperation), imageOperation, {
+        
+        [(self->_imageOperation) cancel];
+        
+    }, {
+        
+        
         
     });
     
