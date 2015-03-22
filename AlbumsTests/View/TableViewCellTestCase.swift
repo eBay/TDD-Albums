@@ -88,6 +88,8 @@ final class TableViewCellTestCase: XCTestCase {
     
     lazy var cell = TableViewCellTestDouble(style: UITableViewCellStyle.Subtitle, reuseIdentifier: nil)
     
+    lazy var image = UIImage()
+    
 }
 
 extension TableViewCellTestCase {
@@ -98,7 +100,7 @@ extension TableViewCellTestCase {
         
         self.assertCell(self.beachBoys)
         
-        self.assertOperationStart(self.beachBoys)
+        self.assertOperation(self.beachBoys)
         
     }
     
@@ -108,17 +110,19 @@ extension TableViewCellTestCase {
         
         self.assertCell(self.beatles)
         
-        self.assertOperationStart(self.beatles)
+        self.assertOperation(self.beatles)
         
     }
     
     func assertAlbumNil() {
         
+        let imageOperation = TableViewCell_ImageOperationTestDouble_Self!
+        
         self.cell.album = nil
         
         self.assertCell(nil)
         
-        self.assertOperationCancel()
+        XCTAssert(imageOperation.didCancel)
         
     }
     
@@ -132,19 +136,17 @@ extension TableViewCellTestCase {
         
     }
     
-    func assertOperationCancel() {
-        
-        XCTAssert(TableViewCell_ImageOperationTestDouble_Self!.didCancel)
-        
-    }
-    
-    func assertOperationStart(album: TDD_TableViewCell_AlbumType) {
+    func assertOperation(album: TDD_TableViewCell_AlbumType) {
         
         XCTAssert(TableViewCell_ImageOperationTestDouble_Self!.request!.URL!.absoluteString == album.image)
         
         XCTAssert(TableViewCell_ImageOperationTestDouble_Self!.request!.cachePolicy == NSURLRequestCachePolicy.UseProtocolCachePolicy)
         
         XCTAssert(TableViewCell_ImageOperationTestDouble_Self!.request!.timeoutInterval == 60.0)
+        
+        TableViewCell_ImageOperationTestDouble_Self!.completionHandler!(self.image, nil)
+        
+        XCTAssert(self.cell.imageView!.image! === self.image)
         
     }
     

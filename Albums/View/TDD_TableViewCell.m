@@ -38,9 +38,9 @@
 @synthesize imageOperation = _imageOperation;
 
 - (id <TDD_TableViewCell_ImageOperationType>)imageOperation {
-    
+
     return TDD_LazyPropertyWithClass((self->_imageOperation), [[self class] imageOperationClass]);
-    
+
 }
 
 - (void)reloadAlbum {
@@ -55,9 +55,17 @@
 
 - (void)reloadImage {
     
+    [[self imageView] setImage: 0];
+    
     if ([[self album] image]) {
         
-        [[self imageOperation] startWithRequest: [self request] completionHandler: 0];
+        TDD_TableViewCell *__weak weakSelf = self;
+        
+        [[self imageOperation] startWithRequest: [self request] completionHandler: ^void (id image, NSError *error) {
+            
+            [[weakSelf imageView] setImage: image];
+            
+        }];
         
     } else {
         
