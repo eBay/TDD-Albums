@@ -164,6 +164,18 @@ extension TableViewControllerTestCase {
         
     }
     
+    func testViewWillAppearTwice() {
+        
+        self.controller.viewWillAppear(false)
+        
+        TableViewController_ModelTestDouble_Self = nil
+        
+        self.controller.viewWillAppear(false)
+        
+        XCTAssert(TableViewController_ModelTestDouble_Self == nil)
+        
+    }
+    
 }
 
 extension TableViewControllerTestCase {

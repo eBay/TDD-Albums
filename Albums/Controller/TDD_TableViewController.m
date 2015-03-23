@@ -27,11 +27,19 @@
 #import "TDD_Shared.h"
 #import "TDD_TableViewController.h"
 
+@interface TDD_TableViewController()
+
+@property (nonatomic, readonly) id <TDD_TableViewController_ModelType> model;
+
+@end
+
 @implementation TDD_TableViewController
+
+@synthesize model = _model;
 
 - (id <TDD_TableViewController_ModelType>)model {
     
-    return [[[[self class] modelClass] alloc] init];
+    return TDD_LazyPropertyWithClass((self->_model), [[self class] modelClass]);
     
 }
 
