@@ -26,6 +26,26 @@
 
 import XCTest
 
+final class TableViewController_CellTestDouble: NSObject, TDD_TableViewController_CellType {
+    
+    var album: TDD_TableViewCell_AlbumType?
+    
+    var reuseIdentifier: String?
+    
+    var style: UITableViewCellStyle?
+    
+    convenience init(style: UITableViewCellStyle, reuseIdentifier: String) {
+        
+        self.init()
+        
+        self.style = style
+        
+        self.reuseIdentifier = reuseIdentifier
+        
+    }
+    
+}
+
 var TableViewController_ModelTestDouble_Self: TableViewController_ModelTestDouble?
 
 final class TableViewController_ModelTestDouble: NSObject, TDD_TableViewController_ModelType {
@@ -50,11 +70,15 @@ final class TableViewController_ModelTestDouble: NSObject, TDD_TableViewControll
 
 final class TableViewController_ViewTestDouble: UIView, TDD_TableViewController_ViewType {
     
-    weak var dataSource: AnyObject?
+    weak var dataSource: TDD_TableViewController_ViewDataSource?
+    
+    var tddCell: TDD_TableViewController_CellType?
     
     var tddDidReloadData = false
     
     var tddFrame: CGRect?
+    
+    var tddIdentifier: String?
     
     var tddStyle: UITableViewStyle?
     
@@ -65,6 +89,14 @@ final class TableViewController_ViewTestDouble: UIView, TDD_TableViewController_
         self.tddFrame = frame
         
         self.tddStyle = style
+        
+    }
+    
+    func dequeueReusableCellWithIdentifier(identifier: String) -> TDD_TableViewController_CellType? {
+        
+        self.tddIdentifier = identifier
+        
+        return self.tddCell
         
     }
     
@@ -132,7 +164,23 @@ extension TableViewControllerTestCase {
     
 }
 
+extension TableViewControllerTestCase {
+    
+    func testNumberOfSectionsInTableView() {
+        
+        XCTAssert(self.controller.numberOfSectionsInTableView(nil) == 1)
+        
+    }
+    
+}
+
 final class TableViewControllerTestDouble: TDD_TableViewController {
+    
+    override class func cellClass() -> AnyClass {
+        
+        return TableViewController_CellTestDouble.self
+        
+    }
     
     override class func modelClass() -> AnyClass {
         

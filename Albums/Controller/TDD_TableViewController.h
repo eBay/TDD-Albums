@@ -46,14 +46,25 @@
 
 @end
 
+@protocol TDD_TableViewController_ViewDataSource;
+
 @protocol TDD_TableViewController_ViewType <NSObject>
 
 + (id <TDD_TableViewController_ViewType>)alloc;
 
-@property (nonatomic, assign) id dataSource;
+@property (nonatomic, assign) id <TDD_TableViewController_ViewDataSource> dataSource;
 
+- (id <TDD_TableViewController_CellType>)dequeueReusableCellWithIdentifier:(NSString *)identifier;
 - (id <TDD_TableViewController_ViewType>)initWithFrame:(CGRect)frame style:(UITableViewStyle)style;
 - (void)reloadData;
+
+@end
+
+@protocol TDD_TableViewController_ViewDataSource <NSObject>
+
+- (NSInteger)numberOfSectionsInTableView:(id <TDD_TableViewController_ViewType>)tableView;
+- (id <TDD_TableViewController_CellType>)tableView:(id <TDD_TableViewController_ViewType>)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (NSInteger)tableView:(id <TDD_TableViewController_ViewType>)tableView numberOfRowsInSection:(NSInteger)section;
 
 @end
 
@@ -66,5 +77,9 @@
 + (Class <TDD_TableViewController_CellType>)cellClass;
 + (Class <TDD_TableViewController_ModelType>)modelClass;
 + (Class <TDD_TableViewController_ViewType>)viewClass;
+
+@end
+
+@interface TDD_TableViewController (ViewDataSource) <TDD_TableViewController_ViewDataSource>
 
 @end

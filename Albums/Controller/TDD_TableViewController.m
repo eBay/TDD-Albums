@@ -88,3 +88,13 @@
 }
 
 @end
+
+@implementation TDD_TableViewController (ViewDataSource)
+
+- (NSInteger)numberOfSectionsInTableView:(id <TDD_TableViewController_ViewType>)tableView {
+    
+    return 1;
+    
+}
+
+@end
