@@ -108,8 +108,6 @@ extension TableViewCellTestCase {
     
     func assertAlbumBeachBoys() {
         
-        self.cell.album = self.beachBoys
-        
         self.assertCell(self.beachBoys)
         
         self.assertOperation(self.beachBoys)
@@ -117,8 +115,6 @@ extension TableViewCellTestCase {
     }
     
     func assertAlbumBeatles() {
-        
-        self.cell.album = self.beatles
         
         self.assertCell(self.beatles)
         
@@ -130,8 +126,6 @@ extension TableViewCellTestCase {
         
         let imageOperation = TableViewCell_ImageOperationTestDouble_Self!
         
-        self.cell.album = self.blank
-        
         self.assertCell(self.blank)
         
         XCTAssert(TableViewCell_ImageOperationTestDouble_Self!.didCancel)
@@ -140,8 +134,6 @@ extension TableViewCellTestCase {
     
     func assertAlbumBlankByItself() {
         
-        self.cell.album = self.blank
-        
         self.assertCell(self.blank)
         
         XCTAssert(TableViewCell_ImageOperationTestDouble_Self == nil)
@@ -149,6 +141,8 @@ extension TableViewCellTestCase {
     }
     
     func assertCell(album: TDD_TableViewCell_AlbumType) {
+        
+        self.cell.album = album
         
         XCTAssert(self.cell.textLabel!.text == album.artist)
         
@@ -166,9 +160,13 @@ extension TableViewCellTestCase {
         
         XCTAssert(TableViewCell_ImageOperationTestDouble_Self!.request!.timeoutInterval == 60.0)
         
+        self.cell.didSetNeedsLayout = false
+        
         TableViewCell_ImageOperationTestDouble_Self!.completionHandler!(self.image, nil)
         
         XCTAssert(self.cell.imageView!.image! === self.image)
+        
+        XCTAssert(self.cell.didSetNeedsLayout)
         
     }
     
@@ -198,9 +196,19 @@ extension TableViewCellTestCase {
 
 final class TableViewCellTestDouble: TDD_TableViewCell {
     
+    var didSetNeedsLayout = false
+    
     override class func imageOperationClass() -> AnyClass {
         
         return TableViewCell_ImageOperationTestDouble.self
+        
+    }
+    
+    override func setNeedsLayout() {
+        
+        super.setNeedsLayout()
+        
+        self.didSetNeedsLayout = true
         
     }
     
