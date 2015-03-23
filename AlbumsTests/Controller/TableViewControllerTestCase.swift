@@ -172,6 +172,8 @@ extension TableViewControllerTestCase {
         
         let cell = (self.controller.tableView(self.controllerView, cellForRowAtIndexPath: NSIndexPath(forRow: row, inSection: 0)) as! TableViewController_CellTestDouble)
         
+        XCTAssert(self.controllerView.tddIdentifier == "TableViewController")
+        
         XCTAssert(cell.style == UITableViewCellStyle.Subtitle)
         
         XCTAssert(cell.reuseIdentifier == "TableViewController")
@@ -189,6 +191,24 @@ extension TableViewControllerTestCase {
     func testTableViewCellForRowAtIndexPath() {
         
         self.assertTableViewCellForRowAtIndexPath(0)
+        
+        self.assertTableViewCellForRowAtIndexPath(1)
+        
+        self.assertTableViewCellForRowAtIndexPath(2)
+        
+    }
+    
+    func testTableViewCellForRowAtIndexPathWithCell() {
+        
+        self.controllerView.tddCell = TableViewController_CellTestDouble()
+        
+        let cell = (self.controller.tableView(self.controllerView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! TableViewController_CellTestDouble)
+        
+        XCTAssert(cell === self.controllerView.tddCell)
+        
+        XCTAssert(self.controllerView.tddIdentifier == "TableViewController")
+        
+        XCTAssert(cell.album! === TableViewController_ModelTestDouble_Self!.albums[0])
         
     }
     

@@ -99,13 +99,13 @@
 
 - (id <TDD_TableViewController_CellType>)tableView:(id <TDD_TableViewController_ViewType>)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    id <TDD_TableViewController_CellType> cell = [[[[self class] cellClass] alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier: @"TableViewController"];
+    id <TDD_TableViewController_CellType> cell = [tableView dequeueReusableCellWithIdentifier: @"TableViewController"];
     
-//    if (cell == 0) {
-//        
-//        cell = [[[[self class] cellClass] alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier: @"TableViewController"];
-//        
-//    }
+    if (cell == 0) {
+        
+        cell = [[[[self class] cellClass] alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier: @"TableViewController"];
+        
+    }
     
     [cell setAlbum: [[[self model] albums] objectAtIndex: [indexPath row]]];
     
