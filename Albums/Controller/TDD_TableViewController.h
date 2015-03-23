@@ -27,6 +27,15 @@
 #import "TDD_TableModel.h"
 #import "TDD_TableViewCell.h"
 
+@protocol TDD_TableViewController_ModelType <NSObject>
+
++ (id <TDD_TableViewController_ModelType>)alloc;
+
+- (id <TDD_TableViewController_ModelType>)init;
+- (void)startWithCompletionHandler:(TDD_TableModel_CompletionHandler)completionHandler;
+
+@end
+
 @protocol TDD_TableViewController_ViewType <NSObject>
 
 + (id <TDD_TableViewController_ViewType>)alloc;
@@ -44,6 +53,7 @@
 
 @interface TDD_TableViewController (Class)
 
++ (Class <TDD_TableViewController_ModelType>)modelClass;
 + (Class <TDD_TableViewController_ViewType>)viewClass;
 
 @end

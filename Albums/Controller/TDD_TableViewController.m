@@ -33,6 +33,12 @@
 
 @implementation TDD_TableViewController (Class)
 
++ (Class <TDD_TableViewController_ModelType>)modelClass {
+    
+    return [TDD_TableModel class];
+    
+}
+
 + (Class <TDD_TableViewController_ViewType>)viewClass {
     
     return [UITableView class];
