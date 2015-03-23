@@ -26,6 +26,28 @@
 
 import XCTest
 
+var TableViewController_ModelTestDouble_Self: TableViewController_ModelTestDouble?
+
+final class TableViewController_ModelTestDouble: NSObject, TDD_TableViewController_ModelType {
+    
+    override init() {
+        
+        super.init()
+        
+        TableViewController_ModelTestDouble_Self = self
+        
+    }
+    
+    var completionHandler: TDD_TableModel_CompletionHandler?
+    
+    func startWithCompletionHandler(completionHandler: TDD_TableModel_CompletionHandler) {
+        
+        self.completionHandler = completionHandler
+        
+    }
+    
+}
+
 final class TableViewController_ViewTestDouble: UIView, TDD_TableViewController_ViewType {
     
     weak var dataSource: AnyObject?
@@ -64,6 +86,12 @@ final class TableViewControllerTestCase: XCTestCase {
         
     }
     
+    override func tearDown() {
+        
+        TableViewController_ModelTestDouble_Self = nil
+        
+    }
+    
 }
 
 extension TableViewControllerTestCase {
@@ -90,9 +118,25 @@ extension TableViewControllerTestCase {
         
     }
     
+    func testViewWillAppear() {
+        
+        self.controller.viewWillAppear(false)
+        
+        TableViewController_ModelTestDouble_Self!.completionHandler!(true, nil)
+        
+        XCTAssert(self.controllerView.tddDidReloadData)
+        
+    }
+    
 }
 
 final class TableViewControllerTestDouble: TDD_TableViewController {
+    
+    override class func modelClass() -> AnyClass {
+        
+        return TableViewController_ModelTestDouble.self
+        
+    }
     
     override class func viewClass() -> AnyClass {
         

@@ -29,6 +29,12 @@
 
 @implementation TDD_TableViewController
 
+- (id <TDD_TableViewController_ModelType>)model {
+    
+    return [[[[self class] modelClass] alloc] init];
+    
+}
+
 @end
 
 @implementation TDD_TableViewController (Class)
@@ -56,6 +62,22 @@
     [view setDataSource: self];
     
     [self setView: view];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear: animated];
+    
+    TDD_TableViewController *__weak weakSelf = self;
+    
+    [[self model] startWithCompletionHandler: ^void (BOOL success, NSError *error) {
+        
+        id <TDD_TableViewController_ViewType> view = [weakSelf view];
+        
+        [view reloadData];
+        
+    }];
     
 }
 
