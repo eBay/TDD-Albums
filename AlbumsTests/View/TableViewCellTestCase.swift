@@ -102,6 +102,12 @@ final class TableViewCellTestCase: XCTestCase {
     
     lazy var image = UIImage()
     
+    override func tearDown() {
+        
+        TableViewCell_ImageOperationTestDouble_Self = nil
+        
+    }
+    
 }
 
 extension TableViewCellTestCase {
