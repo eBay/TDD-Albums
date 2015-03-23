@@ -34,6 +34,7 @@
 @property (nonatomic, assign) id dataSource;
 
 - (id <TDD_TableViewController_ViewType>)initWithFrame:(CGRect)frame style:(UITableViewStyle)style;
+- (void)reloadData;
 
 @end
 

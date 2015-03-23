@@ -30,6 +30,8 @@ final class TableViewController_ViewTestDouble: UIView, TDD_TableViewController_
     
     weak var dataSource: AnyObject?
     
+    var tddDidReloadData = false
+    
     var tddFrame: CGRect?
     
     var tddStyle: UITableViewStyle?
@@ -41,6 +43,12 @@ final class TableViewController_ViewTestDouble: UIView, TDD_TableViewController_
         self.tddFrame = frame
         
         self.tddStyle = style
+        
+    }
+    
+    func reloadData() {
+        
+        self.tddDidReloadData = true
         
     }
     
