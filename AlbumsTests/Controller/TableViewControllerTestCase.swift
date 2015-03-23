@@ -168,9 +168,27 @@ extension TableViewControllerTestCase {
 
 extension TableViewControllerTestCase {
     
+    func assertTableViewCellForRowAtIndexPath(row: Int) {
+        
+        let cell = (self.controller.tableView(self.controllerView, cellForRowAtIndexPath: NSIndexPath(forRow: row, inSection: 0)) as! TableViewController_CellTestDouble)
+        
+        XCTAssert(cell.style == UITableViewCellStyle.Subtitle)
+        
+        XCTAssert(cell.reuseIdentifier == "TableViewController")
+        
+        XCTAssert(cell.album! === TableViewController_ModelTestDouble_Self!.albums[row])
+        
+    }
+    
     func testNumberOfSectionsInTableView() {
         
         XCTAssert(self.controller.numberOfSectionsInTableView(nil) == 1)
+        
+    }
+    
+    func testTableViewCellForRowAtIndexPath() {
+        
+        self.assertTableViewCellForRowAtIndexPath(0)
         
     }
     

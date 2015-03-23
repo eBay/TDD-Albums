@@ -97,6 +97,22 @@
     
 }
 
+- (id <TDD_TableViewController_CellType>)tableView:(id <TDD_TableViewController_ViewType>)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    id <TDD_TableViewController_CellType> cell = [[[[self class] cellClass] alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier: @"TableViewController"];
+    
+//    if (cell == 0) {
+//        
+//        cell = [[[[self class] cellClass] alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier: @"TableViewController"];
+//        
+//    }
+    
+    [cell setAlbum: [[[self model] albums] objectAtIndex: [indexPath row]]];
+    
+    return cell;
+    
+}
+
 - (NSInteger)tableView:(id <TDD_TableViewController_ViewType>)tableView numberOfRowsInSection:(NSInteger)section {
     
     return [[[self model] albums] count];
