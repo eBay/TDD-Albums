@@ -41,6 +41,8 @@
 
 + (id <TDD_TableViewController_ModelType>)alloc;
 
+@property (nonatomic, readonly) NSArray *albums;
+
 - (id <TDD_TableViewController_ModelType>)init;
 - (void)startWithCompletionHandler:(TDD_TableModel_CompletionHandler)completionHandler;
 

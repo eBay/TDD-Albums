@@ -97,4 +97,10 @@
     
 }
 
+- (NSInteger)tableView:(id <TDD_TableViewController_ViewType>)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return [[[self model] albums] count];
+    
+}
+
 @end

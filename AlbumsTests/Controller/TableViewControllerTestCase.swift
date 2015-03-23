@@ -58,6 +58,8 @@ final class TableViewController_ModelTestDouble: NSObject, TDD_TableViewControll
         
     }
     
+    lazy var albums = ([TDD_Album(), TDD_Album(), TDD_Album()] as [AnyObject])
+    
     var completionHandler: TDD_TableModel_CompletionHandler?
     
     func startWithCompletionHandler(completionHandler: TDD_TableModel_CompletionHandler) {
@@ -169,6 +171,12 @@ extension TableViewControllerTestCase {
     func testNumberOfSectionsInTableView() {
         
         XCTAssert(self.controller.numberOfSectionsInTableView(nil) == 1)
+        
+    }
+    
+    func testTableViewNumberOfRowsInSection() {
+        
+        XCTAssert(self.controller.tableView(nil, numberOfRowsInSection: 0) == TableViewController_ModelTestDouble_Self!.albums.count)
         
     }
     
