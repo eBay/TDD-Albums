@@ -40,3 +40,17 @@
 }
 
 @end
+
+@implementation TDD_TableViewController (ViewController)
+
+- (void)loadView {
+    
+    id <TDD_TableViewController_ViewType> view = [[[[self class] viewClass] alloc] initWithFrame: CGRectZero style: UITableViewStylePlain];
+    
+    [view setDataSource: self];
+    
+    [self setView: view];
+    
+}
+
+@end

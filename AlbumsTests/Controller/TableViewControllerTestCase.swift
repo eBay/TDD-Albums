@@ -26,9 +26,35 @@
 
 import XCTest
 
+final class TableViewController_ViewTestDouble: UIView, TDD_TableViewController_ViewType {
+    
+    weak var dataSource: AnyObject?
+    
+    var tddFrame: CGRect?
+    
+    var tddStyle: UITableViewStyle?
+    
+    convenience init(frame: CGRect, style: UITableViewStyle) {
+        
+        self.init(frame: frame)
+        
+        self.tddFrame = frame
+        
+        self.tddStyle = style
+        
+    }
+    
+}
+
 final class TableViewControllerTestCase: XCTestCase {
     
+    lazy var controller = TableViewControllerTestDouble()
     
+    var controllerView: TableViewController_ViewTestDouble {
+        
+        return (self.controller.view as! TableViewController_ViewTestDouble)
+        
+    }
     
 }
 
@@ -37,6 +63,30 @@ extension TableViewControllerTestCase {
     func testClass() {
         
         XCTAssert(TDD_TableViewController.viewClass()! === UITableView.self)
+        
+    }
+    
+}
+
+extension TableViewControllerTestCase {
+    
+    func testLoadView() {
+        
+        XCTAssert(self.controllerView.tddFrame == CGRectZero)
+        
+        XCTAssert(self.controllerView.tddStyle == UITableViewStyle.Plain)
+        
+        XCTAssert(self.controllerView.dataSource! === self.controller)
+        
+    }
+    
+}
+
+final class TableViewControllerTestDouble: TDD_TableViewController {
+    
+    override class func viewClass() -> AnyClass {
+        
+        return TableViewController_ViewTestDouble.self
         
     }
     
