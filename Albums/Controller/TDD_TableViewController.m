@@ -39,6 +39,12 @@
 
 @implementation TDD_TableViewController (Class)
 
++ (Class <TDD_TableViewController_CellType>)cellClass {
+    
+    return [TDD_TableViewCell class];
+    
+}
+
 + (Class <TDD_TableViewController_ModelType>)modelClass {
     
     return [TDD_TableModel class];

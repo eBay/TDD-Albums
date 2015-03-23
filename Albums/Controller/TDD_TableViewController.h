@@ -27,6 +27,16 @@
 #import "TDD_TableModel.h"
 #import "TDD_TableViewCell.h"
 
+@protocol TDD_TableViewController_CellType <NSObject>
+
++ (id <TDD_TableViewController_CellType>)alloc;
+
+@property (nonatomic, strong) id <TDD_TableViewCell_AlbumType> album;
+
+- (id <TDD_TableViewController_CellType>)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
+
+@end
+
 @protocol TDD_TableViewController_ModelType <NSObject>
 
 + (id <TDD_TableViewController_ModelType>)alloc;
@@ -53,6 +63,7 @@
 
 @interface TDD_TableViewController (Class)
 
++ (Class <TDD_TableViewController_CellType>)cellClass;
 + (Class <TDD_TableViewController_ModelType>)modelClass;
 + (Class <TDD_TableViewController_ViewType>)viewClass;
 

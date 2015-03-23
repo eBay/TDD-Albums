@@ -98,6 +98,8 @@ extension TableViewControllerTestCase {
     
     func testClass() {
         
+        XCTAssert(TDD_TableViewController.cellClass()! === TDD_TableViewCell.self)
+        
         XCTAssert(TDD_TableViewController.modelClass()! === TDD_TableModel.self)
         
         XCTAssert(TDD_TableViewController.viewClass()! === UITableView.self)
