@@ -62,6 +62,14 @@ final class TableViewController_ModelTestDouble: NSObject, TDD_TableViewControll
     
     var completionHandler: TDD_TableModel_CompletionHandler?
     
+    var didCancel = false;
+    
+    func cancel() {
+        
+        self.didCancel = true
+        
+    }
+    
     func startWithCompletionHandler(completionHandler: TDD_TableModel_CompletionHandler) {
         
         self.completionHandler = completionHandler
@@ -69,6 +77,8 @@ final class TableViewController_ModelTestDouble: NSObject, TDD_TableViewControll
     }
     
 }
+
+var TableViewController_ViewTestDouble_Self: TableViewController_ViewTestDouble?
 
 final class TableViewController_ViewTestDouble: UIView, TDD_TableViewController_ViewType {
     
@@ -87,6 +97,8 @@ final class TableViewController_ViewTestDouble: UIView, TDD_TableViewController_
     convenience init(frame: CGRect, style: UITableViewStyle) {
         
         self.init(frame: frame)
+        
+        TableViewController_ViewTestDouble_Self = self
         
         self.tddFrame = frame
         
@@ -124,6 +136,8 @@ final class TableViewControllerTestCase: XCTestCase {
         
         TableViewController_ModelTestDouble_Self = nil
         
+        TableViewController_ViewTestDouble_Self = nil
+        
     }
     
 }
@@ -137,6 +151,54 @@ extension TableViewControllerTestCase {
         XCTAssert(TDD_TableViewController.modelClass()! === TDD_TableModel.self)
         
         XCTAssert(TDD_TableViewController.viewClass()! === UITableView.self)
+        
+    }
+    
+}
+
+extension TableViewControllerTestCase {
+    
+    func testDeallocModel() {
+        
+        var controller: TableViewControllerTestDouble? = TableViewControllerTestDouble()
+        
+        controller!.viewWillAppear(false)
+        
+        controller = nil
+        
+        XCTAssert(TableViewController_ModelTestDouble_Self!.didCancel)
+        
+    }
+    
+    func testDeallocView() {
+        
+        var controller: TDD_TableViewController? = TDD_TableViewController()
+        
+        let controllerView = (controller!.view as! UITableView)
+        
+        controller = nil
+        
+        XCTAssert(controllerView.dataSource == nil)
+        
+    }
+    
+    func testDeallocViewByItself() {
+        
+        var controller: TableViewControllerTestDouble? = TableViewControllerTestDouble()
+        
+        controller = nil
+        
+        XCTAssert(TableViewController_ViewTestDouble_Self == nil)
+        
+    }
+    
+    func testDeallocModelByItself() {
+        
+        var controller: TableViewControllerTestDouble? = TableViewControllerTestDouble()
+        
+        controller = nil
+        
+        XCTAssert(TableViewController_ModelTestDouble_Self == nil)
         
     }
     

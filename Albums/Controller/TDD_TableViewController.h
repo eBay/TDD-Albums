@@ -43,6 +43,7 @@
 
 @property (nonatomic, readonly) NSArray *albums;
 
+- (void)cancel;
 - (id <TDD_TableViewController_ModelType>)init;
 - (void)startWithCompletionHandler:(TDD_TableModel_CompletionHandler)completionHandler;
 

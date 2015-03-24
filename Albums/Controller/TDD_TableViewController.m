@@ -29,7 +29,7 @@
 
 @interface TDD_TableViewController()
 
-@property (nonatomic, readonly) id <TDD_TableViewController_ModelType> model;
+@property (nonatomic, strong) id <TDD_TableViewController_ModelType> model;
 
 @end
 
@@ -40,6 +40,20 @@
 - (id <TDD_TableViewController_ModelType>)model {
     
     return TDD_LazyPropertyWithClass((self->_model), [[self class] modelClass]);
+    
+}
+
+- (void)setModel:(id<TDD_TableViewController_ModelType>)model {
+    
+    TDD_PropertySetter((self->_model), model, {
+        
+        [(self->_model) cancel];
+        
+    }, {
+        
+        
+        
+    });
     
 }
 
@@ -62,6 +76,24 @@
 + (Class <TDD_TableViewController_ViewType>)viewClass {
     
     return [UITableView class];
+    
+}
+
+@end
+
+@implementation TDD_TableViewController (Object)
+
+- (void)dealloc {
+    
+    [self setModel: 0];
+    
+    if ([self isViewLoaded]) {
+        
+        id <TDD_TableViewController_ViewType> view = [self view];
+        
+        [view setDataSource: 0];
+        
+    }
     
 }
 
