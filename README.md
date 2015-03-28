@@ -6,4 +6,4 @@ TDD-Albums is appropriate for iPhone developers that have never attempted TDD. T
 
 TDD-Albums is built from the Swift 1.2 syntax. This means that you should download the latest version of the developer tools. TDD-Albums builds correctly from Xcode Version 6.3 (6D554n).
 
-Open the Wiki for step-by-step instructions.
+Open the [Wiki](https://github.com/eBay/TDD-Albums/wiki) for step-by-step instructions.
