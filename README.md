@@ -4,6 +4,6 @@ Our library covers topics familiar to iPhone developers, like networking and MVC
 
 TDD-Albums is appropriate for iPhone developers that have never attempted TDD. That being said, TDD-Albums is not appropriate for learning iPhone development. You must have strong competency in Objective-C and Cocoa before attempting this tutorial. You should also have a working knowledge of Swift.
 
-TDD-Albums is built from the Swift 1.2 syntax. This means that you should download the latest version of the developer tools. TDD-Albums builds correctly from Xcode Version 6.3 (6D554n).
+TDD-Albums is built from the Swift 1.2 syntax. This means that you should download the latest version of the developer tools. TDD-Albums builds correctly from Xcode Version 6.3 (6D570).
 
 Open the [Wiki](https://github.com/eBay/TDD-Albums/wiki) for step-by-step instructions.
